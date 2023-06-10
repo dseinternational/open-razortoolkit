@@ -1,0 +1,32 @@
+﻿@inherits TestContext
+
+@code {
+
+    [Fact]
+    public void PolyLine_Points_ShouldRenderPoints()
+    {
+        // Arrange
+        const string points = "0,0 1,1 2,2";
+
+        // Act
+        var output = Render(@<PolyLine Points="@points"/>);
+
+        // Assert
+        output.MarkupMatches(@<polyline points="@points"/>);
+    }
+
+    [Fact]
+    public void PolyLine_WithStrokeAndWidth_ShouldRenderAttributes()
+    {
+        // Arrange
+        var stroke = new Color(0, 255, 0);
+        const int width = 2;
+
+        // Act
+        var output = Render(@<PolyLine Stroke="@stroke" StrokeWidth="@width"/>);
+
+        // Assert
+        output.MarkupMatches(@<polyline stroke="#00FF00" stroke-width="@width"/>);
+    }
+
+}

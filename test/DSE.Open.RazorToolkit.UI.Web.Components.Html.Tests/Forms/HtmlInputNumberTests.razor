@@ -1,0 +1,160 @@
+﻿@using System.Numerics
+@inherits TestContext
+
+@code
+{
+    [Fact]
+    public void RendersInitialValueInt32()
+    {
+        var value = 42;
+
+        var output = Render(@<HtmlInputNumber @bind-Value="@value"></HtmlInputNumber>);
+
+        output.MarkupMatches(@<input type="number" step="@DefaultNumericInputSteps.IntStep" value="42"/>);
+    }
+
+    [Fact]
+    public void RendersInitialNotNullableValueInt32()
+    {
+        var value = 42;
+
+        var output = Render(@<HtmlInputNumber @bind-Value="@value"></HtmlInputNumber>);
+
+        output.MarkupMatches(@<input type="number" step="@DefaultNumericInputSteps.IntStep" value="42"/>);
+    }
+
+    [Fact]
+    public void RendersInitialNotNullableValueInt64()
+    {
+        long value = 42;
+
+        var output = Render(@<HtmlInputNumber @bind-Value="@value"></HtmlInputNumber>);
+
+        output.MarkupMatches(@<input type="number" step="@DefaultNumericInputSteps.LongStep" value="42"/>);
+    }
+
+    [Fact]
+    public void RendersInitialNotNullableValueDecimal()
+    {
+        decimal value = 42;
+
+        var output = Render(@<HtmlInputNumber @bind-Value="@value"></HtmlInputNumber>);
+
+        output.MarkupMatches(@<input type="number" step="@DefaultNumericInputSteps.DecimalStep" value="42"/>);
+    }
+
+    [Fact]
+    public void HtmlNumberInput_WithInts_ShouldRenderStepMinAndMax()
+    {
+        var (min, max, value) = NumberDefaultsHelper.GetDefaultValues<int>();
+        var step = Random.Shared.Next(0, 1000);
+
+        var output = RenderInputNumber(min, max, value, step);
+
+        output.MarkupMatches(@<input type="number" step="@step" value="@value"/>);
+    }
+
+    [Fact]
+    public void HtmlNumberInput_WithLongs_ShouldRenderStepMinAndMax()
+    {
+        var (min, max, value) = NumberDefaultsHelper.GetDefaultValues<long>();
+        long step = Random.Shared.Next(0, 1000);
+
+        var output = RenderInputNumber(min, max, value, step);
+
+        output.MarkupMatches(@<input type="number" step="@step" value="@value"/>);
+    }
+
+    [Fact]
+    public void HtmlNumberInput_WithFloats_ShouldRenderStepMinAndMax()
+    {
+        float step = Random.Shared.Next(0, 1000);
+        float min = Random.Shared.Next(0, 1000);
+        float max = Random.Shared.Next(0, 1000);
+        float value = Random.Shared.Next(0, 1000);
+
+        var output = RenderInputNumber(min, max, value, step);
+
+        output.MarkupMatches(@<input type="number" step="@step" min="@min" max="@max" value="@value"/>);
+    }
+
+    [Fact]
+    public void HtmlNumberInput_WithDoubles_ShouldRenderStepMinAndMax()
+    {
+        double step = Random.Shared.Next(0, 1000);
+        var min = Random.Shared.NextDouble();
+        var value = Random.Shared.NextDouble();
+        var max = Random.Shared.NextDouble();
+
+        var output = RenderInputNumber(min, max, value, step);
+
+        output.MarkupMatches(@<input type="number" step="@step" min="@min" max="@max" value="@value"/>);
+    }
+
+    [Fact]
+    public void HtmlNumberInput_WithDecimals_ShouldRenderStepMinAndMax()
+    {
+        var (min, max, value) = NumberDefaultsHelper.GetDefaultValues<decimal>();
+        decimal step = Random.Shared.Next(0, 1000);
+
+        var output = RenderInputNumber(min, max, value, step);
+
+        output.MarkupMatches(@<input type="number" step="@step" value="@value"/>);
+    }
+
+    [Fact]
+    public void HtmlNumberInput_WithDecimalValue_ShouldRenderStepMinAndMaxDecimals()
+    {
+        decimal value = 0;
+
+        var output = Render(@<HtmlInputNumber @bind-Value="@value"></HtmlInputNumber>);
+
+        output.MarkupMatches(@<input type="number" step="@DefaultNumericInputSteps.DecimalStep" value="@value"/>);
+    }
+
+    [Fact]
+    public void HtmlNumberInput_WithIntValue_ShouldRenderStepMinAndMaxInts()
+    {
+        var value = 0;
+
+        var output = Render(@<HtmlInputNumber @bind-Value="@value"></HtmlInputNumber>);
+
+        output.MarkupMatches(@<input type="number" step="@DefaultNumericInputSteps.IntStep" value="@value"/>);
+    }
+
+    [Fact]
+    public void HtmlNumberInput_WithLongValue_ShouldRenderStepMinAndMaxLongs()
+    {
+        long value = 0;
+
+        var output = Render(@<HtmlInputNumber @bind-Value="@value"></HtmlInputNumber>);
+
+        output.MarkupMatches(@<input type="number" step="@DefaultNumericInputSteps.LongStep" value="@value"/>);
+    }
+
+    [Fact]
+    public void HtmlNumberInput_WithFloatValue_ShouldRenderStepMinAndMaxFloats()
+    {
+        float value = 0;
+
+        var output = Render(@<HtmlInputNumber @bind-Value="@value"></HtmlInputNumber>);
+
+        output.MarkupMatches(@<input type="number" step="@DefaultNumericInputSteps.FloatStep" value="@value"/>);
+    }
+
+    [Fact]
+    public void HtmlNumberInput_WithDoubleValue_ShouldRenderStepMinAndMaxDoubles()
+    {
+        double value = 0;
+
+        var output = Render(@<HtmlInputNumber @bind-Value="@value"></HtmlInputNumber>);
+
+        output.MarkupMatches(@<input type="number" step="@DefaultNumericInputSteps.DoubleStep" value="@value"/>);
+    }
+
+
+    private IRenderedFragment RenderInputNumber<T>(T? min, T? max, T? value, T? step) where T : INumber<T>, IMinMaxValue<T>
+    {
+        return Render(@<HtmlInputNumber @bind-Value="@value" Minimum="@min" Maximum="@max" Step="@step"></HtmlInputNumber>);
+    }
+}

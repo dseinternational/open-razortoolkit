@@ -1,0 +1,26 @@
+﻿<div class="stepper @OrientationCss">
+    <CascadingValue Value="this">
+        @ChildContent
+    </CascadingValue>
+</div>
+
+@code {
+    [Parameter]
+    public RenderFragment? ChildContent { get; set; }
+
+    [Parameter]
+    public Orientation Orientation { get; set; }
+
+    private string OrientationCss
+    {
+        get
+        {
+            return Orientation switch
+            {
+                Orientation.Horizontal => "stepper-horizontal",
+                Orientation.Vertical => "stepper-vertical",
+                _ => throw new InvalidOperationException($"Invalid {nameof(Orientation)} value.")
+            };
+        }
+    }
+}

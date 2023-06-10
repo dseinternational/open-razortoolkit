@@ -1,0 +1,46 @@
+﻿@inherits TestContext
+
+@code {
+
+    [Fact]
+    public void PageLink_Previous_ShouldRenderWithAttributes()
+    {
+        // Act
+        var output = Render(
+            @<Pagination>
+                <PaginationItem>
+                    <PaginationLink PaginationLinkType="PaginationLinkType.Previous" NavigateUri="#"></PaginationLink>
+                </PaginationItem>
+            </Pagination>
+            );
+
+        // Assert
+        Assert.Equal(HtmlElements.Navigation, output.Nodes.First().NodeName, StringComparer.OrdinalIgnoreCase);
+
+        var link = output.Nodes.First().FirstChild?.FirstChild?.FirstChild;
+        Assert.Contains("aria-label=\"Previous\"", link?.ToMarkup()!, StringComparison.OrdinalIgnoreCase);
+
+        link?.FirstChild?.MarkupMatches("<span aria-hidden=\"true\">&laquo;</span>");
+    }
+
+    [Fact]
+    public void PageLink_Next_ShouldRenderWithAttributes()
+    {
+        // Act
+        var output = Render(
+            @<Pagination>
+                <PaginationItem>
+                    <PaginationLink PaginationLinkType="PaginationLinkType.Next" NavigateUri="#" ></PaginationLink>
+                </PaginationItem>
+            </Pagination>
+            );
+
+        // Assert
+
+        var link = output.Nodes.First().FirstChild?.FirstChild?.FirstChild;
+        Assert.Contains("aria-label=\"Next\"", link?.ToMarkup()!, StringComparison.OrdinalIgnoreCase);
+
+        link?.FirstChild?.MarkupMatches("<span aria-hidden=\"true\">&raquo;</span>");
+    }
+
+}

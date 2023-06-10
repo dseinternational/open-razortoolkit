@@ -1,0 +1,32 @@
+﻿@page "/html/forms/html-input-range"
+
+<h1>HtmlInputRange</h1>
+
+<HtmlBlock style="margin:2rem 0">
+    <HtmlLabel CssStyle="width:6rem">Range</HtmlLabel>
+    <HtmlInputRange Minimum="0" Maximum="1000" Step="10" @bind-Value="Value"></HtmlInputRange>
+</HtmlBlock>
+
+<HtmlBlock style="margin:2rem 0">
+    <HtmlLabel CssStyle="width:6rem">Input</HtmlLabel>
+    <HtmlCode>@Value</HtmlCode>
+</HtmlBlock>
+
+<HtmlBlock style="margin:2rem 0">
+    <HtmlButton Click="@Reset" style="margin-right:2rem">Reset</HtmlButton>
+    <HtmlButton Click="@Random">Random</HtmlButton>
+</HtmlBlock>
+
+@code {
+    public int Value { get; set; }
+
+    public void Random()
+    {
+        Value = System.Random.Shared.Next(0, 1000);
+    }
+
+    public void Reset()
+    {
+        Value = 0;
+    }
+}

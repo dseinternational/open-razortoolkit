@@ -1,0 +1,9 @@
+﻿@page "/html/hyperlink"
+
+<h1>Hyperlink (Html)</h1>
+
+<HtmlHyperlink NavigateUri="@bindValue">This Is A Hyperlink</HtmlHyperlink>
+
+@code {
+    public string bindValue { get; set; } = "./html/hyperlink";
+}

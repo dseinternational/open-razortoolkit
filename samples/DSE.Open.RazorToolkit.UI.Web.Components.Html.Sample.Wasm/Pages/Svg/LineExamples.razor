@@ -1,0 +1,22 @@
+﻿@page "/svg/line"
+
+<h1>Line</h1>
+
+<SvgContainer Width="@Width" Height="@Height" Stroke="@(Color.FromRgb(100, 100, 100))" style="margin-bottom:3rem;border: 1px solid #333">
+
+    @for (var i = 0; i < 10; i++)
+    {
+        var strokeWidth = new Length(Random.Shared.Next(1, 10));
+        <Line X1="@RandX" Y1="@RandY" X2="@RandX" Y2="@RandY" Stroke="@(Colors.GetRandom())" StrokeWidth="@strokeWidth"></Line>
+    }
+
+</SvgContainer>
+
+
+@code {
+        private const int Width = 800;
+        private const int Height = 400;
+
+    private static Length RandX => new(Random.Shared.Next(0, Width));
+    private static Length RandY => new(Random.Shared.Next(0, Height));
+}

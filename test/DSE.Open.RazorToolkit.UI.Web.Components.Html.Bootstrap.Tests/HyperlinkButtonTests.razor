@@ -1,0 +1,35 @@
+﻿@inherits TestContext
+
+@code {
+
+    [Fact]
+    public void HyperlinkButton_ShouldRenderBaseButton_WhenNoStyleGiven()
+    {
+        // Act
+        var output = Render(@<HyperlinkButton NavigateUri="@string.Empty"></HyperlinkButton>);
+
+        // Assert
+        Assert.Contains($"class=\"{BootstrapClasses.Button}\"", output.Markup);
+    }
+
+    [Fact]
+    public void HyperlinkButton_ShouldRenderCssStyle_WhenGivenButtonTheme()
+    {
+        // Act
+        var output = Render(@<HyperlinkButton NavigateUri="" ButtonStyle="ButtonStyle.OutlineDanger"></HyperlinkButton>);
+
+        // Assert
+        Assert.Contains($"class=\"{BootstrapClasses.Button} {BootstrapClasses.ButtonOutlineDanger}\"", output.Markup);
+    }
+
+    [Fact]
+    public void HyperlinkButton_ShouldRenderCssSize_WhenGivenButtonSize()
+    {
+        // Act
+        var output = Render(@<HyperlinkButton NavigateUri="" Size="@BootstrapSize.Large"></HyperlinkButton>);
+
+        // Assert
+        Assert.Contains($"class=\"{BootstrapClasses.Button} {BootstrapClasses.ButtonLg}\"", output.Markup);
+    }
+
+}

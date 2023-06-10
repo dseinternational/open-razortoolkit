@@ -1,0 +1,36 @@
+﻿@using HtmlElement = AngleSharp.Html.Dom.HtmlElement
+@inherits TestContext
+
+@code {
+
+    [Fact]
+    public void ModalDialog_ShouldRenderModalDialogClass()
+    {
+        // Act
+        var modalDialog = Render(@<ModalDialog></ModalDialog>).Nodes.First() as HtmlElement;
+
+        // Assert
+        Assert.True(modalDialog?.ClassList.Contains(BootstrapClasses.ModalDialog));
+    }
+
+    [Fact]
+    public void ModalDialog_WithScrollable_ShouldRenderScrollableClass()
+    {
+        // Act
+        var modalDialog = Render(@<ModalDialog Scrollable></ModalDialog>).Nodes.First() as HtmlElement;
+
+        // Assert
+        Assert.True(modalDialog?.ClassList.Contains(BootstrapClasses.ModalDialogScrollable));
+    }
+
+    [Fact]
+    public void ModalDialog_WithCentered_ShouldRenderCenteredClass()
+    {
+        // Act
+        var modalDialog = Render(@<ModalDialog Centered></ModalDialog>).Nodes.First() as HtmlElement;
+
+        // Assert
+        Assert.True(modalDialog?.ClassList.Contains(BootstrapClasses.ModalDialogCentered));
+    }
+
+}

@@ -1,0 +1,90 @@
+﻿@inherits TestContext
+
+@code {
+
+    [Fact]
+    public void HtmlInputRange_WithIntValue_ShouldRenderCorrectMinMaxAndStepDefaults()
+    {
+        // Arrange
+        var value = default(int);
+        const int step = DefaultNumericInputSteps.IntStep;
+
+        // Act
+        var output = Render(@<HtmlInputRange @bind-Value="@value"/>);
+
+        // Assert
+        output.MarkupMatches(@<input type="range" step="@step" value="@value" />);
+    }
+
+    [Fact]
+    public void HtmlInputRange_WithDoubleValue_ShouldRenderCorrectMinMaxAndStepDefaults()
+    {
+        // Arrange
+        var value = default(double);
+        const double step = DefaultNumericInputSteps.DoubleStep;
+
+        // Act
+        var output = Render(@<HtmlInputRange @bind-Value="@value"/>);
+
+        // Assert
+        output.MarkupMatches(@<input type="range" step="@step" value="@value" />);
+    }
+
+    [Fact]
+    public void HtmlInputRange_WithDecimalValue_ShouldRenderCorrectMinMaxAndStepDefaults()
+    {
+        // Arrange
+        var value = default(decimal);
+        const decimal step = DefaultNumericInputSteps.DecimalStep;
+
+        // Act
+        var output = Render(@<HtmlInputRange @bind-Value="@value"/>);
+
+        // Assert
+        output.MarkupMatches(@<input type="range" step="@step" value="@value" />);
+    }
+
+    [Fact]
+    public void HtmlInputRange_WithFloatValue_ShouldRenderCorrectMinMaxAndStepDefaults()
+    {
+        // Arrange
+        var value = default(float);
+        const float step = DefaultNumericInputSteps.FloatStep;
+
+        // Act
+        var output = Render(@<HtmlInputRange @bind-Value="@value"/>);
+
+        // Assert
+        output.MarkupMatches(@<input type="range" step="@step" value="@value" />);
+    }
+
+    [Fact]
+    public void HtmlInputRange_WithLongValue_ShouldRenderCorrectMinMaxAndStepDefaults()
+    {
+        // Arrange
+        var value = default(long);
+        const long step = DefaultNumericInputSteps.LongStep;
+
+        // Act
+        var output = Render(@<HtmlInputRange @bind-Value="@value"/>);
+
+        // Assert
+        output.MarkupMatches(@<input type="range" step="@step" value="@value" />);
+        }
+
+    [Fact]
+    public void HtmlInputRange_WithIntValues_ShouldRenderAttributes()
+    {
+        // Arrange
+        var value = default(int);
+        const int min = -12;
+        const int max = 100;
+
+        // Act
+        var output = Render(@<HtmlInputRange @bind-Value="@value" Minimum="@min" Maximum="@max"/>);
+
+        // Assert
+        output.MarkupMatches(@<input type="range" min="@min" max="@max" step="1" value="@value" />);
+    }
+
+}

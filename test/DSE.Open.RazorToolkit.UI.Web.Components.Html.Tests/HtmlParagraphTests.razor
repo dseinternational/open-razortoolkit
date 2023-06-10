@@ -1,0 +1,15 @@
+﻿@inherits TestContext
+@code
+{
+    [Fact]
+    public void HTMLParagraph_ShouldRenderAPTag()
+    {
+        // Act
+        var output = Render(@<HtmlParagraph></HtmlParagraph>);
+        
+
+        // Assert
+        output.MarkupMatches("<p></p>");
+    }
+    
+}

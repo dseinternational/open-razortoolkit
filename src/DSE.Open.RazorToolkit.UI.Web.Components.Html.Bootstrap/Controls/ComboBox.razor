@@ -1,0 +1,40 @@
+﻿@inherits HtmlLabelledInputControl<string>
+
+<HtmlBlock class="@ComponentClass" style="@ComponentStyle" lang="@Language">
+    @if (Header is not null)
+    {
+        @Header
+    }
+    else if (!string.IsNullOrWhiteSpace(HeaderText))
+    {
+        <Label ForId="@InputId" Text="@HeaderText" CssClass="combobox-header"></Label>
+    }
+
+    <InputSelect Value="@CurrentValue"
+                 ValueExpression="@ValueExpression"
+                 ValueChanged="@ValueChanged"
+                 Id="@InputId"
+                 Name="@Name"
+                 Required="@Required"
+                 Disabled="@Disabled"
+                 CssClass="combobox-input">
+        @ChildContent
+    </InputSelect>
+
+    @if (Description is not null)
+    {
+        @Description
+    }
+    else if (!string.IsNullOrWhiteSpace(DescriptionText))
+    {
+        <HtmlBlock CssClass="combobox-description">@DescriptionText</HtmlBlock>
+    }
+
+    @if (ValidationFor is not null)
+    {
+        const string feedbackClass = $"{BootstrapClasses.InvalidFeedback} {BootstrapClasses.DisplayBlock}";
+        <HtmlBlock CssClass="@feedbackClass">
+            <Microsoft.AspNetCore.Components.Forms.ValidationMessage For="@ValidationFor"/>
+        </HtmlBlock>
+    }
+</HtmlBlock>

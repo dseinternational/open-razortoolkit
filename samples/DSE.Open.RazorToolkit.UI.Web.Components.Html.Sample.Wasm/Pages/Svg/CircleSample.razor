@@ -1,0 +1,28 @@
+﻿@page "/svg/circle"
+
+<h1>Circle</h1>
+
+<SvgContainer Width="800" Height="400" style="margin-bottom:3rem;border: 1px solid #333">
+
+    <Circle CenterX="110" CenterY="120" Radius="100" Fill="@(Color.FromRgb(0, 0, 200))"/>
+
+    <Circle CenterX="@(Length.Parse("40mm"))" CenterY="@(Length.Parse("40mm"))" Radius="@(Length.Parse("10mm"))" Fill="@(Color.FromRgb(200, 0, 0))"/>
+
+</SvgContainer>
+
+<SvgContainer Width="800" Height="400" Stroke="@(Color.FromRgb(100, 100, 100))" style="margin-bottom:3rem;border: 1px solid #333">
+
+    @for (var i = 0; i < 40; i++)
+    {
+        const int w = 20;
+        var x = Random.Shared.Next(800 - w / 2);
+        var y = Random.Shared.Next(400 - w / 2);
+        <Circle CenterX="@x" CenterY="@y" Radius="@w" Fill="@(Colors.GetRandom())" Stroke="@(Colors.Transparent)"/>
+    }
+
+</SvgContainer>
+
+
+@code {
+
+}

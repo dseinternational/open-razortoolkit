@@ -1,0 +1,24 @@
+﻿@inherits TestContext
+@code
+{
+    [Fact]
+    public void HTMLLabel_ShouldRenderALabelTag()
+    {
+        // Act
+        var output = Render(@<HtmlLabel></HtmlLabel>
+    );
+
+        // Assert
+        output.MarkupMatches("<label></label>");
+    }
+
+    [Fact]
+    public void HTMLLabel_WithForID_ShouldRenderALabelWithForId()
+    {
+        // Act
+        var output = Render(@<HtmlLabel ForId="exampleId"></HtmlLabel>);
+
+        // Assert
+        output.MarkupMatches("<label for=\"exampleId\"></label>");
+    }
+}

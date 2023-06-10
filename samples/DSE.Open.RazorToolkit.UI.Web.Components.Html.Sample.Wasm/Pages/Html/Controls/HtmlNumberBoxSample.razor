@@ -1,0 +1,19 @@
+﻿@page "/html/controls/number-box"
+
+<h1>Number Box (Html)</h1>
+
+<HtmlNumberBox @bind-Value="@IntValue" HeaderText="Integer input" DescriptionText="Some more info"></HtmlNumberBox>
+<HtmlNumberBox @bind-Value="@DoubleValue" HeaderText="Double input" DescriptionText="Some more info"></HtmlNumberBox>
+<HtmlNumberBox @bind-Value="@DecimalValue" HeaderText="Decimal input" DescriptionText="Some more info"></HtmlNumberBox>
+<HtmlNumberBox @bind-Value="@LongValue" HeaderText="Long input" DescriptionText="Some more info"></HtmlNumberBox>
+<HtmlNumberBox @bind-Value="@FloatValue" HeaderText="Float input" DescriptionText="Some more info"></HtmlNumberBox>
+<HtmlNumberBox @bind-Value="@ShortValue" HeaderText="Short input" DescriptionText="Some more info"></HtmlNumberBox>
+
+@code {
+    public int IntValue { get; set; } = 12;
+    private float FloatValue { get; set; } = 12.5f;
+    private double DoubleValue { get; set; } = 12.5;
+    private long LongValue { get; set; } = 12;
+    private decimal DecimalValue { get; set; } = 12.5m;
+    private short ShortValue { get; set; } = 12;
+}

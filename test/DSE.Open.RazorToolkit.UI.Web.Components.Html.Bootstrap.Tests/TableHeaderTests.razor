@@ -1,0 +1,31 @@
+﻿@inherits TestContext
+
+@code {
+
+    [Fact]
+    public void TableHeader_WithDividers_ShouldRenderBorderlessClass()
+    {
+        // Act
+        var output = Render(
+            @<Table>
+                <TableHeader Dividers></TableHeader>
+            </Table>);
+
+        // Assert
+        output.Nodes.First().FirstChild?.MarkupMatches($"<thead class=\"{BootstrapClasses.TableGroupDivider}\"></thead>");
+    }
+
+    [Fact]
+    public void TableHeader_WithTheme_ShouldRenderThemeClass()
+    {
+        // Act
+        var output = Render(
+            @<Table>
+                <TableHeader Theme="BootstrapTheme.Primary"></TableHeader>
+            </Table>);
+
+        // Assert
+        output.Nodes.First().FirstChild?.MarkupMatches($"<thead class=\"{BootstrapClasses.TablePrimary}\"></thead>");
+    }
+
+}

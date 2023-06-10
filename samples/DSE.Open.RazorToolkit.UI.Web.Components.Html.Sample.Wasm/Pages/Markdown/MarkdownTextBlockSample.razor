@@ -1,0 +1,28 @@
+﻿@page "/markdown/controls/text-block"
+
+<h1>MarkdownTextBlock</h1>
+
+<hr />
+
+<MarkdownTextBlock Content="@Content"></MarkdownTextBlock>
+
+<hr />
+
+<p>Editor</p>
+
+<HtmlInputTextArea @bind-Value="Content" CssStyle="width:100%;height:15rem;font-family:Consolas"></HtmlInputTextArea>
+
+@code {
+    public string Content { get; set; } = @"
+
+## Heading 2
+
+### Heading 3
+
+Paragraph
+
+- List item 1
+- List item 2
+
+";
+}

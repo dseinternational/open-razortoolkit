@@ -1,0 +1,44 @@
+﻿@typeparam TValue
+@inherits HtmlDateTimePicker<TValue>
+
+<HtmlBlock class="@ComponentClass" style="@ComponentStyle" lang="@Language">
+    @if (Header is not null)
+    {
+        @Header
+    }
+    else if (!string.IsNullOrWhiteSpace(HeaderText))
+    {
+        <Label ForId="@InputId" Text="@HeaderText" CssClass="datepicker-header"></Label>
+    }
+
+    <InputDate Value="@CurrentValue"
+               ValueExpression="@ValueExpression"
+               ValueChanged="@ValueChanged"
+               Id="@InputId"
+               Name="@Name"
+               DateType="@DateType"
+               ParsingErrorMessage="@ParsingErrorMessage"
+               CssClass="@InputClass"
+               ReadOnly="@ReadOnly"
+               Disabled="@Disabled"
+               Required="@Required"
+               PlainText="@PlainText"
+               ControlSize="@ControlSize"/>
+
+    @if (Description is not null)
+    {
+        @Description
+    }
+    else if (!string.IsNullOrWhiteSpace(DescriptionText))
+    {
+        <HtmlBlock CssClass="form-description datepicker-description">@DescriptionText</HtmlBlock>
+    }
+
+    @if (ValidationFor is not null)
+    {
+        const string feedbackClass = $"{BootstrapClasses.InvalidFeedback} {BootstrapClasses.DisplayBlock}";
+        <HtmlBlock CssClass="@feedbackClass">
+            <Microsoft.AspNetCore.Components.Forms.ValidationMessage For="@ValidationFor"/>
+        </HtmlBlock>
+    }
+</HtmlBlock>

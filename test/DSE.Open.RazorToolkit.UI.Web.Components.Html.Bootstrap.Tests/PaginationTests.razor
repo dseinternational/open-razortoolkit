@@ -1,0 +1,56 @@
+﻿@inherits TestContext
+
+@code {
+
+    [Fact]
+    public void Pagination_WithListItem_ShouldRender()
+    {
+        // Act
+        var output = Render(
+            @<Pagination>
+                <PaginationItem>Item 1</PaginationItem>
+            </Pagination>
+            );
+
+        // Assert
+        Assert.Equal(HtmlElements.Navigation, output.Nodes.First().NodeName, StringComparer.OrdinalIgnoreCase);
+
+        var ul = output.Nodes.First().FirstChild;
+
+        ul?.MarkupMatches($"<ul class=\"{BootstrapClasses.Pagination}\"><li class=\"{BootstrapClasses.PageItem}\">Item 1</ul>");
+    }
+
+    [Fact]
+    public void Pagination_WithLabel_ShouldRenderAriaLabel()
+    {
+        // Arrange
+        const string label = "Pagination description";
+
+        // Act
+        var output = Render(@<Pagination Label="@label"></Pagination>);
+
+        // Assert
+        Assert.Contains($"aria-label=\"{label}\"", output.Markup, StringComparison.OrdinalIgnoreCase);
+    }
+
+    [Fact]
+    public void Pagination_WithLargeSize_ShouldRenderLargeSizeClass()
+    {
+        // Act
+        var output = Render(@<Pagination BootstrapSize="BootstrapSize.Large"></Pagination>);
+
+        // Assert
+        Assert.Contains(BootstrapClasses.PaginationLg, output.Markup, StringComparison.OrdinalIgnoreCase);
+    }
+
+    [Fact]
+    public void Pagination_WithSmallSize_ShouldRenderSmallSizeClass()
+    {
+        // Act
+        var output = Render(@<Pagination BootstrapSize="BootstrapSize.Small"></Pagination>);
+
+        // Assert
+        Assert.Contains(BootstrapClasses.PaginationSm, output.Markup, StringComparison.OrdinalIgnoreCase);
+    }
+
+}

@@ -1,0 +1,32 @@
+﻿@inherits TestContext
+
+@code {
+
+    [Fact]
+    public void CardBody_ShouldRenderCardBodyClass()
+    {
+        // Act
+        var output = RenderComponent<CardBody>();
+
+        // Assert
+        output.MarkupMatches($"<div class=\"{BootstrapClasses.CardBody}\"></div>");
+    }
+
+    [Fact]
+    public void CardBody_WithParentCard_ShouldHaveNonNullCard()
+    {
+        // Arrange
+        CardBody cardBody = default!;
+
+        // Act
+        Render(
+            @<Card>
+                <CardBody @ref="@cardBody"></CardBody>
+            </Card>
+        );
+
+        // Assert
+        Assert.NotNull(cardBody.ParentCard);
+    }
+
+}

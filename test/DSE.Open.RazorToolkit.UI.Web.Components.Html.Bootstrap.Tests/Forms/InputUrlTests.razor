@@ -1,0 +1,42 @@
+﻿@inherits TestContext
+@code
+{
+    [Fact]
+    public void InputUrl_ShouldRenderEmailInputBox()
+    {
+        // Arrange
+        var value = "https://www.example.com";
+
+        // Act
+        var output = Render(@<InputUrl @bind-Value="@value"></InputUrl>);
+
+        // Assert
+        output.MarkupMatches(@<input type="url" class="@BootstrapClasses.FormControl" value="@value"/>);
+    }
+
+    [Fact]
+    public void InputUrl_WithLargeSize_ShouldRenderFormControlLg()
+    {
+        // Arrange
+        var value = "https://www.example.com";
+
+        // Act
+        var output = Render(@<InputUrl @bind-Value="@value" ControlSize="BootstrapSize.Large"></InputUrl>);
+
+        // Assert
+        output.MarkupMatches(@<input type="url" class="@BootstrapClasses.FormControl @BootstrapClasses.FormControlLg" value="@value"/>);
+    }
+
+    [Fact]
+    public void InputTelephone_WithPlainText_ShouldRenderPlainTextClass()
+    {
+        // Arrange
+        var value = "https://www.example.com";
+
+        // Act
+        var output = Render(@<InputUrl @bind-Value="@value" PlainText></InputUrl>);
+
+        // Assert
+        output.MarkupMatches(@<input type="url" class="@BootstrapClasses.FormControlPlaintext" value="@value"/>);
+    }
+}

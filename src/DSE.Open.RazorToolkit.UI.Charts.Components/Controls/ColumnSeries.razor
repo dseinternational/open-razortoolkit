@@ -1,0 +1,16 @@
+﻿@typeparam TValue
+@inherits SeriesBase<TValue>
+
+@if (ParentChart is null)
+{
+    throw new InvalidOperationException("A ColumnSeries must be contained within a Chart.");
+}
+
+@if (ParentChart.OutputFormat == ChartOutputFormat.Svg)
+{
+    <SvgColumnSeries TValue="TValue" Values="@Values"></SvgColumnSeries>
+}
+else
+{
+    throw new InvalidOperationException($"Unsupported OutputFormat '{ParentChart.OutputFormat}'");
+}

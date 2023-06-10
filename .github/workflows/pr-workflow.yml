@@ -1,0 +1,58 @@
+name: PR Build and Test
+
+on:
+  pull_request
+
+jobs:
+
+  build_test:
+
+    name: Build and Test
+
+    runs-on: ubuntu-22.04
+
+    if: github.actor != 'dependabot[bot]'
+
+    strategy:
+      matrix:
+        configuration: [Debug, Release]
+
+    steps:
+
+      - name: Checkout
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0 # avoid shallow clone
+
+      - name: Set .NET SDK version
+        uses: actions/setup-dotnet@v3
+        with:
+          dotnet-version: "7.0.302"
+
+      - name: Initialize version
+        id: nbgv
+        uses: dotnet/nbgv@master
+
+      - name: Set-Version
+        run: ./eng/scripts/set-version.ps1
+        shell: pwsh
+
+      - name: Diagnostics
+        run: 'Get-ChildItem Env:'
+        shell: pwsh
+
+      - name: Build
+        run: dotnet build ./DSE.Open.RazorToolkit.sln --configuration ${{ matrix.configuration }}
+
+      - name: Run Tests
+        run: |
+          dotnet test ./DSE.Open.RazorToolkit.sln `
+            --no-build `
+            --collect:"XPlat Code Coverage" `
+            --verbosity normal
+        shell: pwsh
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          DSE_TEST_ENVIRONMENT: test
+
+      # TODO: Publish WASM samples

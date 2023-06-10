@@ -1,0 +1,19 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net7.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\DSE.Open.RazorToolkit.Core\DSE.Open.RazorToolkit.Core.csproj" />
+    <ProjectReference Include="..\DSE.Open.RazorToolkit.UI.Abstractions\DSE.Open.RazorToolkit.UI.Abstractions.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="FluentValidation" />
+    <PackageReference Include="Microsoft.AspNetCore.Components" />
+    <PackageReference Include="Microsoft.AspNetCore.Components.Forms" />
+
+  </ItemGroup>
+
+</Project>

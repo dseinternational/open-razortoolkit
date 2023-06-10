@@ -1,0 +1,35 @@
+﻿@inherits TestContext
+@code
+{
+    [Fact]
+    public void HtmlLists_WithOrderTag_ShouldRenderOrderedList()
+    {
+        // Act
+        var output = Render(@<HtmlList Format="@ListFormat.Ordered"></HtmlList>);
+
+        //Assert
+        output.MarkupMatches("<ol></ol>");
+
+    }
+
+    [Fact]
+    public void HtmlLists_WithUnorderedTag_ShouldRenderUnorderedList()
+    {
+        // Act
+        var output = Render(@<HtmlList Format="@ListFormat.Unordered"></HtmlList>);
+
+        //Assert
+        output.MarkupMatches("<ul></ul>");
+
+    }
+
+    [Fact]
+    public void HtmlLists_WithChildContent_ShouldRenderChildContent()
+    {
+        // Act
+        var output = Render(@<HtmlList Format="@ListFormat.Unordered"><HtmlListItem>Item</HtmlListItem></HtmlList>);
+
+        // Assert
+        output.Nodes.First().FirstChild?.MarkupMatches("<li>Item</li>");
+    }
+}

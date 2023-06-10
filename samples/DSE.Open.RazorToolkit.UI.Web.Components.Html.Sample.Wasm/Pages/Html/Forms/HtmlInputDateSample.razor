@@ -1,0 +1,33 @@
+﻿@page "/html/forms/html-input-date"
+
+<h1>HtmlInputDate</h1>
+
+<HtmlBlock style="margin:2rem 0">
+    <HtmlLabel CssStyle="width:6rem">Non-null Date input</HtmlLabel>
+    <HtmlInputDate @bind-Value="Value"></HtmlInputDate>
+</HtmlBlock>
+
+<HtmlBlock style="margin:2rem 0">
+    <HtmlLabel CssStyle="width:6rem">Input</HtmlLabel>
+    <HtmlCode>@Value</HtmlCode>
+</HtmlBlock>
+
+<HtmlBlock style="margin:2rem 0">
+    <HtmlButton Click="@Reset" style="margin-right:2rem">Reset</HtmlButton>
+    <HtmlButton Click="@Random">Random</HtmlButton>
+</HtmlBlock>
+
+@code {
+    public DateOnly Value { get; set; }
+    public DateOnly? NullableValue { get; set; }
+
+    public void Random()
+    {
+        Value = DateOnly.FromDateTime(new DateTime(System.Random.Shared.NextInt64(DateTime.MinValue.Ticks, DateTime.MaxValue.Ticks)));
+    }
+
+    public void Reset()
+    {
+        Value = DateOnly.FromDateTime(DateTime.Now);
+    }
+}

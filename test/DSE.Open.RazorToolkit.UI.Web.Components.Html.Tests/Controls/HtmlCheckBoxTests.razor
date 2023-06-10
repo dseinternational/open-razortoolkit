@@ -1,0 +1,50 @@
+﻿@inherits TestContext
+
+@code
+{
+    [Fact]
+    public void HtmlCheckBox_ShouldRenderACheckboxInputTag()
+    {
+        // Arrange
+        var isChecked = false;
+
+        // Act
+        var output = Render(@<HtmlCheckBox @bind-Value="@isChecked"></HtmlCheckBox>);
+
+        // Assert
+        Assert.Contains("type=\"checkbox\"", output.Markup);
+    }
+
+    [Fact]
+    public void HtmlCheckBox_WithLabelAttribute_ShouldRenderLabel()
+    {
+        // Arrange
+        const string label = "example";
+        var isChecked = false;
+
+        // Act
+        var output = Render(@<HtmlCheckBox @bind-Value="@isChecked" LabelText="@label"></HtmlCheckBox>);
+
+        // Assert
+        Assert.Equal(label, output.Find("label").Text());
+    }
+
+    [Fact]
+    public void HtmlCheckBox_WithLabelChildContent_ShouldRenderLabel()
+    {
+        // Arrange
+        const string label = "example";
+        var isChecked = false;
+        HtmlCheckBox checkBox = default!;
+
+        // Act
+        var output = Render(
+            @<HtmlCheckBox @ref="@checkBox" @bind-Value="@isChecked">
+                <LabelContent><label for="@checkBox.InputId">@label</label></LabelContent>
+            </HtmlCheckBox>
+            );
+
+        // Assert
+        Assert.Equal(label, output.Find("label").Text());
+    }
+}

@@ -1,0 +1,72 @@
+﻿@inherits TestContext
+
+@code {
+
+    [Fact]
+    public void HtmlNumberBox_UsingAttributes_ShouldRender()
+    {
+        // Arrange
+        const string headerText = "Header Text";
+        const string description = "Description";
+        var value = 1;
+
+        // Act
+        var output = Render(@<HtmlNumberBox HeaderText="@headerText" DescriptionText="@description" @bind-Value="@value"></HtmlNumberBox>);
+
+        // Assert
+        output.MarkupMatches(
+            @<div class="number-box">
+                <label class="number-box-header" for:ignore>@headerText</label>
+                <input type="number" step:ignore id:ignore class="number-box-input" value="@value">
+                <div class="number-box-description">@description</div>
+            </div>
+            );
+    }
+
+    [Fact]
+    public void HtmlNumberBox_UsingChildContent_ShouldRender()
+    {
+        // Arrange
+        const string headerText = "Header Text";
+        const string description = "Description";
+        var value = 12.3;
+
+        // Act
+        var output = Render(
+            @<HtmlNumberBox @bind-Value="@value">
+                <Header>
+                    <label>@headerText</label>
+                </Header>
+                <Description>
+                    <div>@description</div>
+                </Description>
+            </HtmlNumberBox>
+            );
+
+        // Assert
+        output.MarkupMatches(
+            @<div class="number-box">
+                <label>@headerText</label>
+                <input type="number" step:ignore id:ignore class="number-box-input" value="@value">
+                <div>@description</div>
+            </div>
+            );
+    }
+
+    [Fact]
+    public void HtmlNumberBox_WithMinAndMax_ShouldRenderAttributes()
+    {
+        // Arrange
+        const int min = 1;
+        const int max = 10;
+        var value = 8;
+
+        // Act
+        var input = Render(@<HtmlNumberBox @bind-Value="@value" Minimum="@min" Maximum="@max"></HtmlNumberBox>).Find(HtmlElements.Input);
+
+        // Assert
+        Assert.Equal(min.ToString(), input.Attributes.GetNamedItem(HtmlAttributes.Min)?.Value);
+        Assert.Equal(min.ToString(), input.Attributes.GetNamedItem(HtmlAttributes.Min)?.Value);
+    }
+
+}

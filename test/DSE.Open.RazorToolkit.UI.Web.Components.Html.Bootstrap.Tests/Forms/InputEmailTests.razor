@@ -1,0 +1,43 @@
+﻿@inherits TestContext
+
+@code
+{
+    [Fact]
+    public void InputEmail_ShouldRenderEmailInputBox()
+    {
+        // Arrange
+        var value = "email@example.com";
+
+        // Act
+        var output = Render(@<InputEmail @bind-Value="@value"></InputEmail>);
+
+        // Assert
+        output.MarkupMatches(@<input type="email" class="@BootstrapClasses.FormControl" value="@value"/>);
+    }
+
+    [Fact]
+    public void InputEmail_WithLargeSize_ShouldRenderFormControlLg()
+    {
+        // Arrange
+        var value = "email@example.com";
+
+        // Act
+        var output = Render(@<InputEmail @bind-Value="@value" ControlSize="BootstrapSize.Large"></InputEmail>);
+
+        // Assert
+        output.MarkupMatches(@<input type="email" class="@BootstrapClasses.FormControl @BootstrapClasses.FormControlLg" value="@value"/>);
+    }
+
+    [Fact]
+    public void InputEmail_WithPlainText_ShouldRenderPlainTextClass()
+    {
+        // Arrange
+        var value = "email@example.com";
+
+        // Act
+        var output = Render(@<InputEmail @bind-Value="@value" ControlSize="BootstrapSize.Large" PlainText></InputEmail>);
+
+        // Assert
+        output.MarkupMatches(@<input type="email" class="@BootstrapClasses.FormControlLg @BootstrapClasses.FormControlPlaintext" value="@value"/>);
+    }
+}

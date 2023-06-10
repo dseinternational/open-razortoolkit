@@ -1,0 +1,43 @@
+﻿@inherits TestContext
+
+@code {
+
+    [Fact]
+    public void Line_ShouldRenderLineTag()
+    {
+        // Act
+        var output = Render(@<Line></Line>);
+
+        // Assert
+        output.MarkupMatches(@<line></line>);
+    }
+
+    [Fact]
+    public void Line_ShouldRenderAttributes()
+    {
+        // Arrange
+        var from = new Point(0, 1);
+        var to = new Point(10, 12);
+
+        // Act
+        var output = Render(@<Line X1="from.X" Y1="from.Y" X2="to.X" Y2="to.Y"></Line>);
+
+        // Assert
+        output.MarkupMatches(@<line x1="0" y1="1" x2="10" y2="12"></line>);
+    }
+
+    [Fact]
+    public void Line_WithLineWidthAndColor_ShouldRenderAttributes()
+    {
+        // Arrange
+        var color = new Color(255, 0, 0);
+        const int width = 2;
+
+        // Act
+        var output = Render(@<Line StrokeWidth="@width" Stroke="@color"></Line>);
+
+        // Assert
+        output.MarkupMatches(@<line stroke-width="2" stroke="#FF0000"></line>);
+    }
+
+}

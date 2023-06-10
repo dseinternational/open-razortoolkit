@@ -1,0 +1,45 @@
+﻿@page "/bootstrap/controls/flex-panel"
+
+<h1>Flex Panel</h1>
+
+<p>Use a flex panel to easily add a flex layout.</p>
+
+<HtmlList>
+    <HtmlListItem>Set the <code>Wrap</code> attribute to toggle wrapping on or off.</HtmlListItem>
+    <HtmlListItem>Use the <code>Orientation</code> attribute to set the flex direction.</HtmlListItem>
+    <HtmlListItem>Use the <code>Reverse</code> attribute to reverse the direction of the content.</HtmlListItem>
+</HtmlList>
+
+<FlexPanel Wrap="@Wrap" Orientation="@Orientation" Reversed="@Reverse" CssClass="@BootstrapClasses.PaddingBottom5">
+    @for (var i = 0; i < 30; i++)
+    {
+        <div class="p-2" style="width: 6rem; height:6rem; background-color: @GetColor(); color: black">Child item @i</div>
+    }
+</FlexPanel>
+
+<Panel CssClass="@BootstrapClasses.MarginTop5">
+    <Button ButtonStyle="ButtonStyle.Primary" Click="@(() => Wrap = !Wrap)">Toggle Wrap</Button>
+    <Button ButtonStyle="ButtonStyle.Primary" Click="@ToggleOrientation">Toggle Direction</Button>
+    <Button ButtonStyle="ButtonStyle.Primary" Click="@(() => Reverse = !Reverse)">Toggle Reverse</Button>
+
+</Panel>
+
+@code {
+    public bool Wrap { get; set; } = true;
+    public Orientation Orientation { get; set; } = Orientation.Horizontal;
+    public bool Reverse { get; set; }
+
+    public static string GetColor()
+    {
+        var r = Random.Shared.Next(255).ToString("x2");
+        var g = Random.Shared.Next(255).ToString("x2");
+        var b = Random.Shared.Next(255).ToString("x2");
+        return $"#{r}{g}{b}";
+    }
+
+    public void ToggleOrientation()
+    {
+        Orientation = Orientation == Orientation.Vertical ? Orientation.Horizontal : Orientation.Vertical;
+    }
+
+}

@@ -1,0 +1,25 @@
+﻿@inherits TestContext
+
+@code {
+
+    [Fact]
+    public void BootstrapButton_WithPrimaryStyle_ShouldRenderCorrectClasses()
+    {
+        // Act
+        var output = Render(@<Button ButtonStyle="ButtonStyle.Primary"></Button>);
+
+        // Assert
+        output.MarkupMatches("<button type=\"button\" class=\"btn btn-primary\"></button>");
+    }
+
+    [Fact]
+    public void BootstrapButton_ShouldHaveCorrectCss_WhenLarge()
+    {
+        // Act
+        var output = Render(@<Button Size="BootstrapSize.Large"></Button>);
+
+        // Assert
+        Assert.Contains(BootstrapClasses.ButtonLg, output.Markup);
+    }
+
+}

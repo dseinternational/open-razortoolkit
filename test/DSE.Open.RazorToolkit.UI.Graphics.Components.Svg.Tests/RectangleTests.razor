@@ -1,0 +1,34 @@
+﻿@inherits TestContext
+
+@code
+{
+    [Fact]
+    public void RenderEmptyElement()
+    {
+        var output = RenderComponent<Rectangle>();
+
+        output.MarkupMatches("<rect></rect>");
+    }
+
+    [Fact]
+    public void RenderWidth()
+    {
+        var output = Render(@<Rectangle Width="100"></Rectangle>);
+
+        output.MarkupMatches(@<rect width="100"></rect>);
+    }
+
+    [Fact]
+    public void Rectangle_WithXandY_ShouldRenderCorrectAttributes()
+    {
+        // Arrange
+        const int x = 10;
+        const int y = 20;
+
+        // Act
+        var output = Render(@<Rectangle X="@x" Y="@y"></Rectangle>);
+
+        // Assert
+        output.MarkupMatches(@<rect x="@x" y="@y"></rect>);
+    }
+}

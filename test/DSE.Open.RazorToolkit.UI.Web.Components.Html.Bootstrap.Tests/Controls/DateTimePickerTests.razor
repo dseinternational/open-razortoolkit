@@ -1,0 +1,84 @@
+﻿@inherits TestContext
+
+@code {
+
+    [Fact]
+    public void DateTimePicker_UsingAttributes_ShouldRender()
+    {
+        // Arrange
+        const string headerText = "Header Text";
+        const string description = "Description";
+        var value = DateTime.Now;
+
+        // Act
+        var output = Render(@<DateTimePicker HeaderText="@headerText" DescriptionText="@description" @bind-Value="@value"></DateTimePicker>);
+
+        // Assert
+        output.MarkupMatches(
+            @<div class="datepicker">
+                <label class="form-label datepicker-header" for:ignore>@headerText</label>
+                <input type="date" id:ignore class="form-control w-auto datepicker-input" value="@value.ToString("yyyy-MM-dd")">
+                <div class="form-description datepicker-description">@description</div>
+            </div>
+            );
+    }
+
+    [Fact]
+    public void DateTimePicker_UsingChildContent_ShouldRender()
+    {
+        // Arrange
+        const string headerText = "Header Text";
+        const string description = "Description";
+        var value = DateTime.Now;
+
+        // Act
+        var output = Render(
+            @<DateTimePicker @bind-Value="@value">
+                <Header>
+                    <label>@headerText</label>
+                </Header>
+                <Description>
+                    <div>@description</div>
+                </Description>
+            </DateTimePicker>
+            );
+
+        // Assert
+        output.MarkupMatches(
+            @<div class="datepicker">
+                <label>@headerText</label>
+                <input type="date" id:ignore class="form-control w-auto datepicker-input" value="@value.ToString("yyyy-MM-dd")">
+                <div>@description</div>
+            </div>
+            );
+    }
+
+    [Fact]
+    public void DateTimePicker_WithPlainTextAndReadonly_ShouldRender()
+    {
+        // Arrange
+        var value = DateTime.Now;
+
+        // Act
+        var input = Render(@<DateTimePicker @bind-Value="value" Readonly PlainText></DateTimePicker>).Find("input");
+
+        // Assert
+        Assert.Contains(BootstrapClasses.FormControlPlaintext, input.ClassList);
+        Assert.True(input.Attributes.GetNamedItem("readonly") is not null);
+    }
+
+    [Fact]
+    public void DateTimePicker_WithLargeSizeAndAutoWidthFalse_ShouldRender()
+    {
+        // Arrange
+        var value = DateTime.Now;
+
+        // Act
+        var input = Render(@<DateTimePicker @bind-Value="value" ControlSize="BootstrapSize.Large" AutoWidth="false"></DateTimePicker>).Find("input");
+
+        // Assert
+        Assert.Contains(BootstrapClasses.FormControlLg, input.ClassList);
+        Assert.DoesNotContain(BootstrapClasses.WidthAuto, input.ClassList);
+    }
+
+}

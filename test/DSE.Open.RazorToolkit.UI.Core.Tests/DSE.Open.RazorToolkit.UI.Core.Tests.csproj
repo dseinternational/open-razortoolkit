@@ -1,0 +1,13 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net7.0</TargetFramework>
+    <IsPackable>false</IsPackable>
+    <RootNamespace>DSE.Open.RazorToolkit.UI.Core</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\DSE.Open.RazorToolkit.UI.Web.Components.Html.Bootstrap.Tests\DSE.Open.RazorToolkit.UI.Web.Components.Html.Bootstrap.Tests.csproj" />
+  </ItemGroup>
+
+</Project>

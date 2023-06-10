@@ -1,0 +1,56 @@
+﻿@inherits TestContext
+
+@code
+{
+    [Fact]
+    public void HtmlAudio_WithSource_ShouldRenderAudioWithSrc()
+    {
+        const string src = "/a/b/c/d.mp3";
+
+        // Act
+        var output = Render(@<HtmlAudio Source="@src"></HtmlAudio>);
+
+        // Assert
+        output.MarkupMatches($"<audio src=\"{src}\"></audio>");
+    }
+
+    [Fact]
+    public void HtmlAudio_WithControls_ShouldRenderControlsAttribute()
+    {
+        // Act
+        var output = Render(@<HtmlAudio Controls></HtmlAudio>);
+
+        // Assert
+        output.MarkupMatches("<audio controls></audio>");
+    }
+
+    [Fact]
+    public void HtmlAudio_WithMuted_ShouldRenderMutedAttribute()
+    {
+        // Act
+        var output = Render(@<HtmlAudio Muted></HtmlAudio>);
+
+        // Assert
+        output.MarkupMatches("<audio muted></audio>");
+    }
+
+    [Fact]
+    public void HtmlAudio_WithAutoplay_ShouldRenderAutoplayAttribute()
+    {
+        // Act
+        var output = Render(@<HtmlAudio Autoplay></HtmlAudio>);
+
+        // Assert
+        output.MarkupMatches("<audio autoplay></audio>");
+    }
+
+    [Fact]
+    public void HtmlAudio_WithLoop_ShouldRenderLoopAttribute()
+    {
+        // Act
+        var output = Render(@<HtmlAudio Loop></HtmlAudio>);
+
+        // Assert
+        output.MarkupMatches("<audio loop></audio>");
+    }
+}

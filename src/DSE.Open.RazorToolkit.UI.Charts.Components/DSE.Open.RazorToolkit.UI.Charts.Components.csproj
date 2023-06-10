@@ -1,0 +1,20 @@
+<Project Sdk="Microsoft.NET.Sdk.Razor">
+
+  <PropertyGroup>
+    <TargetFramework>net7.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <SupportedPlatform Include="browser" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Components.Web" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\DSE.Open.RazorToolkit.UI.Charts\DSE.Open.RazorToolkit.UI.Charts.csproj" />
+    <ProjectReference Include="..\DSE.Open.RazorToolkit.UI.Graphics.Components.Svg\DSE.Open.RazorToolkit.UI.Graphics.Components.Svg.csproj" />
+  </ItemGroup>
+
+</Project>

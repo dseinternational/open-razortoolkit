@@ -1,0 +1,45 @@
+﻿@inherits TestContext
+
+@code {
+
+    [Fact]
+    public void FlexPanel_WithNoAttributes_ShouldRenderDivWithFlexClass()
+    {
+    // Act
+        var output = RenderComponent<FlexPanel>();
+
+    // Assert
+        output.MarkupMatches($"<div class=\"{BootstrapClasses.DisplayFlex}\"></div>");
+    }
+
+    [Fact]
+    public void FlexPanel_WithResponsiveFlexBreakpoint_ShouldRenderResponsiveFlexClass()
+    {
+        // Act
+        var output = Render(@<FlexPanel FlexBreakpoint="Breakpoint.Medium"/>);
+
+        // Assert
+        output.MarkupMatches($"<div class=\"{BootstrapClasses.DisplayMdFlex}\"></div>");
+    }
+
+    [Fact]
+    public void FlexPanel_WithWrap_ShouldRenderWrapClass()
+    {
+        // Act
+        var output = Render(@<FlexPanel Wrap/>);
+
+        // Assert
+        output.MarkupMatches($"<div class=\"{BootstrapClasses.DisplayFlex} {BootstrapClasses.FlexWrap}\"></div>");
+    }
+
+    [Fact]
+    public void FlexPanel_WithRowReversed_ShouldRenderDirectionClass()
+    {
+        // Act
+        var output = Render(@<FlexPanel Reversed/>);
+
+        // Assert
+        output.MarkupMatches($"<div class=\"{BootstrapClasses.DisplayFlex} {BootstrapClasses.FlexRowReverse}\"></div>");
+    }
+
+}

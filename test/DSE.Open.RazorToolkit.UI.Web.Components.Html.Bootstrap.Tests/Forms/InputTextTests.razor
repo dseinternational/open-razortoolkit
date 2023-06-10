@@ -1,0 +1,58 @@
+﻿@inherits TestContext
+
+@code {
+
+
+    [Fact]
+    public void InputText_ShouldRenderFormControlClass()
+    {
+        // Arrange
+        var value = "test";
+
+        // Act
+        var output = Render(@<InputText @bind-Value="@value"/>);
+
+        // Assert
+        output.MarkupMatches($"<input type=\"text\" value=\"{value}\" class=\"{BootstrapClasses.FormControl}\" />");
+    }
+
+    [Fact]
+    public void InputText_WithControlSizeLarge_ShouldRenderFormControlLgClass()
+    {
+        // Arrange
+        var value = "test";
+
+        // Act
+        var output = Render(@<InputText @bind-Value="@value" ControlSize="BootstrapSize.Large"/>);
+
+        // Assert
+        output.MarkupMatches($"<input type=\"text\" value=\"{value}\" class=\"{BootstrapClasses.FormControl} {BootstrapClasses.FormControlLg}\" />");
+    }
+
+    [Fact]
+    public void InputText_WithControlSizeSmall_ShouldRenderFormControlSmClass()
+    {
+        // Arrange
+        var value = "test";
+
+        // Act
+        var output = Render(@<InputText @bind-Value="@value" ControlSize="BootstrapSize.Small"/>);
+
+        // Assert
+        output.MarkupMatches($"<input type=\"text\" value=\"{value}\" class=\"{BootstrapClasses.FormControl} {BootstrapClasses.FormControlSm}\" />");
+    }
+
+    [Fact]
+    public void InputText_WithPlainText_ShouldRenderPlainTextInput()
+    {
+        // Arrange
+        var value = "test";
+
+        // Act
+        var output = Render(@<InputText @bind-Value="@value" PlainText/>);
+
+        // Assert
+        output.MarkupMatches($"<input type=\"text\" value=\"{value}\" class=\"{BootstrapClasses.FormControlPlaintext}\" />");
+    }
+
+}

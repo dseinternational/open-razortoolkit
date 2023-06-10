@@ -1,0 +1,38 @@
+﻿@inherits TestContext
+
+@code {
+
+    [Fact]
+    public void PageItem_Active_ShouldRenderActiveClass()
+    {
+        // Act
+        var output = Render(
+            @<Pagination>
+                <PaginationItem Active></PaginationItem>
+            </Pagination>
+            );
+
+        // Assert
+        Assert.Equal(HtmlElements.Navigation, output.Nodes.First().NodeName, StringComparer.OrdinalIgnoreCase);
+
+        var listItem = output.Nodes.First().FirstChild?.FirstChild;
+        listItem?.MarkupMatches($"<li class=\"{BootstrapClasses.PageItem} {BootstrapClasses.Active}\"></li>");
+    }
+
+    [Fact]
+    public void PageItem_Disabled_ShouldRenderDisabledClass()
+    {
+        // Act
+        var output = Render(
+            @<Pagination>
+                <PaginationItem Disabled></PaginationItem>
+            </Pagination>
+            );
+
+        // Assert
+
+        var listItem = output.Nodes.First().FirstChild?.FirstChild;
+        listItem?.MarkupMatches($"<li class=\"{BootstrapClasses.PageItem} {BootstrapClasses.Disabled}\"></li>");
+    }
+
+}

@@ -1,0 +1,22 @@
+﻿@inherits HtmlInputControl<bool>
+
+<HtmlBlock class="@ComponentClass" style="@ComponentStyle" lang="@Language">
+
+    <HtmlInputCheckbox Value="@CurrentValue"
+                       ValueExpression="@ValueExpression"
+                       ValueChanged="@ValueChanged"
+                       Id="@InputId"
+                       Name="@Name"
+                       ReadOnly="@IsReadOnly"
+                       CssClass="checkbox-check"/>
+
+    @if (LabelContent is not null)
+    {
+        @LabelContent
+    }
+    else if (!string.IsNullOrWhiteSpace(LabelText))
+    {
+        <HtmlLabel ForId="@InputId" Text="@LabelText" CssClass="checkbox-header"></HtmlLabel>
+    }
+
+</HtmlBlock>

@@ -1,0 +1,59 @@
+﻿@inherits HtmlLabelledInputControl<string>
+
+<HtmlBlock class="@ComponentClass" style="@ComponentStyle" lang="@Language">
+    @if (Header is not null)
+    {
+        @Header
+    }
+    else if (!string.IsNullOrWhiteSpace(HeaderText))
+    {
+        <HtmlLabel ForId="@InputId" Text="@HeaderText" CssClass="textbox-header"></HtmlLabel>
+    }
+
+    @if (Multiline)
+    {
+        <HtmlInputTextArea Value="@CurrentValue"
+                           ValueExpression="@ValueExpression"
+                           ValueChanged="@ValueChanged"
+                           Id="@InputId"
+                           Name="@Name"
+                           MaxLength="@MaxLength"
+                           MinLength="@MinLength"
+                           CssClass="textbox-input"
+                           ReadOnly="@ReadOnly"
+                           Disabled="@Disabled"
+                           Required="@Required"
+                           SpellCheck="@Spellcheck"/>
+    }
+    else
+    {
+        <HtmlInputText Value="@CurrentValue"
+                       ValueExpression="@ValueExpression"
+                       ValueChanged="@ValueChanged"
+                       Id="@InputId"
+                       Name="@Name"
+                       MaxLength="@MaxLength"
+                       MinLength="@MinLength"
+                       CssClass="textbox-input"
+                       ReadOnly="@ReadOnly"
+                       Disabled="@Disabled"
+                       Required="@Required"
+                       SpellCheck="@Spellcheck"/>
+    }
+
+    @if (Description is not null)
+    {
+        @Description
+    }
+    else if (!string.IsNullOrWhiteSpace(DescriptionText))
+    {
+        <HtmlBlock CssClass="textbox-description">@DescriptionText</HtmlBlock>
+    }
+
+    @if (ValidationFor is not null)
+    {
+        <HtmlBlock CssClass="textbox-validation">
+            <ValidationMessage For="@ValidationFor"/>
+        </HtmlBlock>
+    }
+</HtmlBlock>

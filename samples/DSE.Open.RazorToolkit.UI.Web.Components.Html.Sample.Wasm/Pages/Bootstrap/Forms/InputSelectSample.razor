@@ -1,0 +1,25 @@
+﻿@page "/bootstrap/forms/input-select"
+
+<h1>Bootstrap Input Select</h1>
+
+<HtmlBlock style="margin:2rem 0">
+    <Label>Input</Label>
+    <InputSelect @bind-Value="@Value">
+        @foreach (var (label, val) in OPtions)
+        {
+            <HtmlOption Value="val" Label="@label"></HtmlOption>
+        }
+    </InputSelect>
+</HtmlBlock>
+
+
+
+@code {
+    public string Value { get; set; }
+
+    public Dictionary<string, string> OPtions { get; set; } = new Dictionary<string, string>()
+    {
+        { "Option 1", "hello"},
+        {  "Option 2", "hi!"}
+    };
+}

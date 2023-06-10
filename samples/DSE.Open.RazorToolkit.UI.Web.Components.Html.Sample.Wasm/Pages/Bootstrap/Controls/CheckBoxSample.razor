@@ -1,0 +1,19 @@
+﻿@page "/bootstrap/controls/checkbox"
+
+<h1>Checkbox (Bootstrap)</h1>
+
+<p>
+    <CheckBox @bind-Value="@Option1" LabelText="Option 1"></CheckBox>
+    <CheckBox @bind-Value="@Option2"><LabelContent>Option 2</LabelContent></CheckBox>
+</p>
+<p>
+    Option 1: @Option1
+</p>
+<p>
+    Option 2: @Option2
+</p>
+
+@code {
+    public bool Option1 { get; set; } = true;
+    public bool Option2 { get; set; }
+}

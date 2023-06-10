@@ -1,0 +1,41 @@
+﻿@inherits TestContext
+
+@code {
+
+    [Fact]
+    public void TableCell_WithTheme_ShouldRenderThemeClass()
+    {
+        // Act
+        var output = Render(
+            @<Table>
+                <TableHeader>
+                    <TableRow>
+                        <TableHeaderCell Theme="BootstrapTheme.Primary"></TableHeaderCell>
+                    </TableRow>
+                </TableHeader>
+            </Table>);
+
+        // Assert
+        var tableCell = output.Nodes.First().FirstChild?.FirstChild?.FirstChild;
+        tableCell?.MarkupMatches($"<th class=\"{BootstrapClasses.TablePrimary}\"></th>");
+    }
+
+    [Fact]
+    public void TableCell_WithVerticalAlignmentBottom_ShouldRenderAlignBottomClass()
+    {
+        // Act
+        var output = Render(
+            @<Table>
+                <TableHeader>
+                    <TableRow>
+                        <TableHeaderCell VerticalAlignment="VerticalAlignmentOption.Bottom"></TableHeaderCell>
+                    </TableRow>
+                </TableHeader>
+            </Table>);
+
+        // Assert
+        var tableCell = output.Nodes.First().FirstChild?.FirstChild?.FirstChild;
+        tableCell?.MarkupMatches($"<th class=\"{BootstrapClasses.AlignBottom}\"></th>");
+    }
+
+}

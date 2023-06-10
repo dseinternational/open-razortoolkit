@@ -1,0 +1,22 @@
+﻿@inherits HtmlList
+
+<CascadingValue Value="this">
+    @if (Type == ListGroupType.Unordered)
+    {
+        <ul @ref="@Element" @attributes="@AdditionalAttributes">
+            @ChildContent
+        </ul>
+    }
+    else if (Type == ListGroupType.Ordered)
+    {
+        <ol @ref="@Element" @attributes="@AdditionalAttributes">
+            @ChildContent
+        </ol>
+    }
+    else
+    {
+        <div @ref="@Element" @attributes="@AdditionalAttributes">
+            @ChildContent
+        </div>
+    }
+</CascadingValue>

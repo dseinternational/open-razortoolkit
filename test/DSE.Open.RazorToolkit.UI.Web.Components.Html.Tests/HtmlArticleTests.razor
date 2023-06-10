@@ -1,0 +1,14 @@
+﻿@inherits TestContext
+
+@code
+{
+    [Fact]
+    public void HTMLArticle_ShouldRenderADivTag()
+    {
+        // Act
+        var output = Render(@<HtmlArticle></HtmlArticle>);
+        
+        // Assert
+        output.MarkupMatches("<article></article>");
+    }
+}

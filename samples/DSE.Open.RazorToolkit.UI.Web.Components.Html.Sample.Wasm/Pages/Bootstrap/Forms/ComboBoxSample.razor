@@ -1,0 +1,24 @@
+﻿@page "/bootstrap/controls/combobox"
+
+<h1>ComboBox (Bootstrap)</h1>
+
+<ComboBox DescriptionText="This Is A Description">
+    <HtmlOptionGroup Label="@OptionGroupLabel">
+        <HtmlOption Label="@Label" Value="@Value"></HtmlOption>
+    </HtmlOptionGroup>
+</ComboBox>
+
+<ComboBox HeaderText="This is A Header" Disabled>
+    <HtmlOptionGroup Label="@OptionGroupLabel">
+        <HtmlOption Label="@Label" Value="@Value"></HtmlOption>
+        <HtmlOption Disabled Label="@Label2" Value="@Value"></HtmlOption>
+    </HtmlOptionGroup>
+</ComboBox>
+
+
+@code {
+    public string Value { get; set; } = "A";
+    public string Label { get; set; } = "Label";
+    public string Label2 { get; set; } = "Label 2";
+    public string OptionGroupLabel { get; set; } = "Option Group 1";
+}

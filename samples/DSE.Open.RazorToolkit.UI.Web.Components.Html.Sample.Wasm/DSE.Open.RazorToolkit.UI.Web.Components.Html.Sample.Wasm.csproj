@@ -1,0 +1,25 @@
+<Project Sdk="Microsoft.NET.Sdk.BlazorWebAssembly">
+
+  <PropertyGroup>
+    <TargetFramework>net7.0</TargetFramework>
+    <EnablePreviewFeatures>True</EnablePreviewFeatures>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <BlazorWebAssemblyLoadAllGlobalizationData>true</BlazorWebAssemblyLoadAllGlobalizationData>
+  </PropertyGroup>
+
+  <PropertyGroup Condition=" '$(RunConfiguration)' == 'Html.Sample.Wasm' " />
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly" />
+    <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.DevServer" PrivateAssets="all" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\DSE.Open.RazorToolkit.UI.Charts.Components\DSE.Open.RazorToolkit.UI.Charts.Components.csproj" />
+    <ProjectReference Include="..\..\src\DSE.Open.RazorToolkit.UI.Graphics.Components.Svg\DSE.Open.RazorToolkit.UI.Graphics.Components.Svg.csproj" />
+    <ProjectReference Include="..\..\src\DSE.Open.RazorToolkit.UI.Web.Components.Html.Bootstrap\DSE.Open.RazorToolkit.UI.Web.Components.Html.Bootstrap.csproj" />
+    <ProjectReference Include="..\..\src\DSE.Open.RazorToolkit.UI.Web.Components.Html.Markdown\DSE.Open.RazorToolkit.UI.Web.Components.Html.Markdown.csproj" />
+  </ItemGroup>
+
+</Project>

@@ -1,0 +1,45 @@
+﻿@inherits TestContext
+
+@code {
+
+    [Fact]
+    public void CardTitle_ShouldRenderCardTitleClass()
+    {
+        // Act
+        var output = RenderComponent<CardTitle>();
+
+        // Assert
+        output.MarkupMatches($"<h1 class=\"{BootstrapClasses.CardTitle}\"></h1>");
+    }
+
+    [Fact]
+    public void CardTitle_WithChildContent_ShouldRenderChildContent()
+    {
+        // Arrange
+        const string content = "Card Title";
+
+        // Act
+        var output = Render(@<CardTitle Level="HeadingLevel.Level4">@content</CardTitle>);
+
+        // Assert
+        output.MarkupMatches($"<h4 class=\"{BootstrapClasses.CardTitle}\">{content}</h4>");
+    }
+
+    [Fact]
+    public void CardTitle_WithParentCard_ShouldHaveNonNullCard()
+    {
+        // Arrange
+        CardTitle cardTitle = default!;
+
+        // Act
+        Render(
+            @<Card>
+                <CardTitle @ref="@cardTitle"></CardTitle>
+            </Card>
+            );
+
+        // Assert
+        Assert.NotNull(cardTitle.ParentCard);
+    }
+
+}

@@ -1,0 +1,30 @@
+﻿@inherits TestContext
+
+@code {
+
+    [Fact]
+    public void Circle_ShouldRenderCircleTag()
+    {
+        // Act
+        var circle = RenderComponent<Circle>();
+
+        // Assert
+        circle.MarkupMatches(@<circle></circle>);
+    }
+
+    [Fact]
+    public void Circle_WithCentreAndRadius_ShouldRenderCorrectAttributes()
+    {
+        // Arrange
+        const int x = 10;
+        const int y = 10;
+        const int radius = 10;
+
+        // Act
+        var circle = Render(@<Circle CenterX="@x" CenterY="@y" Radius="@radius"></Circle>);
+
+        // Assert
+        circle.MarkupMatches(@<circle cx="@x" cy="@y" r="@radius"></circle>);
+    }
+
+}

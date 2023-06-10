@@ -1,0 +1,108 @@
+name: CI Build and Test
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+
+  build_test:
+
+    name: Build and Test
+
+    runs-on: ubuntu-22.04
+
+    strategy:
+      matrix:
+        configuration: [Debug, Release]
+
+    steps:
+
+      - name: Checkout
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0 # avoid shallow clone
+
+      - name: Set .NET SDK version
+        uses: actions/setup-dotnet@v3
+        with:
+          dotnet-version: "7.0.302"
+
+      - name: Initialize version
+        id: nbgv
+        uses: dotnet/nbgv@master
+
+      - name: Set-Version
+        run: ./eng/scripts/set-version.ps1
+        shell: pwsh
+
+      - name: Diagnostics
+        run: 'Get-ChildItem Env:'
+        shell: pwsh
+
+      - name: Build
+        run: dotnet build ./DSE.Open.RazorToolkit.sln --configuration ${{ matrix.configuration }}
+
+      - name: Run Tests
+        run: |
+          dotnet test ./DSE.Open.RazorToolkit.sln `
+            --configuration ${{ matrix.configuration }} `
+            --no-build `
+            --collect:"XPlat Code Coverage" `
+            --verbosity normal
+        shell: pwsh
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          DSE_TEST_ENVIRONMENT: test
+
+      - name: Pack DSE.Open.RazorToolkit.Core
+        if: matrix.configuration == 'Release'
+        run: dotnet pack ./src/DSE.Open.RazorToolkit.Core/DSE.Open.RazorToolkit.Core.csproj --configuration Release --no-build
+
+      - name: Pack DSE.Open.RazorToolkit.UI.Abstractions
+        if: matrix.configuration == 'Release'
+        run: dotnet pack ./src/DSE.Open.RazorToolkit.UI.Abstractions/DSE.Open.RazorToolkit.UI.Abstractions.csproj --configuration Release --no-build
+
+      - name: Pack DSE.Open.RazorToolkit.UI.Abstractions.Html
+        if: matrix.configuration == 'Release'
+        run: dotnet pack ./src/DSE.Open.RazorToolkit.UI.Abstractions.Html/DSE.Open.RazorToolkit.UI.Abstractions.Html.csproj --configuration Release --no-build
+
+      - name: Pack DSE.Open.RazorToolkit.UI.Core
+        if: matrix.configuration == 'Release'
+        run: dotnet pack ./src/DSE.Open.RazorToolkit.UI.Core/DSE.Open.RazorToolkit.UI.Core.csproj --configuration Release --no-build
+
+      - name: Pack DSE.Open.RazorToolkit.UI.Web.Components
+        if: matrix.configuration == 'Release'
+        run: dotnet pack ./src/DSE.Open.RazorToolkit.UI.Web.Components/DSE.Open.RazorToolkit.UI.Web.Components.csproj --configuration Release --no-build
+
+      - name: Pack DSE.Open.RazorToolkit.UI.Web.Components.Html
+        if: matrix.configuration == 'Release'
+        run: dotnet pack ./src/DSE.Open.RazorToolkit.UI.Web.Components.Html/DSE.Open.RazorToolkit.UI.Web.Components.Html.csproj --configuration Release --no-build
+
+      - name: Pack DSE.Open.RazorToolkit.UI.Web.Components.Html.Bootstrap
+        if: matrix.configuration == 'Release'
+        run: dotnet pack ./src/DSE.Open.RazorToolkit.UI.Web.Components.Html.Bootstrap/DSE.Open.RazorToolkit.UI.Web.Components.Html.Bootstrap.csproj --configuration Release --no-build
+
+      - name: Pack DSE.Open.RazorToolkit.UI.Web.Components.Html.Markdown
+        if: matrix.configuration == 'Release'
+        run: dotnet pack ./src/DSE.Open.RazorToolkit.UI.Web.Components.Html.Markdown/DSE.Open.RazorToolkit.UI.Web.Components.Html.Markdown.csproj --configuration Release --no-build
+
+      - name: Pack DSE.Open.RazorToolkit.UI.Graphics.Components.Svg
+        if: matrix.configuration == 'Release'
+        run: dotnet pack ./src/DSE.Open.RazorToolkit.UI.Graphics.Components.Svg/DSE.Open.RazorToolkit.UI.Graphics.Components.Svg.csproj --configuration Release --no-build
+
+      - name: Pack DSE.Open.RazorToolkit.UI.Charts
+        if: matrix.configuration == 'Release'
+        run: dotnet pack ./src/DSE.Open.RazorToolkit.UI.Charts/DSE.Open.RazorToolkit.UI.Charts.csproj --configuration Release --no-build
+
+      - name: Pack DSE.Open.RazorToolkit.UI.Charts.Components
+        if: matrix.configuration == 'Release'
+        run: dotnet pack ./src/DSE.Open.RazorToolkit.UI.Charts.Components/DSE.Open.RazorToolkit.UI.Charts.Components.csproj --configuration Release --no-build
+
+      - name: Push Nuget Packages
+        if: matrix.configuration == 'Release'
+        run: ./eng/scripts/push-packages.ps1 -api_key ${{ secrets.MYGET_API_KEY }}
+        shell: pwsh
+
+      # TODO: Publish WASM samples

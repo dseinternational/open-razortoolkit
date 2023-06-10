@@ -1,0 +1,72 @@
+﻿@using DSE.Open.RazorToolkit.UI.Web.Components.Html.Forms
+@inherits TestContext
+
+@code {
+
+    [Fact]
+    public void NumberBox_UsingAttributes_ShouldRender()
+    {
+        // Arrange
+        const string headerText = "Header Text";
+        const string description = "Description";
+        var value = 12;
+
+        // Act
+        var output = Render(@<NumberBox HeaderText="@headerText" DescriptionText="@description" @bind-Value="@value"></NumberBox>);
+
+        // Assert
+        output.MarkupMatches(
+            @<div class="number-box">
+                <label class="form-label number-box-header" for:ignore>@headerText</label>
+                <input type="number" id:ignore class="form-control number-box-input" step="@DefaultNumericInputSteps.IntStep" value="@value">
+                <div class="form-description number-box-description">@description</div>
+            </div>
+            );
+    }
+
+    [Fact]
+    public void NumberBox_UsingChildContent_ShouldRender()
+    {
+        // Arrange
+        const string headerText = "Header Text";
+        const string description = "Description";
+        var value = 12d;
+
+        // Act
+        var output = Render(
+            @<NumberBox @bind-Value="@value">
+                <Header>
+                    <label>@headerText</label>
+                </Header>
+                <Description>
+                    <div>@description</div>
+                </Description>
+            </NumberBox>
+        );
+
+        // Assert
+        output.MarkupMatches(
+            @<div class="number-box">
+                <label>@headerText</label>
+                <input type="number" id:ignore class="form-control number-box-input" step="@DefaultNumericInputSteps.DoubleStep" value="@value">
+                <div>@description</div>
+            </div>
+        );
+    }
+
+    [Fact]
+    public void NumberBox_WithPlainTextAndLarge_ShouldRenderClasses()
+    {
+        // Arrange
+        var value = 2.3m;
+
+        // Act
+        var input = Render(@<NumberBox @bind-Value="@value" PlainText ControlSize="BootstrapSize.Large"></NumberBox>).Find(HtmlElements.Input);
+
+        // Assert
+        Assert.Contains(BootstrapClasses.FormControlPlaintext, input.ClassList);
+        Assert.Contains(BootstrapClasses.FormControlLg, input.ClassList);
+        Assert.DoesNotContain(BootstrapClasses.FormControl, input.ClassList);
+    }
+
+}

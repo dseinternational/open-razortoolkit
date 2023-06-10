@@ -1,0 +1,22 @@
+﻿@inherits TestContext
+
+@code {
+
+    [Fact]
+    public async Task HtmlInputCheckbox_WithFalseValue_OnChange_ShouldHaveTrueValue()
+    {
+        // Arrange
+        var value = false;
+        var output = Render(@<HtmlInputCheckbox @bind-Value="@value"/>);
+
+        // Act
+        await output.Find(HtmlElements.Input).ChangeAsync(new ChangeEventArgs
+        {
+            Value = true
+        });
+
+        // Assert
+        output.MarkupMatches("<input type=\"checkbox\" checked />");
+    }
+
+}

@@ -1,0 +1,67 @@
+﻿@inherits TestContext
+
+@code {
+
+    [Fact]
+    public void Spinner_WithBorderType_ShouldRenderSpinnerBorder()
+    {
+        // Act
+        var output = Render(@<Spinner SpinnerType="SpinnerType.Border"/>);
+
+        // Assert
+        output.MarkupMatches($"<div role=\"status\" class=\"{BootstrapClasses.SpinnerBorder}\"><span class={BootstrapClasses.VisuallyHidden}>{Spinner.DefaultDescription}</div>");
+    }
+
+    [Fact]
+    public void Spinner_WithGrowType_ShouldRenderSpinnerGrow()
+    {
+        // Act
+        var output = Render(@<Spinner SpinnerType="SpinnerType.Grow"/>);
+        // Assert
+        output.MarkupMatches($"<div role=\"status\" class=\"{BootstrapClasses.SpinnerGrow}\"><span class={BootstrapClasses.VisuallyHidden}>{Spinner.DefaultDescription}</div>");
+    }
+
+    [Fact]
+    public void Spinner_WithDescription_ShouldRenderDescription()
+    {
+        // Arrange
+        const string description = "This is a spinner";
+
+        // Act
+        var output = Render(@<Spinner Description="@description"/>);
+
+        // Assert
+        output.MarkupMatches($"<div role=\"status\" class=\"{BootstrapClasses.SpinnerBorder}\"><span class={BootstrapClasses.VisuallyHidden}>{description}</div>");
+    }
+
+    [Fact]
+    public void Spinner_WithTheme_ShouldRenderThemeClass()
+    {
+        // Act
+        var output = Render(@<Spinner Theme="BootstrapTheme.Primary"/>);
+
+        // Assert
+        output.MarkupMatches($"<div role=\"status\" class=\"{BootstrapClasses.SpinnerBorder} {BootstrapClasses.TextPrimary}\"><span class={BootstrapClasses.VisuallyHidden}>{Spinner.DefaultDescription}</div>");
+    }
+
+    [Fact]
+    public void Spinner_WithBorderAndSmallAttribute_ShouldRenderSmallClass()
+    {
+        // Act
+        var output = Render(@<Spinner SpinnerType="SpinnerType.Border" Small="true"/>);
+
+        // Assert
+        output.MarkupMatches($"<div role=\"status\" class=\"{BootstrapClasses.SpinnerBorder} {BootstrapClasses.SpinnerBorderSm}\"><span class={BootstrapClasses.VisuallyHidden}>{Spinner.DefaultDescription}</div>");
+    }
+
+    [Fact]
+    public void Spinner_WithGrowAndSmallAttribute_ShouldRenderSmallClass()
+    {
+        // Act
+        var output = Render(@<Spinner SpinnerType="SpinnerType.Grow" Small="true"/>);
+
+        // Assert
+        output.MarkupMatches($"<div role=\"status\" class=\"{BootstrapClasses.SpinnerGrow} {BootstrapClasses.SpinnerGrowSm}\"><span class={BootstrapClasses.VisuallyHidden}>{Spinner.DefaultDescription}</div>");
+    }
+
+}

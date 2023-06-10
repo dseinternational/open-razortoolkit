@@ -1,0 +1,44 @@
+﻿@inherits TestContext
+
+@code
+{
+    [Fact]
+    public void HtmlInputDate_WithDateTimeInput_ShouldRenderDateInput()
+    {
+        var dateTime = DateTime.Now;
+
+        var output = Render(@<HtmlInputDate @bind-Value="@dateTime"></HtmlInputDate>);
+
+        output.MarkupMatches($"<input type=\"date\" value=\"{dateTime:yyyy-MM-dd}\"></input>");
+    }
+
+    [Fact]
+    public void HtmlInputDate_WithDateTimeOffsetInput_ShouldRenderDateInput()
+    {
+        var dateTimeOffset = DateTimeOffset.Now;
+
+        var output = Render(@<HtmlInputDate @bind-Value="@dateTimeOffset"></HtmlInputDate>);
+
+        output.MarkupMatches($"<input type=\"date\" value=\"{dateTimeOffset:yyyy-MM-dd}\"></input>");
+    }
+
+    [Fact]
+    public void HtmlInputDate_WithDateOnlyInput_ShouldRenderDateInput()
+    {
+        var dateOnly = DateOnly.FromDateTime(DateTime.Now);
+
+        var output = Render(@<HtmlInputDate @bind-Value="@dateOnly"></HtmlInputDate>);
+
+        output.MarkupMatches($"<input type=\"date\" value=\"{dateOnly:yyyy-MM-dd}\"></input>");
+    }
+
+    [Fact]
+    public void HtmlInputDate_WithDateTypeTime_ShouldRenderDateInputTime()
+    {
+        var timeOnly = TimeOnly.FromDateTime(DateTime.Now);
+
+        var output = Render(@<HtmlInputDate DateType="HtmlInputDateType.Time" @bind-Value="@timeOnly"></HtmlInputDate>);
+
+        output.MarkupMatches($"<input type=\"time\" value=\"{timeOnly:HH:mm:ss}\"></input>");
+    }
+}

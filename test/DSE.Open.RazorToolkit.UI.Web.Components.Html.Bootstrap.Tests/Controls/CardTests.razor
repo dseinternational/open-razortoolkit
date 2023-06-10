@@ -1,0 +1,28 @@
+﻿@inherits TestContext
+
+@code {
+
+    [Fact]
+    public void Card_ShouldRenderCardClass()
+    {
+        // Act
+        var output = RenderComponent<Card>();
+
+        // Assert
+        output.MarkupMatches($"<div class=\"{BootstrapClasses.Card}\"></div>");
+    }
+
+    [Fact]
+    public void Card_WithChildContent_ShouldRenderChildContent()
+    {
+        // Arrange
+        const string text = "Hello World";
+
+        // Act
+        var output = Render(@<Card>@text</Card>);
+
+        // Assert
+        output.MarkupMatches($"<div class=\"{BootstrapClasses.Card}\">{text}</div>");
+    }
+
+}

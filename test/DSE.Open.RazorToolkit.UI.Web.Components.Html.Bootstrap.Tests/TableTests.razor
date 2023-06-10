@@ -1,0 +1,81 @@
+﻿@inherits TestContext
+
+@code
+{
+    [Fact]
+    public void Table_WithEmptyInstantiation_ShouldRenderElementWithNoContent()
+    {
+        var output = Render(@<Table></Table>);
+        output.MarkupMatches("<table class=\"table\"></table>");
+    }
+
+    [Fact]
+    public void Table_WithId_ShouldRenderId()
+    {
+        var output = Render(@<Table Id="anId"></Table>);
+        output.MarkupMatches("<table class=\"table\" id=\"anId\"></table>");
+    }
+
+    [Fact]
+    public void Table_WithTooltip_ShouldRenderTitle()
+    {
+        // Arrange
+        const string tooltipContent = "This is a tooltip";
+
+        // Act
+        var output = Render(@<Table Title="@tooltipContent"></Table>);
+
+        // Assert
+        output.MarkupMatches($"<table class=\"table\" title=\"{tooltipContent}\"></table>");
+    }
+
+    [Fact]
+    public void Table_WithVerticalAlignMiddle_ShouldRenderAlignMiddleClass()
+    {
+        // Act
+        var output = Render(@<Table VerticalAlignment="VerticalAlignmentOption.Middle"></Table>);
+
+        // Assert
+        output.MarkupMatches($"<table class=\"table {BootstrapClasses.AlignMiddle}\"></table>");
+    }
+
+    [Fact]
+    public void Table_WithSuccessTheme_ShouldRenderTableSuccessClass()
+    {
+        // Act
+        var output = Render(@<Table Theme="BootstrapTheme.Success"></Table>);
+
+        // Assert
+        output.MarkupMatches($"<table class=\"table {BootstrapClasses.TableSuccess}\"></table>");
+    }
+
+    [Fact]
+    public void Table_WithSmallAttribute_ShouldRenderTableSmallClass()
+    {
+        // Act
+        var output = Render(@<Table Small></Table>);
+
+        // Assert
+        output.MarkupMatches($"<table class=\"table {BootstrapClasses.TableSm}\"></table>");
+    }
+
+    [Fact]
+    public void Table_WithBorderlessStyle_ShouldRenderTableBorderlessClass()
+    {
+        // Act
+        var output = Render(@<Table Borders="TableBorderStyle.Borderless"></Table>);
+
+        // Assert
+        output.MarkupMatches($"<table class=\"table {BootstrapClasses.TableBorderless}\"></table>");
+    }
+
+    [Fact]
+    public void Table_WithBorderedStyle_ShouldRenderTableBorderedClass()
+    {
+        // Act
+        var output = Render(@<Table Borders="TableBorderStyle.Bordered"></Table>);
+
+        // Assert
+        output.MarkupMatches($"<table class=\"table {BootstrapClasses.TableBordered}\"></table>");
+    }
+}

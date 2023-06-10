@@ -1,0 +1,37 @@
+﻿@page "/bootstrap/controls/grid"
+
+<h1>Grid</h1>
+
+<p>For columns of equal size, wrap each <code>GridColumn</code> in a <code>GridRow</code>.</p>
+
+<GridRow style="height: 2rem;">
+    <GridColumn ColumnSpan="ColumnSpan.Fill" CssClass="@BootstrapClasses.TextBgSuccess">First</GridColumn>
+    <GridColumn ColumnSpan="ColumnSpan.Fill" CssClass="@BootstrapClasses.TextBgPrimary">Second</GridColumn>
+    <GridColumn ColumnSpan="ColumnSpan.Fill" CssClass="@BootstrapClasses.TextBgWarning">Third</GridColumn>
+</GridRow>
+
+<p>For a responsive grid, use the <code>ColumnSpan{Sm,Md,Lg,Xl,Xll}</code> attributes to set different <code>ColumnSpans</code> for each given breakpoint. Try resizing the grid below.</p>
+
+<GridRow>
+    <GridColumn ColumnSpan="ColumnSpan.Span12" ColumnSpanSm="ColumnSpan.Span6" ColumnSpanMd="ColumnSpan.Span4" ColumnSpanLg="ColumnSpan.Span3" ColumnSpanXl="ColumnSpan.Span2">1</GridColumn>
+    <GridColumn ColumnSpan="ColumnSpan.Span12" ColumnSpanSm="ColumnSpan.Span6" ColumnSpanMd="ColumnSpan.Span4" ColumnSpanLg="ColumnSpan.Span3" ColumnSpanXl="ColumnSpan.Span2">2</GridColumn>
+    <GridColumn ColumnSpan="ColumnSpan.Span12" ColumnSpanSm="ColumnSpan.Span6" ColumnSpanMd="ColumnSpan.Span4" ColumnSpanLg="ColumnSpan.Span3" ColumnSpanXl="ColumnSpan.Span2">3</GridColumn>
+    <GridColumn ColumnSpan="ColumnSpan.Span12" ColumnSpanSm="ColumnSpan.Span6" ColumnSpanMd="ColumnSpan.Span4" ColumnSpanLg="ColumnSpan.Span3" ColumnSpanXl="ColumnSpan.Span2">4</GridColumn>
+    <GridColumn ColumnSpan="ColumnSpan.Span12" ColumnSpanSm="ColumnSpan.Span6" ColumnSpanMd="ColumnSpan.Span4" ColumnSpanLg="ColumnSpan.Span3" ColumnSpanXl="ColumnSpan.Span2">5</GridColumn>
+    <GridColumn ColumnSpan="ColumnSpan.Span12" ColumnSpanSm="ColumnSpan.Span6" ColumnSpanMd="ColumnSpan.Span4" ColumnSpanLg="ColumnSpan.Span3" ColumnSpanXl="ColumnSpan.Span2">6</GridColumn>
+</GridRow>
+
+<p>If each column is of equal size, you can use the <code>RowColumn</code> attribute (and its responsive variants) to define the behaviour for the grid as a whole, avoiding repeating classes across all child columns.</p>
+
+<p>The following grid has <code>RowColumns</code> set to <code>Rows2</code>.</p>
+
+<div class="@BootstrapClasses.Alert @BootstrapClasses.AlertWarning">
+    Each child in a row that defines <code>RowColumns</code> must have a <code>ColumnSpan</code> of <code>Fill</code>
+</div>
+
+<GridRow RowColumns="RowColumns.Rows2" CssClass="@BootstrapClasses.G2">
+    <GridColumn ColumnSpan="ColumnSpan.Fill">First</GridColumn>
+    <GridColumn ColumnSpan="ColumnSpan.Fill">Second</GridColumn>
+    <GridColumn ColumnSpan="ColumnSpan.Fill">Third</GridColumn>
+    <GridColumn ColumnSpan="ColumnSpan.Fill">Fourth</GridColumn>
+</GridRow>

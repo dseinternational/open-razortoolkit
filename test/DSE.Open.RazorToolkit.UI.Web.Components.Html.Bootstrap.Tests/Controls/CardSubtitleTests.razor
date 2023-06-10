@@ -1,0 +1,32 @@
+﻿@inherits TestContext
+
+@code {
+
+    [Fact]
+    public void CardSubtitle_ShouldRenderCardSubtitleClass()
+    {
+        // Act
+        var output = Render(@<CardSubtitle Level="HeadingLevel.Level6"></CardSubtitle>);
+
+        // Assert
+        output.MarkupMatches($"<h6 class=\"{BootstrapClasses.CardSubtitle}\"></h6>");
+    }
+
+    [Fact]
+    public void CardSubtitle_WithParentCard_ShouldHaveNonNullCard()
+    {
+        // Arrange
+        CardSubtitle cardSubtitle = default!;
+
+        // Act
+        Render(
+            @<Card>
+                <CardSubtitle @ref="@cardSubtitle"></CardSubtitle>
+            </Card>
+            );
+
+        // Assert
+        Assert.NotNull(cardSubtitle.ParentCard);
+    }
+
+}

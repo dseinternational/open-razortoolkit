@@ -1,0 +1,51 @@
+﻿@using DSE.Open.RazorToolkit.UI.Web.Components.Html.Forms
+@inherits TestContext
+
+@code {
+
+    [Fact]
+    public void InputNumber_ShouldRenderFormControlClass()
+    {
+        // Arrange
+        var value = 0;
+
+        // Act
+        var output = Render(@<InputNumber @bind-Value="@value"/>);
+
+        // Assert
+        output.MarkupMatches(@<input type="number" step="@DefaultNumericInputSteps.IntStep" class="@BootstrapClasses.FormControl" value="@value"/>);
+    }
+
+
+    [Fact]
+    public void InputNumber_WithPlainTextSmall_ShouldRenderPlainTextAndFormControlSmallClasses()
+    {
+        // Arrange
+        var value = 0;
+
+        // Act
+        var output = Render(@<InputNumber @bind-Value="@value" ControlSize="BootstrapSize.Small" PlainText/>).Find(HtmlElements.Input);
+
+        // Assert
+        Assert.Contains(BootstrapClasses.FormControlPlaintext, output.ClassList);
+        Assert.Contains(BootstrapClasses.FormControlSm, output.ClassList);
+        Assert.DoesNotContain(BootstrapClasses.FormControl, output.ClassList);
+    }
+
+    [Fact]
+    public void InputNumber_WithMinAndMax_ShouldRenderAttributes()
+    {
+        // Arrange
+        var value = 0;
+        const int min = 0;
+        const int max = 10;
+
+        // Act
+        var output = Render(@<InputNumber @bind-Value="@value" Minimum="@min" Maximum="@max"/>).Find(HtmlElements.Input);
+
+        // Assert
+        Assert.Equal(min.ToString(), output.Attributes.GetNamedItem(HtmlAttributes.Min)?.Value);
+        Assert.Equal(max.ToString(), output.Attributes.GetNamedItem(HtmlAttributes.Max)?.Value);
+    }
+
+}

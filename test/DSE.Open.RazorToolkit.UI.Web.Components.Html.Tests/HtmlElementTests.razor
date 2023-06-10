@@ -1,0 +1,128 @@
+﻿@inherits TestContext
+
+@code {
+
+    [Fact]
+    public void HtmlElement_WithAccessKey_ShouldRenderAccessKeyAttribute()
+    {
+        // Arrange
+        const char accessKey = 'a';
+
+        // Act
+        var output = Render(@<TestHtmlElement AccessKey="accessKey"/>);
+
+        // Assert
+        output.MarkupMatches($"<test {HtmlAttributes.AccessKey}=\"{accessKey}\"></test>");
+    }
+
+    [Fact]
+    public void HtmlElement_WithAutoFocus_ShouldRenderAutofocusAttribute()
+    {
+        // Act
+        var output = Render(@<TestHtmlElement AutoFocus/>);
+
+        // Assert
+        output.MarkupMatches($"<test {HtmlAttributes.AutoFocus}></test>");
+    }
+
+    [Fact]
+    public void HtmlElement_WithCssClass_ShouldRenderClassAttribute()
+    {
+        // Arrange
+        const string cssClass = "class1 class2";
+
+        // Act
+        var output = Render(@<TestHtmlElement CssClass="@cssClass"/>);
+
+        // Assert
+        output.MarkupMatches($"<test class=\"{cssClass}\"></test>");
+    }
+
+    [Fact]
+    public void HtmlElement_WithCssStyle_ShouldRenderStyleAttribute()
+    {
+        // Arrange
+        const string style = "color: red;";
+
+        // Act
+        var output = Render(@<TestHtmlElement CssStyle="@style"/>);
+
+        // Assert
+        output.MarkupMatches($"<test style=\"{style}\"></test>");
+    }
+
+    [Fact]
+    public void HtmlElement_WithIsHiddenAttribute_ShouldRenderHiddenAttribute()
+    {
+        // Act
+        var output = Render(@<TestHtmlElement Hidden/>);
+
+        // Assert
+        output.MarkupMatches($"<test {HtmlAttributes.Hidden}></test>");
+    }
+
+    [Fact]
+    public void HtmlElement_WithId_ShouldRenderIdAttribute()
+    {
+        // Arrange
+        const string id = "my-id";
+
+        // Act
+        var output = Render(@<TestHtmlElement Id="@id"></TestHtmlElement>);
+
+        // Assert
+        output.MarkupMatches($"<test {HtmlAttributes.Id}=\"{id}\"></test>");
+    }
+
+    [Fact]
+    public void HtmlElement_WithItemId_ShouldRenderItemId()
+    {
+        // Arrange
+        const string itemId = "urn:isbn:0-374-22848-5";
+
+        // Act
+        var output = Render(@<TestHtmlElement ItemId="@itemId"/>);
+
+        // Assert
+        output.MarkupMatches($"<test {HtmlAttributes.ItemId}=\"{itemId}\"></test>");
+    }
+
+    [Fact]
+    public void HtmlElement_WithItemPropertyName_ShouldRenderItemPropertyAttribute()
+    {
+        // Arrange
+        const string itemPropertyName = "item-property-name";
+
+        // Act
+        var output = Render(@<TestHtmlElement ItemPropertyName="@itemPropertyName"/>);
+
+        // Assert
+        output.MarkupMatches($"<test {HtmlAttributes.ItemProperty}=\"{itemPropertyName}\"></test>");
+    }
+
+    [Fact]
+    public void HtmlElement_WithLanguage_ShouldRenderLanguageAttribute()
+    {
+        // Arrange
+        const string language = "en-US";
+
+        // Act
+        var output = Render(@<TestHtmlElement Language="@language"/>);
+
+        // Assert
+        output.MarkupMatches($"<test {HtmlAttributes.Lang}=\"{language}\"></test>");
+    }
+
+    [Fact]
+    public void HtmlElement_WithTooltip_ShouldRenderTitleAttribute()
+    {
+        // Arrange
+        const string title = "This is a tooltip";
+
+        // Act
+        var output = Render(@<TestHtmlElement Title="@title"/>);
+
+        // Assert
+        output.MarkupMatches($"<test title=\"{title}\"></test>");
+    }
+}

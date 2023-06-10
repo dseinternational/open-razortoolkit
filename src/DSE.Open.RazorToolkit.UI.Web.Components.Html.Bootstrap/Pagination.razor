@@ -1,0 +1,10 @@
+﻿@using DSE.Open.RazorToolkit.UI.Abstractions.Html
+@inherits HtmlNavigation
+
+<CascadingValue Value="this">
+    <nav aria-label="@Label" @attributes="@AdditionalAttributes">
+        <HtmlList Format="ListFormat.Unordered" class="@ListClass()">
+            @ChildContent
+        </HtmlList>
+    </nav>
+</CascadingValue>

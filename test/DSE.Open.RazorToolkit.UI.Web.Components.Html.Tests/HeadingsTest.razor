@@ -1,0 +1,14 @@
+﻿@inherits TestContext
+@code
+{
+    [Fact]
+    public void LevelsRenderCorrectElements()
+    {
+        for (var i = 0; i < 6; i++)
+        {
+            var level = (HeadingLevel)i;
+            var output = Render(@<HtmlHeading Level="level">A heading</HtmlHeading>);
+            output.MarkupMatches($"<h{i + 1}>A heading</h{i + 1}>");
+        }
+    }
+}

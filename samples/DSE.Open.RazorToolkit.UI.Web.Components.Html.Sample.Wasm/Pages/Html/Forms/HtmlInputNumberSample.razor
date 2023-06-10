@@ -1,0 +1,54 @@
+﻿@page "/html/forms/html-input-number"
+
+<h1>HtmlInputNumber</h1>
+
+<HtmlBlock style="margin:2rem 0">
+    <HtmlLabel CssStyle="width:6rem">Non-null input</HtmlLabel>
+    <HtmlInputNumber @bind-Value="@Value"></HtmlInputNumber>
+</HtmlBlock>
+
+<HtmlBlock style="margin:2rem 0">
+    <HtmlLabel CssStyle="width:6rem">Non-null input</HtmlLabel>
+    <HtmlInputNumber @bind-Value="@DoubleValue"></HtmlInputNumber>
+</HtmlBlock>
+
+<HtmlBlock style="margin:2rem 0">
+    <HtmlLabel CssStyle="width:6rem">Non-null input</HtmlLabel>
+    <HtmlInputNumber @bind-Value="@FloatValue"></HtmlInputNumber>
+</HtmlBlock>
+
+<HtmlBlock style="margin:2rem 0">
+    <HtmlLabel CssStyle="width:6rem">Non-null input</HtmlLabel>
+    <HtmlInputNumber @bind-Value="Value"></HtmlInputNumber>
+</HtmlBlock>
+
+<HtmlBlock style="margin:2rem 0">
+    <HtmlLabel CssStyle="width:6rem">Input</HtmlLabel>
+    <HtmlCode>@Value</HtmlCode>
+</HtmlBlock>
+
+<HtmlBlock style="margin:2rem 0">
+    <HtmlButton Click="@Reset" style="margin-right:2rem">Reset</HtmlButton>
+    <HtmlButton Click="@Random">Random</HtmlButton>
+</HtmlBlock>
+
+@code {
+    private int Value { get; set; }
+    private double DoubleValue { get; set; }
+    private float FloatValue { get; set; }
+
+    private void Random()
+    {
+        Value = System.Random.Shared.Next();
+        DoubleValue = System.Random.Shared.NextDouble();
+        FloatValue = (float)System.Random.Shared.NextDouble();
+    }
+
+    private void Reset()
+    {
+        Value = 0;
+        DoubleValue = 0;
+        FloatValue = 0;
+    }
+
+}

@@ -1,0 +1,62 @@
+﻿@inherits TestContext
+
+@code
+{
+
+    [Fact]
+    public void HtmlOption_ShouldRenderOptionTag()
+    {
+        // Arrange
+        const string value = "hi";
+        const string label = "option label";
+
+        // Act
+        var output = Render(@<HtmlOption Label="@label" Value="@value"></HtmlOption>);
+
+        // Assert
+        output.MarkupMatches($"<option label=\"{label}\" value=\"{value}\"></option>");
+    }
+
+    [Fact]
+    public void HtmlOption_WithDisabledAttribute_ShouldRenderADisabledOptionTag()
+    {
+        // Arrange
+        const string value = "hi";
+        const string label = "option label";
+
+        // Act
+        var output = Render(@<HtmlOption Label="@label" Disabled Value="@value"></HtmlOption>);
+
+        // Assert
+        output.MarkupMatches($"<option disabled label=\"{label}\" value=\"{value}\"></option>");
+    }
+
+    [Fact]
+    public void HtmlOption_WithLabelAttribute_ShouldRenderAOptionTagWithLabel()
+    {
+        // Arrange
+        const string value = "hi";
+        const string label = "option label";
+
+        // Act
+        var output = Render(@<HtmlOption Label="@label" Value="@value"></HtmlOption>);
+
+        // Assert
+        output.MarkupMatches($"<option label=\"{label}\" value=\"{value}\"></option>");
+    }
+
+    [Fact]
+    public void HtmlOption_WithSelectAttribute_ShouldRenderOptionTagSelected()
+    {
+        // Arrange
+        const string value = "hi";
+        const string label = "option label";
+
+        // Act
+        var output = Render(@<HtmlOption Label="@label" Selected Value="@value"></HtmlOption>);
+
+        // Assert
+        output.MarkupMatches($"<option selected value=\"{value}\" label=\"{label}\"></option>");
+    }
+
+}

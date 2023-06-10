@@ -1,0 +1,41 @@
+﻿@typeparam TValue
+@inherits HtmlLabelledInputControl<TValue>
+
+<HtmlBlock class="@ComponentClass" style="@ComponentStyle" lang="@Language">
+    @if (Header is not null)
+    {
+        @Header
+    }
+    else if (!string.IsNullOrWhiteSpace(HeaderText))
+    {
+        <HtmlLabel ForId="@InputId" Text="@HeaderText" CssClass="datepicker-header"></HtmlLabel>
+    }
+
+    <HtmlInputDate Value="@CurrentValue"
+                   ValueExpression="@ValueExpression"
+                   ValueChanged="@ValueChanged"
+                   Id="@InputId"
+                   Name="@Name"
+                   DateType="@DateType"
+                   ParsingErrorMessage="@ParsingErrorMessage"
+                   CssClass="datepicker-input"
+                   ReadOnly="@ReadOnly"
+                   Disabled="@Disabled"
+                   Required="@Required"/>
+
+    @if (Description is not null)
+    {
+        @Description
+    }
+    else if (!string.IsNullOrWhiteSpace(DescriptionText))
+    {
+        <HtmlBlock CssClass="datepicker-description">@DescriptionText</HtmlBlock>
+    }
+
+    @if (ValidationFor is not null)
+    {
+        <HtmlBlock CssClass="datepicker-validation">
+            <ValidationMessage For="@ValidationFor"/>
+        </HtmlBlock>
+    }
+</HtmlBlock>

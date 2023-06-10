@@ -1,0 +1,44 @@
+﻿@inherits TestContext
+
+@code {
+
+    [Fact]
+    public void InputTelephone_ShouldRenderFormControlClass()
+    {
+        // Arrange
+        var value = "0123456789";
+
+        // Act
+        var output = Render(@<InputTelephone @bind-Value="@value"/>);
+
+        // Assert
+        output.MarkupMatches(@<input type="tel" class="@BootstrapClasses.FormControl" value="@value"/>);
+    }
+
+    [Fact]
+    public void InputTelephone_WithSmallSize_ShouldRenderFormControlSmallClass()
+    {
+        // Arrange
+        var value = "0123456789";
+
+        // Act
+        var output = Render(@<InputTelephone ControlSize="BootstrapSize.Small" @bind-Value="@value"/>);
+
+        // Assert
+        output.MarkupMatches(@<input type="tel" class="@BootstrapClasses.FormControl @BootstrapClasses.FormControlSm" value="@value"/>);
+    }
+
+    [Fact]
+    public void InputTelephone_WithPlainText_ShouldRenderPlainTextClass()
+    {
+        // Arrange
+        var value = "0123456789";
+
+        // Act
+        var output = Render(@<InputTelephone @bind-Value="@value" PlainText></InputTelephone>);
+
+        // Assert
+        output.MarkupMatches(@<input type="tel" class="@BootstrapClasses.FormControlPlaintext" value="@value"/>);
+    }
+
+}

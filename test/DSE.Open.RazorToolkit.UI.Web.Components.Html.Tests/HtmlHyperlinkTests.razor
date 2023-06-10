@@ -1,0 +1,23 @@
+﻿@inherits TestContext
+@code {
+
+    [Fact]
+    public void HtmlHyperlink_WithUri_ShouldRenderAnchorWithHref()
+    {
+        // Arrange
+        const string uri = "www.example.com";
+
+        // Act
+        var output = Render(@<HtmlHyperlink NavigateUri="@uri"></HtmlHyperlink>
+    );
+
+        // Assert
+        output.MarkupMatches($"<a href=\"{uri}\"></a>");
+    }
+
+    [Fact]
+    public void HtmlHyperlink_WithNullUri_ShouldThrowArgumentNullException()
+    {
+        Assert.Throws<ArgumentNullException>(() => RenderComponent<HtmlHyperlink>());
+    }
+}

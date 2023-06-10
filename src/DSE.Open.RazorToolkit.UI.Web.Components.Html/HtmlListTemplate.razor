@@ -1,0 +1,30 @@
+﻿@typeparam TItem
+@using DSE.Open.RazorToolkit.UI.Abstractions.Html
+@inherits HtmlList
+
+<CascadingValue Value="this">
+    @if (Format is ListFormat.Unordered)
+    {
+        <ul @ref=Element @attributes="AdditionalAttributes">
+            @foreach (var item in Items)
+            {
+                if (ItemTemplate is not null)
+                {
+                    <HtmlListItem>@ItemTemplate(item)</HtmlListItem>
+                }
+            }
+        </ul>
+    }
+    else if (Format is ListFormat.Ordered)
+    {
+        <ol @ref=Element @attributes="AdditionalAttributes">
+            @foreach (var item in Items)
+            {
+                if (ItemTemplate is not null)
+                {
+                    <HtmlListItem>@ItemTemplate(item)</HtmlListItem>
+                }
+            }
+        </ol>
+    }
+</CascadingValue>

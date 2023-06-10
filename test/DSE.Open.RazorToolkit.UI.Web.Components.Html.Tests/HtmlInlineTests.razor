@@ -1,0 +1,13 @@
+﻿@inherits TestContext
+@code
+{
+    [Fact]
+    public void HTMLInline_ShouldRenderASpanTag()
+    {
+        // Act
+        var output = Render(@<HtmlInline></HtmlInline>);
+
+        // Assert
+        output.MarkupMatches("<span></span>");
+    }
+}

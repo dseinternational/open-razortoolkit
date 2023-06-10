@@ -1,0 +1,28 @@
+﻿@inherits TestContext
+@code
+{
+    [Fact]
+    public void RendersRows()
+    {
+        var items = new[]
+        {
+            new Person("Fred", "Flintstone"),
+            new Person("Mickey", "Mouse")
+        };
+
+        var output = Render(
+            @<TableTemplate Items="@items" Context="p">
+                <RowTemplate>
+                    <TableCell>@p.FirstName</TableCell>
+                    <TableCell>@p.LastName</TableCell>
+                </RowTemplate>
+            </TableTemplate>);
+
+        output.MarkupMatches("<table class=\"table\">" +
+            "<tr><td>Fred</td><td>Flintstone</td></tr>" +
+            "<tr><td>Mickey</td><td>Mouse</td></tr>" +
+            "</table>");
+    }
+
+    public record Person(string? FirstName, string? LastName);
+}

@@ -1,0 +1,32 @@
+﻿@inherits TestContext
+
+@code {
+
+    [Fact]
+    public void CardLink_ShouldRenderCardLinkClass()
+    {
+        // Act
+        var output = Render(@<CardLink NavigateUri="uri"></CardLink>);
+
+        // Assert
+        output.MarkupMatches($"<a class=\"{BootstrapClasses.CardLink}\" href=\"uri\"></a>");
+    }
+
+    [Fact]
+    public void CardLink_WithParentCard_ShouldHaveNonNullCard()
+    {
+        // Arrange
+        CardLink cardLink = default!;
+
+        // Act
+        Render(
+            @<Card>
+                <CardLink NavigateUri="uri" @ref="@cardLink"></CardLink>
+            </Card>
+            );
+
+        // Assert
+        Assert.NotNull(cardLink.ParentCard);
+    }
+
+}

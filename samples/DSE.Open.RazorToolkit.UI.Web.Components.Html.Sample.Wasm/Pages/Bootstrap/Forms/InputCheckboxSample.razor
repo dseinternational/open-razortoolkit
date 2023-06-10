@@ -1,0 +1,27 @@
+﻿@page "/bootstrap/forms/input-checkbox"
+
+<h1>InputCheckbox</h1>
+
+<HtmlBlock style="margin:2rem 0">
+    <HtmlLabel style="width:6rem">Input</HtmlLabel>
+    <InputCheckbox @bind-Value="Value"></InputCheckbox>
+</HtmlBlock>
+
+<HtmlBlock style="margin:2rem 0">
+    <HtmlLabel style="width:6rem">Input</HtmlLabel>
+    <HtmlCode>@Value</HtmlCode>
+</HtmlBlock>
+
+<HtmlBlock style="margin:2rem 0">
+    <HtmlButton Click="@Toggle" style="margin-right:2rem">Toggle</HtmlButton>
+</HtmlBlock>
+
+@code {
+    public bool Value { get; set; }
+
+    public void Toggle()
+    {
+        Value = !Value;
+    }
+}
+

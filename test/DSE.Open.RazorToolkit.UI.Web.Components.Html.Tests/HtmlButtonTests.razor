@@ -1,0 +1,73 @@
+﻿@inherits TestContext
+
+@code {
+
+    [Fact]
+    public void HtmlButtonElement_WithType_ShouldRenderCorrectTypeAttribute()
+    {
+        // Act
+        var output = Render(@<HtmlButton ButtonType="@ButtonType.Submit"></HtmlButton>);
+
+        // Assert
+        output.MarkupMatches("<button type=\"submit\"></button>");
+    }
+
+    [Fact]
+    public void HtmlButton_WithoutType_ShouldRenderButtonType()
+    {
+        // Act
+        var output = Render(@<HtmlButton></HtmlButton>);
+
+        // Assert
+        output.MarkupMatches("<button type=\"button\"></button>");
+    }
+
+    [Fact]
+    public void HtmlButton_ShouldRenderFormAttribute_WhenGivenFormId()
+    {
+        // Arrange
+        const string formId = "formId";
+
+        // Act
+        var output = Render(@<HtmlButton FormId="@formId"></HtmlButton>);
+
+        // Assert
+        Assert.Contains($"form=\"{formId}\"", output.Markup);
+    }
+
+    [Fact]
+    public void HtmlButton_ShouldRenderFormAction_WhenGivenFormAction()
+    {
+        // Arrange
+        const string formAction = "post";
+
+        // Act
+        var output = Render(@<HtmlButton FormAction="@formAction"></HtmlButton>);
+
+        // Assert
+        Assert.Contains($"formaction=\"{formAction}\"", output.Markup);
+    }
+
+    [Fact]
+    public void HtmlButton_ShouldRenderDisabled_WhenDisabled()
+    {
+        // Arrange
+
+        // Act
+        var output = Render(@<HtmlButton IsDisabled></HtmlButton>);
+
+        // Assert
+        Assert.Contains("disabled", output.Markup);
+    }
+
+    [Fact]
+    public void HtmlButton_ShouldRenderAdditionalAttributes_WhenNotExplicitlyHandled()
+    {
+        // Act
+        var output = Render(@<HtmlButton doesnt-exist="attribute"></HtmlButton>);
+
+        // Assert
+        Assert.Contains("doesnt-exist=\"attribute\"", output.Markup);
+    }
+
+}

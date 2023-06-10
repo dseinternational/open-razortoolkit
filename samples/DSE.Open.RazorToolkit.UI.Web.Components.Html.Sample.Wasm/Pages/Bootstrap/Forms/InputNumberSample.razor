@@ -1,0 +1,26 @@
+﻿@page "/bootstrap/forms/input-number"
+
+<h1>Bootstrap Input Number</h1>
+
+<HtmlBlock style="margin:2rem 0">
+    <HtmlLabel CssStyle="width:6rem">Label</HtmlLabel>
+    <InputNumber Size="16" @bind-Value="Value"></InputNumber>
+</HtmlBlock>
+
+<HtmlBlock style="margin:2rem 0">
+    <HtmlLabel CssStyle="width:6rem">Input</HtmlLabel>
+    <HtmlCode>@Value</HtmlCode>
+</HtmlBlock>
+
+<HtmlBlock style="margin:2rem 0">
+    <HtmlButton Click="@Clear">Zero</HtmlButton>
+</HtmlBlock>
+
+@code {
+    public int Value { get; set; }
+
+    public void Clear()
+    {
+        Value = 0;
+    }
+}

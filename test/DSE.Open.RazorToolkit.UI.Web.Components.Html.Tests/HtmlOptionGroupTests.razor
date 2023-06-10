@@ -1,0 +1,34 @@
+﻿@inherits TestContext
+
+@code
+{
+
+    [Fact]
+    public void HtmlOptionGroup_ShouldRenderAOptionGroupTag()
+    {
+        // Arrange
+        const string value = "hi";
+        const string label = "label";
+
+        // Act
+        var output = Render(@<HtmlOptionGroup Label="label" Value="@value"></HtmlOptionGroup>);
+
+        // Assert
+        output.MarkupMatches($"<optgroup value=\"{value}\" label=\"{label}\" ></optgroup>");
+    }
+
+    [Fact]
+    public void HtmlOptionGroup_WithLabel_ShouldRenderAOptionGroupTagWithLabel()
+    {
+        // Arrange
+        const string value = "hi";
+        const string label = "label";
+
+        // Act
+        var output = Render(@<HtmlOptionGroup Label="@label" Value="@value"></HtmlOptionGroup>);
+
+        // Assert
+        output.MarkupMatches($"<optgroup label=\"{label}\" value=\"{value}\"></optgroup>");
+    }
+
+}

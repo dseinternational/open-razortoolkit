@@ -1,0 +1,15 @@
+﻿@page "/html/controls/checkbox"
+
+<h1>Checkbox (Html)</h1>
+
+
+<HtmlCheckBox @bind-Value="@IsChecked" Disabled LabelText="Checkbox Label"></HtmlCheckBox>
+<HtmlCheckBox @bind-Value="@IsChecked" Disabled LabelText="Checkbox Label"></HtmlCheckBox>
+<HtmlCheckBox @bind-Value="@IsChecked" Disabled LabelText="Checkbox Label"></HtmlCheckBox>
+<HtmlCheckBox @bind-Value="@IsChecked" Disabled LabelText="Checkbox Label"></HtmlCheckBox>
+
+
+@code {
+
+    public bool IsChecked { get; set; }
+}

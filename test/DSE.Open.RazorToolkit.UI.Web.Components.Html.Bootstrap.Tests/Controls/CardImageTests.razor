@@ -1,0 +1,69 @@
+﻿@inherits TestContext
+
+@code {
+
+    [Fact]
+    public void CardImage_ShouldRenderCardImageClass()
+    {
+        // Arrange
+        const string source = "https://www.example.com/image.png";
+
+        // Act
+        var output = Render(@<CardImage Source="@source"/>);
+
+        // Assert
+        output.MarkupMatches($"<img src=\"{source}\" class=\"{BootstrapClasses.CardImageTop}\" />");
+    }
+
+    [Fact]
+    public void CardImage_WithSourceAndAlt_ShouldRenderSrcAndAlt()
+    {
+        // Arrange
+        const string source = "https://www.example.com/picture.jpg";
+        const string alt = "Example Picture";
+
+        // Act
+        var output = Render(@<CardImage Source="@source" Alt="@alt"/>);
+
+        // Assert
+        output.MarkupMatches($"<img class=\"{BootstrapClasses.CardImageTop}\" src=\"{source}\" alt=\"{alt}\" />");
+    }
+
+    [Fact]
+    public void CardImage_WithParentCard_ShouldHaveNonNullCard()
+    {
+        // Arrange
+        CardImage cardImage = default!;
+
+        // Act
+        Render(
+            @<Card>
+                <CardImage Source="source" alt="alt" @ref="@cardImage"/>
+            </Card>
+            );
+
+        // Assert
+        Assert.NotNull(cardImage.ParentCard);
+    }
+
+    [Fact]
+    public void CardImage_WithLocationBottom_ShouldRenderCardImageBottomClass()
+    {
+        // Act
+        var output = Render(@<CardImage Source="source" Location="CardImageLocation.Bottom"/>);
+
+        // Assert
+        output.MarkupMatches($"<img src=\"source\" class=\"{BootstrapClasses.CardImageBottom}\" />");
+    }
+
+    [Fact]
+    public void CardImage_WithLocationOverlay_ShouldRenderCardImageOverlayClass()
+    {
+        // Act
+        var output = Render(@<CardImage Source="source" Location="CardImageLocation.Overlay"/>);
+
+        // Assert
+        output.MarkupMatches($"<img src=\"source\" class=\"{BootstrapClasses.CardImageOverlay}\" />");
+    }
+
+}

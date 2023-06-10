@@ -1,0 +1,40 @@
+﻿@page "/html/controls/textbox"
+
+<h1>HtmlTextBox</h1>
+
+<HtmlBlock style="margin:2rem 0">
+    <HtmlTextBox HeaderText="Header" DescriptionText="Description" @bind-Value="@Text"></HtmlTextBox>
+</HtmlBlock>
+
+<HtmlBlock style="margin:2rem 0">
+    <HtmlTextBox @bind-Value="@Text" ReadOnly="true">
+        <Header><div>Header</div></Header>
+        <Description><div>Description</div></Description>
+    </HtmlTextBox>
+</HtmlBlock>
+
+<p>This example uses the <code>@nameof(HtmlTextBox.Multiline)</code> attribute to use a <code>textarea</code> as the input:</p>
+
+<HtmlBlock CssClass="@BootstrapClasses.MarginBottom2">
+    <HtmlTextBox @bind-Value="@Text" Multiline>
+        <Header>
+            <div>Header</div>
+        </Header>
+        <Description>
+            <div>Description</div>
+        </Description>
+    </HtmlTextBox>
+</HtmlBlock>
+
+<HtmlBlock style="margin:2rem 0">
+    <HtmlButton Click="@Clear">Clear</HtmlButton>
+</HtmlBlock>
+
+@code {
+    public string Text { get; set; } = "Hello!";
+
+    public void Clear()
+    {
+        Text = string.Empty;
+    }
+}

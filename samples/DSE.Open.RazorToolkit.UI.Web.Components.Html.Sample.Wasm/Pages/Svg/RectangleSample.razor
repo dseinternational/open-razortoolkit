@@ -1,0 +1,30 @@
+﻿@page "/svg/rectangle"
+
+<h1>Rectangle</h1>
+
+<SvgContainer Width="800" Height="400" style="margin-bottom:3rem;border: 1px solid #333">
+
+    <Rectangle Width="600" Height="400" Fill="@(Color.FromRgb(0, 200, 0))"/>
+
+    <Rectangle X="10" Y="20" Width="100" Height="100" Fill="@(Color.FromRgb(0, 0, 200))"/>
+
+    <Rectangle X="@(Length.Parse("10mm"))" Y="@(Length.Parse("20mm"))" Width="@(Length.Parse("10mm"))" Height="@(Length.Parse("10mm"))" Fill="@(Color.FromRgb(200, 0, 0))"/>
+
+</SvgContainer>
+
+<SvgContainer Width="800" Height="400" Stroke="@(Color.FromRgb(100, 100, 100))" style="margin-bottom:3rem;border: 1px solid #333">
+
+    @for (var i = 0; i < 40; i++)
+    {
+        const int w = 20;
+        var x = Random.Shared.Next(800 - w);
+        var y = Random.Shared.Next(400 - w);
+        <Rectangle X="@x" Y="@y" Width="@w" Height="@w" Fill="@(Colors.GetRandom())" Stroke="@(Colors.Transparent)"/>
+    }
+
+</SvgContainer>
+
+
+@code {
+
+}

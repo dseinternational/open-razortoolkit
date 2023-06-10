@@ -1,0 +1,75 @@
+﻿@inherits TestContext
+
+@code {
+
+    [Fact]
+    public void GridColumn_WithNothingSet_ShouldRenderDiv()
+    {
+        // Act
+        var output = RenderComponent<GridColumn>();
+
+        // Assert
+        output.MarkupMatches("<div></div>");
+    }
+
+    [Fact]
+    public void GridColumn_WithFill_ShouldRenderDivWithColumnClass()
+    {
+        // Act
+        var output = Render(@<GridColumn ColumnSpan="ColumnSpan.Fill"/>);
+
+        // Assert
+        output.MarkupMatches("<div class=\"col\"></div>");
+    }
+
+    [Fact]
+    public void GridColumn_WithColumnSpanSm_ShouldRenderResponsiveSmClass()
+    {
+        // Act
+        var output = Render(@<GridColumn ColumnSpanSm="ColumnSpan.Span4"/>);
+
+        // Assert
+        output.MarkupMatches("<div class=\"col-sm-4\"></div>");
+    }
+
+    [Fact]
+    public void GridColumn_WithColumnSpanMd_ShouldRenderResponsiveMdClass()
+    {
+        // Act
+        var output = Render(@<GridColumn ColumnSpanMd="ColumnSpan.Span9"/>);
+
+        // Assert
+        output.MarkupMatches("<div class=\"col-md-9\"></div>");
+    }
+
+    [Fact]
+    public void GridColumn_WithColumnSpanLg_ShouldRenderResponsiveLgClass()
+    {
+        // Act
+        var output = Render(@<GridColumn ColumnSpanLg="ColumnSpan.Span7"/>);
+
+        // Assert
+        output.MarkupMatches("<div class=\"col-lg-7\"></div>");
+    }
+
+    [Fact]
+    public void GridColumn_WithColumnSpanXl_ShouldRenderResponsiveXlClass()
+    {
+        // Act
+        var output = Render(@<GridColumn ColumnSpanXl="ColumnSpan.Span1"/>);
+
+        // Assert
+        output.MarkupMatches("<div class=\"col-xl-1\"></div>");
+    }
+
+    [Fact]
+    public void GridColumn_WithColumnSpanXxl_ShouldRenderResponsiveXlClass()
+    {
+        // Act
+        var output = Render(@<GridColumn ColumnSpanXxl="ColumnSpan.Span6"/>);
+
+        // Assert
+        output.MarkupMatches("<div class=\"col-xxl-6\"></div>");
+    }
+
+}

@@ -1,0 +1,37 @@
+﻿@page "/charts/chart-sample"
+
+<h1>Chart</h1>
+
+<Chart TValue="double" Labels="Labels" OutputFormat="ChartOutputFormat.Svg">
+    <ColumnSeries TValue="double" Values="Series1"></ColumnSeries>
+</Chart>
+
+
+
+@code {
+    public readonly double[] Series1 = { 1.0, 1.7, 2.0, 2.2, 2.5, 2.9, 3.0, 3.2, 3.5, 3.7, 4.2, 4.8, 5.5, 5.7 };
+
+    public double[] Series2 = { 4.0, 5.0, 6.0 };
+
+    public readonly string[] Labels = { "Set 1", "Set 2", "Set 3" };
+
+    public ChartData<double> Data { get; } = new()
+    {
+        Labels = new[] { "Set 1", "Set 2", "Set 3" },
+
+        Series = new[]
+        {
+            new DataSeries<double>
+            {
+                Name = "Series 1",
+                Values = new[]
+                {
+                    1.0,
+                    2.0,
+                    3.0
+                }
+            }
+        }
+    };
+}
+

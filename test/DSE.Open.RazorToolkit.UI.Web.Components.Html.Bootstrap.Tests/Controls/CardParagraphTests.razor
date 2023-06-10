@@ -1,0 +1,45 @@
+﻿@inherits TestContext
+
+@code {
+
+    [Fact]
+    public void CardParagraph_ShouldRenderCardTextClass()
+    {
+    // Act
+        var output = RenderComponent<CardParagraph>();
+
+    // Assert
+        output.MarkupMatches($"<p class=\"{BootstrapClasses.CardText}\"></p>");
+    }
+
+    [Fact]
+    public void CardParagraph_WithChildContent_ShouldRenderChildContent()
+    {
+        // Arrange
+        const string content = "Card text";
+
+        // Act
+        var output = Render(@<CardParagraph>@content</CardParagraph>);
+
+        // Assert
+        output.MarkupMatches($"<p class=\"{BootstrapClasses.CardText}\">{content}</p>");
+    }
+
+    [Fact]
+    public void CardParagraph_WithParentCard_ShouldHaveNonNullCard()
+    {
+        // Arrange
+        CardParagraph cardParagraph = default!;
+
+        // Act
+        Render(
+            @<Card>
+                <CardParagraph @ref="@cardParagraph"></CardParagraph>
+            </Card>
+            );
+
+        // Assert
+        Assert.NotNull(cardParagraph.ParentCard);
+    }
+
+}

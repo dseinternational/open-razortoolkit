@@ -1,0 +1,51 @@
+﻿@inherits TestContext
+
+@code {
+
+        private const string TestId = "test-id";
+
+        private const string ModalSelector = $"div.{BootstrapClasses.Modal}";
+
+    [Fact]
+    public void Modal_ShouldRenderModalClass()
+    {
+        // Act
+        var output = Render(@<Modal Id="@TestId"></Modal>).Find(ModalSelector);
+
+        // Assert
+        Assert.True(output.ClassList.Contains(BootstrapClasses.Modal));
+    }
+
+    [Fact]
+    public void Modal_WithNoId_ShouldThrowArgumentException()
+    {
+        Assert.ThrowsAny<ArgumentException>(() =>
+        {
+            Render(@<Modal></Modal>);
+        });
+    }
+
+    [Fact]
+    public void Modal_WithFade_ShouldRenderFadeClass()
+    {
+        // Act
+        var modal = Render(@<Modal Id="@TestId" Fade></Modal>).Find(ModalSelector);
+
+        // Assert
+        Assert.True(modal.ClassList.Contains(BootstrapClasses.Fade));
+    }
+
+    [Fact]
+    public void Modal_WithChildContent_ShouldRenderChildContent()
+    {
+        // Arrange
+        const string childContent = "child content";
+
+        // Act
+        var output = Render(@<Modal Id="@TestId">@childContent</Modal>);
+
+        // Assert
+        Assert.True(output.Nodes[0].FirstChild?.TextContent == childContent);
+    }
+
+}

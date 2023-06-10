@@ -1,0 +1,62 @@
+﻿@inherits TestContext
+@code {
+    [Fact]
+    public void HtmlListTemplate_WithNoTemplate_ShouldRenderListItems()
+    {
+        // Arrange
+        var items = new[] { "1", "2" };
+
+        // Act
+        var output = Render(
+            @<HtmlListTemplate Items="@items" Context="item">
+                <ItemTemplate>@item</ItemTemplate>
+            </HtmlListTemplate>
+        );
+
+        // Assert
+        var listItems = output.Nodes.GetElementsByTagName("li");
+
+        for (var i = 0; i < items.Length; i++)
+        {
+            Assert.Equal(listItems[i].TextContent, items[i]);
+        }
+    }
+
+    [Fact]
+    public void HtmlListTemplate_WithTemplate_ShouldRenderTemplateInsideListItems()
+    {
+        // Arrange
+        var items = new[] { "1", "2" };
+
+        // Act
+        var output = Render(
+            @<HtmlListTemplate Items="@items" Context="item">
+                <ItemTemplate>
+                    <span>@item</span>
+                </ItemTemplate>
+            </HtmlListTemplate>
+        );
+
+        // Assert
+        var listItems = output.Nodes.GetElementsByTagName("li");
+        var spans = listItems.Children("span").ToArray();
+
+        for (var i = 0; i < items.Length; i++)
+        {
+            Assert.Equal(spans[i].TextContent, items[i]);
+        }
+    }
+
+    [Fact]
+    public void HtmlListElement_WithChildContent_ShouldThrowInvalidOperationException()
+    {
+        // Arrange
+        var items = new[] { "1", "2" };
+
+        // Assert
+        Assert.Throws<InvalidOperationException>(() =>
+        {
+            return Render(@<HtmlListTemplate Items="@items">Child Content</HtmlListTemplate>);
+        });
+    }
+}

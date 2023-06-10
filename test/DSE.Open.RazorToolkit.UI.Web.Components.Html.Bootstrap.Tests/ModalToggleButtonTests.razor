@@ -1,0 +1,32 @@
+﻿@using HtmlElement = AngleSharp.Html.Dom.HtmlElement
+@inherits TestContext
+
+@code {
+
+    [Fact]
+    public void ModalToggleButton_WithNoTargetId_ShouldThrowError()
+    {
+        Assert.ThrowsAny<ArgumentException>(() => { RenderComponent<ModalToggleButton>(); });
+    }
+
+    [Fact]
+    public void ModalToggleButton_WithTargetId_ShouldRenderBootstrapDataAttribute()
+    {
+        // Act
+        var output = Render(@<ModalToggleButton TargetId="target"></ModalToggleButton>).Nodes.First() as HtmlElement;
+
+        // Assert
+        Assert.Equal("#target", output?.GetAttribute(BootstrapDataAttributes.Target));
+    }
+
+    [Fact]
+    public void ModalToggleButton_ShouldRenderModalToggleDataAttribute()
+    {
+        // Act
+        var output = Render(@<ModalToggleButton TargetId="target"></ModalToggleButton>).Nodes.First() as HtmlElement;
+
+        // Assert
+        Assert.Equal(BootstrapToggle.Modal.ToAttributeString(), output?.GetAttribute(BootstrapDataAttributes.Toggle));
+    }
+
+}

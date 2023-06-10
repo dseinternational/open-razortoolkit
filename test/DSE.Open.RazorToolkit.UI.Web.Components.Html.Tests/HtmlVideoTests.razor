@@ -1,0 +1,72 @@
+﻿@inherits TestContext
+
+@code {
+
+    [Fact]
+    public void HtmlVideo_WithHeight_ShouldRenderHeightAttribute()
+    {
+        // Arrange
+        const int height = 200;
+        // Act
+        var output = Render(@<HtmlVideo Height="@height"/>);
+
+        // Assert
+        output.MarkupMatches($"<video height=\"{height}\" />");
+    }
+
+    [Fact]
+    public void HtmlVideo_WithWidth_ShouldRenderWidthAttribute()
+    {
+        // Arrange
+        const int width = 200;
+
+        // Act
+        var output = Render(@<HtmlVideo Width="@width"/>);
+
+        // Assert
+        output.MarkupMatches($"<video width=\"{width}\" />");
+    }
+
+    [Fact]
+    public void HtmlVideo_WithPlaysInline_ShouldRenderPlaysInlineAttribute()
+    {
+        // Act
+        var output = Render(@<HtmlVideo PlaysInline/>);
+        // Assert
+        output.MarkupMatches("<video playsinline />");
+    }
+
+    [Fact]
+    public void HtmlVideo_WithPoster_ShouldRenderPosterAttribute()
+    {
+        // Arrange
+        const string poster = "https://example.com/poster.jpg";
+
+        // Act
+        var output = Render(@<HtmlVideo Poster="@poster"/>);
+
+        // Assert
+        output.MarkupMatches($"<video poster=\"{poster}\" />");
+    }
+
+    [Fact]
+    public void HtmlVideo_WithPreloadMetadata_ShouldRenderPreloadAttribute()
+    {
+        // Act
+        var output = Render(@<HtmlVideo Preload="Preload.Metadata"/>);
+
+        // Assert
+        output.MarkupMatches("<video preload=\"metadata\" />");
+    }
+
+    [Fact]
+    public void HtmlVideo_WithPreloadNone_ShouldRenderPreloadNoneAttribute()
+    {
+        // Act
+        var output = Render(@<HtmlVideo Preload="Preload.None"/>);
+
+        // Assert
+        output.MarkupMatches("<video preload=\"none\" />");
+    }
+
+}

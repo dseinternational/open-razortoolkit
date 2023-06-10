@@ -1,0 +1,31 @@
+﻿@inherits TestContext
+
+@code {
+
+    [Fact]
+    public void Ellipse_ShouldRenderCorrectTag()
+    {
+        // Act
+        var output = Render(@<Ellipse></Ellipse>);
+
+        // Assert
+        output.MarkupMatches(@<ellipse></ellipse>);
+    }
+
+    [Fact]
+    public void Ellipse_WithCentreAndRadii_ShouldRenderAttributes()
+    {
+        // Arrange
+        const int centreX = 10;
+        const int centreY = 20;
+        const int radiusX = 30;
+        const int radiusY = 40;
+
+        // Act
+        var output = Render(@<Ellipse CenterX="@centreX" CenterY="@centreY" RadiusX="@radiusX" RadiusY="@radiusY"></Ellipse>);
+
+        // Assert
+        output.MarkupMatches(@<ellipse cx="@centreX" cy="@centreY" rx="@radiusX" ry="@radiusY"></ellipse>);
+    }
+
+}

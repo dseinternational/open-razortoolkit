@@ -1,0 +1,25 @@
+﻿@typeparam TItem
+@inherits HtmlBlock
+<HtmlTable>
+    @if (TableHeader is not null)
+    {
+        <HtmlTableHeader>
+            <HtmlTableRow>@TableHeader</HtmlTableRow>
+        </HtmlTableHeader>
+    }
+    <HtmlTableBody>
+        @foreach (var item in Items)
+        {
+            if (RowTemplate is not null)
+            {
+                <HtmlTableRow>@RowTemplate(item)</HtmlTableRow>
+            }
+        }
+    </HtmlTableBody>
+    @if (TableFooter is not null)
+    {
+        <HtmlTableFooter>
+            <HtmlTableRow>@TableFooter</HtmlTableRow>
+        </HtmlTableFooter>
+    }
+</HtmlTable>

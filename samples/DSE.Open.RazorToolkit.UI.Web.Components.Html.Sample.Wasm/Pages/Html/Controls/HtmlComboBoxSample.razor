@@ -1,0 +1,24 @@
+﻿@page "/html/controls/combobox"
+
+<h1>ComboBox (Html)</h1>
+
+<HtmlComboBox>
+    <HtmlOptionGroup Label="@OptionGroupLabel">
+        <HtmlOption Label="@Label" Value="@Value"></HtmlOption>
+    </HtmlOptionGroup>
+</HtmlComboBox>
+
+<HtmlComboBox Disabled>
+    <HtmlOptionGroup Label="@OptionGroupLabel">
+        <HtmlOption Label="@Label" Value="@Value"></HtmlOption>
+        <HtmlOption Disabled Label="@Label2" Value="@Value"></HtmlOption>
+    </HtmlOptionGroup>
+</HtmlComboBox>
+
+
+@code {
+    public string Value { get; set; } = "A";
+    public string Label { get; set; } = "Label";
+    public string Label2 { get; set; } = "Label 2";
+    public string OptionGroupLabel { get; set; } = "Option Group 1";
+}

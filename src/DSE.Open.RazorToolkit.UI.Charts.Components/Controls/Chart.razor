@@ -1,0 +1,14 @@
+﻿@typeparam TValue
+@inherits ViewComponent
+@if (OutputFormat == ChartOutputFormat.Svg)
+{
+    <CascadingValue Value="this">
+        <SvgChartArea TValue="TValue">
+            @ChildContent
+        </SvgChartArea>
+    </CascadingValue>
+}
+else
+{
+    throw new InvalidOperationException($"Unsupported OutputFormat '{OutputFormat}'");
+}

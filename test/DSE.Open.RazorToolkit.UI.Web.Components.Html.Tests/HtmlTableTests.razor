@@ -1,0 +1,25 @@
+﻿@inherits TestContext
+
+@code
+{
+    [Fact]
+    public void EmptyInstantiationRendersElementAndNoContent()
+    {
+        var output = Render(@<HtmlTable></HtmlTable>);
+        output.MarkupMatches("<table></table>");
+    }
+
+    [Fact]
+    public void IdIsRendered()
+    {
+        var output = Render(@<HtmlTable Id="anId"></HtmlTable>);
+        output.MarkupMatches("<table id=\"anId\"></table>");
+    }
+
+    [Fact]
+    public void TooltipIsRendered()
+    {
+        var output = Render(@<HtmlTable Title="A Tooltip"></HtmlTable>);
+        output.MarkupMatches("<table title=\"A Tooltip\"></table>");
+    }
+}

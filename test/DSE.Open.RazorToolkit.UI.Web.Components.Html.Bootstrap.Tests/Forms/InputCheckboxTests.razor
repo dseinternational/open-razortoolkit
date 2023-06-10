@@ -1,0 +1,34 @@
+﻿@inherits TestContext
+
+@code {
+
+    [Fact]
+    public void InputCheckbox_ShouldRenderCheckbox()
+    {
+        // Arrange
+        var value = false;
+
+        // Act
+        var output = Render(@<InputCheckbox @bind-Value="@value"/>);
+
+        // Assert
+        output.MarkupMatches("<input type=\"checkbox\" class=\"form-check-input\"/>");
+    }
+    [Fact]
+    public async Task InputCheckbox_WithFalseValue_OnChange_ShouldHaveTrueValue()
+    {
+        // Arrange
+        var value = false;
+        var output = Render(@<InputCheckbox @bind-Value="@value"/>);
+
+        // Act
+        await output.Find(HtmlElements.Input).ChangeAsync(new ChangeEventArgs
+        {
+            Value = true
+        });
+
+        // Assert
+        output.MarkupMatches("<input type=\"checkbox\"  class=\"form-check-input\" checked />");
+    }
+
+}

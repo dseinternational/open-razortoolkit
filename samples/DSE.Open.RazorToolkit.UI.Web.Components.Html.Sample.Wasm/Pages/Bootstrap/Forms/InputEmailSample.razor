@@ -1,0 +1,26 @@
+﻿@page "/bootstrap/forms/input-email"
+
+<h1>Bootstrap Input Email</h1>
+
+<HtmlBlock style="margin:2rem 0">
+    <HtmlLabel CssStyle="width:6rem">Label</HtmlLabel>
+    <InputEmail Size="16" @bind-Value="Text"></InputEmail>
+</HtmlBlock>
+
+<HtmlBlock style="margin:2rem 0">
+    <HtmlLabel CssStyle="width:6rem">Input</HtmlLabel>
+    <HtmlCode>@Text</HtmlCode>
+</HtmlBlock>
+
+<HtmlBlock style="margin:2rem 0">
+    <HtmlButton Click="@Clear">Clear</HtmlButton>
+</HtmlBlock>
+
+@code {
+    public string? Text { get; set; }
+
+    public void Clear()
+    {
+        Text = string.Empty;
+    }
+}

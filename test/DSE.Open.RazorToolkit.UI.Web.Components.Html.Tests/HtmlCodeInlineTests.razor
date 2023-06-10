@@ -1,0 +1,14 @@
+﻿@inherits TestContext
+
+@code
+{
+    [Fact]
+    public void HTMLCode_ShouldRenderCodeTag()
+    {
+        // Act
+        var output = Render(@<HtmlCode></HtmlCode>);
+
+        // Assert
+        output.MarkupMatches("<code></code>");
+    }
+}

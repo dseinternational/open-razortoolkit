@@ -1,0 +1,18 @@
+﻿@inherits TestContext
+
+@code {
+
+    [Fact]
+    public void Polygon_WithPoints_ShouldRenderPoints()
+    {
+        // Arrange
+        const string points = "0,0 1,1 2,2";
+
+        // Act
+        var output = Render(@<Polygon Points="@points"></Polygon>);
+
+        // Assert
+        output.MarkupMatches(@<polygon points="@points"></polygon>);
+    }
+
+}

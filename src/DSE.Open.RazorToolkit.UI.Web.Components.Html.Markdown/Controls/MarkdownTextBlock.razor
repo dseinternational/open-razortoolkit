@@ -1,0 +1,4 @@
+﻿@inherits HtmlControl
+<HtmlBlock @attributes="@AdditionalAttributes" CssClass="@ComponentClass" CssStyle="@ComponentStyle" Language="@Language">
+    @((MarkupString)GetContentRendered())
+</HtmlBlock>

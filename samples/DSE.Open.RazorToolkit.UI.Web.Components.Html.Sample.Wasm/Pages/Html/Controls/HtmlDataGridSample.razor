@@ -1,0 +1,255 @@
+﻿@page "/html/controls/data-grid"
+
+<HtmlDataGrid Items="@_itemsQueryable" Pagination="@_pagination">
+    <PropertyColumn Property="@(c => c.Name)" Sortable="true" Class="country-name"/>
+    <PropertyColumn Property="@(c => c.Medals.Gold)" Sortable="true" Align="Align.Right"/>
+    <PropertyColumn Property="@(c => c.Medals.Silver)" Sortable="true" Align="Align.Right"/>
+    <PropertyColumn Property="@(c => c.Medals.Bronze)" Sortable="true" Align="Align.Right"/>
+</HtmlDataGrid>
+
+<Paginator Value="_pagination"></Paginator>
+
+
+@code {
+
+    PaginationState _pagination = new()
+    {
+        ItemsPerPage = 10
+    };
+
+    IQueryable<Country>? _itemsQueryable;
+
+    protected override async Task OnInitializedAsync()
+    {
+        var items = new List<Country>()
+        {
+            new()
+            {
+                Name = "United States",
+                Medals = new Medals
+                {
+                    Gold = 23,
+                    Silver = 45,
+                    Bronze = 12
+                }
+            },
+            new()
+            {
+                Name = "Russia",
+                Medals = new Medals
+                {
+                    Gold = 12,
+                    Silver = 34,
+                    Bronze = 56
+                }
+            },
+            new()
+            {
+                Name = "China",
+                Medals = new Medals
+                {
+                    Gold = 34,
+                    Silver = 56,
+                    Bronze = 78
+                }
+            },
+            new()
+            {
+                Name = "Brazil",
+                Medals = new Medals
+                {
+                    Gold = 56,
+                    Silver = 78,
+                    Bronze = 90
+                }
+            },
+            new()
+            {
+                Name = "Canada",
+                Medals = new Medals
+                {
+                    Gold = 78,
+                    Silver = 90,
+                    Bronze = 12
+                }
+            },
+            new()
+            {
+                Name = "Australia",
+                Medals = new Medals
+                {
+                    Gold = 90,
+                    Silver = 12,
+                    Bronze = 34
+                }
+            },
+            new()
+            {
+                Name = "Germany",
+                Medals = new Medals
+                {
+                    Gold = 12,
+                    Silver = 34,
+                    Bronze = 56
+                }
+            },
+            new()
+            {
+                Name = "France",
+                Medals = new Medals
+                {
+                    Gold = 34,
+                    Silver = 56,
+                    Bronze = 78
+                }
+            },
+            new()
+            {
+                Name = "Italy",
+                Medals = new Medals
+                {
+                    Gold = 56,
+                    Silver = 78,
+                    Bronze = 90
+                }
+            },
+            new()
+            {
+                Name = "Spain",
+                Medals = new Medals
+                {
+                    Gold = 78,
+                    Silver = 90,
+                    Bronze = 12
+                }
+            },
+            new()
+            {
+                Name = "Switzerland",
+                Medals = new Medals
+                {
+                    Gold = 90,
+                    Silver = 12,
+                    Bronze = 34
+                }
+            },
+            new()
+            {
+                Name = "Japan",
+                Medals = new Medals
+                {
+                    Gold = 12,
+                    Silver = 34,
+                    Bronze = 56
+                }
+            },
+            new()
+            {
+                Name = "South Korea",
+                Medals = new Medals
+                {
+                    Gold = 34,
+                    Silver = 56,
+                    Bronze = 78
+                }
+            },
+            new()
+            {
+                Name = "Netherlands",
+                Medals = new Medals
+                {
+                    Gold = 56,
+                    Silver = 78,
+                    Bronze = 90
+                }
+            },
+            new()
+            {
+                Name = "Belgium",
+                Medals = new Medals
+                {
+                    Gold = 78,
+                    Silver = 90,
+                    Bronze = 12
+                }
+            },
+            new()
+            {
+                Name = "England",
+                Medals = new Medals
+                {
+                    Gold = 90,
+                    Silver = 12,
+                    Bronze = 34
+                }
+            },
+            new()
+            {
+                Name = "Sweden",
+                Medals = new Medals
+                {
+                    Gold = 12,
+                    Silver = 34,
+                    Bronze = 56
+                }
+            },
+            new()
+            {
+                Name = "Norway",
+                Medals = new Medals
+                {
+                    Gold = 34,
+                    Silver = 56,
+                    Bronze = 78
+                }
+            },
+            new()
+            {
+                Name = "Denmark",
+                Medals = new Medals
+                {
+                    Gold = 56,
+                    Silver = 78,
+                    Bronze = 90
+                }
+            },
+            new()
+            {
+                Name = "Finland",
+                Medals = new Medals
+                {
+                    Gold = 78,
+                    Silver = 90,
+                    Bronze = 12
+                }
+            },
+        };
+
+        _itemsQueryable = items.AsQueryable();
+
+        _pagination.TotalItemCountChanged += (sender, eventArgs) => StateHasChanged();
+    }
+
+    private async Task GoToPageAsync(int pageIndex)
+    {
+        await _pagination.SetCurrentPageIndexAsync(pageIndex);
+    }
+
+    private string? PageButtonClass(int pageIndex) => _pagination.CurrentPageIndex == pageIndex ? "current" : null;
+
+    private string? AriaCurrentValue(int pageIndex) => _pagination.CurrentPageIndex == pageIndex ? "page" : null;
+
+    private class Country
+    {
+        public required string Name { get; init; }
+        public required Medals Medals { get; init; }
+    }
+
+    private class Medals
+    {
+        public required int Gold { get; init; }
+        public required int Silver { get; init; }
+        public required int Bronze { get; init; }
+    }
+
+}

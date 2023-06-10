@@ -1,0 +1,15 @@
+﻿@inherits TestContext
+@code
+{
+    [Fact]
+    public void HtmlListItem_ShouldRenderInParent()
+    {
+        // Act
+        var output = Render(@<HtmlList Format="ListFormat.Ordered"><HtmlListItem></HtmlListItem></HtmlList>);
+
+        //Assert
+        output.MarkupMatches("<ol><li></li></ol>");
+
+    }
+
+}

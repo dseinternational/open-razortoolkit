@@ -1,0 +1,14 @@
+﻿@inherits TestContext
+
+@code
+{
+    [Fact]
+    public void HtmlHeader_ShouldRenderAAddressTag()
+    {
+        // Act
+        var output = Render(@<HtmlHeader></HtmlHeader>);
+
+        // Assert
+        output.MarkupMatches("<header></header>");
+    }
+}

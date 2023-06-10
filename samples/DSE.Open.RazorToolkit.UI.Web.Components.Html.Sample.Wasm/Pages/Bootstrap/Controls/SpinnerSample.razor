@@ -1,0 +1,52 @@
+﻿@page "/bootstrap/controls/spinner"
+
+<h1>Spinner</h1>
+
+<p>
+    Bootstrap “spinners” can be used to show the loading state in your projects. They’re built only with HTML and CSS, meaning you don’t need any JavaScript to create them. You will, however, need some custom JavaScript to toggle their visibility. Their appearance, alignment, and sizing can be easily customized with our amazing utility classes.
+</p>
+
+<p>
+    For accessibility purposes, each loader here includes role="status" and a nested <HtmlCode>&lt;span class="visually-hidden"&gt;Loading...&lt;/span&gt;</HtmlCode>.
+</p>
+
+<h2 class="@BootstrapClasses.MarginTop4">Bordered Spinner</h2>
+
+<p>
+    This is the default spinner.
+</p>
+
+<Spinner/>
+
+<h2 class="@BootstrapClasses.MarginTop4">Grow Spinner</h2>
+
+<Spinner SpinnerType="SpinnerType.Grow"/>
+
+<h2 class="@BootstrapClasses.MarginTop4">Theming</h2>
+
+<p>Set the <code>Theme</code> parameter to any <code>BootstrapTheme</code> to style.</p>
+
+<Spinner Theme="BootstrapTheme.Primary"/>
+<Spinner Theme="BootstrapTheme.Secondary"/>
+<Spinner Theme="BootstrapTheme.Success"/>
+<Spinner Theme="BootstrapTheme.Danger"/>
+<Spinner Theme="BootstrapTheme.Warning"/>
+<Spinner Theme="BootstrapTheme.Info"/>
+<Spinner Theme="BootstrapTheme.Light"/>
+<Spinner Theme="BootstrapTheme.Dark"/>
+
+<h2 class="@BootstrapClasses.MarginTop4">Sizing</h2>
+
+<p>To make the spinner smaller, add the <code>small</code> attribute.</p>
+
+<Spinner SpinnerType="SpinnerType.Border" Theme="BootstrapTheme.Primary" Small/>
+<Spinner SpinnerType="SpinnerType.Grow" Theme="BootstrapTheme.Primary" Small/>
+
+<p>These work well inside buttons!</p>
+
+<Button CssClass="@BootstrapClasses.MarginBottom3" ButtonStyle="ButtonStyle.Primary" IsDisabled>
+    <Spinner CssClass="@BootstrapClasses.MarginEnd2" SpinnerType="SpinnerType.Border" Small/>
+    Loading...
+</Button>
+
+<p>To add custom sizing, change the <code>height</code> and <code>width</code> with CSS styles or classes.</p>

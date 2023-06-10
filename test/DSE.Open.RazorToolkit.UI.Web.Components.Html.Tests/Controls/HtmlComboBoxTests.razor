@@ -1,0 +1,44 @@
+﻿@using HtmlElement = AngleSharp.Html.Dom.HtmlElement
+@inherits TestContext
+
+@code
+{
+
+    [Fact]
+    public void HtmlComboBox_ShouldRenderSelectTag()
+    {
+        // Arrange
+        var value = string.Empty;
+
+        // Act
+        var select = Render(@<HtmlComboBox @bind-Value="value"></HtmlComboBox>).Find(HtmlElements.Select);
+
+        // Assert
+        Assert.NotNull(select);
+    }
+
+    [Fact]
+    public void HtmlComboBox_WithOption_ShouldRenderOptionInsideSelect()
+    {
+        // Arrange
+        var value = string.Empty;
+        const string option1 = "hello";
+        const string label = "test label";
+
+        // Act
+        var output = Render(
+            @<HtmlComboBox @bind-Value="value">
+                <HtmlOption Value="option1" Label="@label"></HtmlOption>
+            </HtmlComboBox>
+            );
+
+        // Assert
+        var selectElement = output.Find(HtmlElements.Select);
+        var optionElement = selectElement.FirstChild as IElement;
+
+        Assert.Equal(option1, optionElement?.Attributes.GetNamedItem(HtmlAttributes.Value)?.Value);
+        Assert.Equal(label, optionElement?.Attributes.GetNamedItem(HtmlAttributes.Label)?.Value);
+    }
+
+
+}

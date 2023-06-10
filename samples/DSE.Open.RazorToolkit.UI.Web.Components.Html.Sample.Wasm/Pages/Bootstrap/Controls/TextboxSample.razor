@@ -1,0 +1,54 @@
+﻿@page "/bootstrap/controls/textbox"
+
+<h1>TextBox</h1>
+
+<p>TextBox supports both attributes and ChildContent for <code>@nameof(TextBox.Header)</code> and <code>@nameof(TextBox.Description)</code>.</p>
+
+<p>This example uses attributes:</p>
+
+<HtmlBlock CssClass="@BootstrapClasses.MarginBottom2">
+    <TextBox HeaderText="Header" DescriptionText="Description" @bind-Value="@Text"></TextBox>
+</HtmlBlock>
+
+<p>This example uses <code>ChildContent</code> and is <code>@nameof(TextBox.ReadOnly)</code>:</p>
+
+<HtmlBlock CssClass="@BootstrapClasses.MarginBottom2">
+    <TextBox @bind-Value="@Text" ReadOnly>
+        <Header>
+            <div>Header</div>
+        </Header>
+        <Description>
+            <div>Description</div>
+        </Description>
+    </TextBox>
+</HtmlBlock>
+
+<p>This example uses the <code>@nameof(TextBox.Multiline)</code> attribute to use a <code>textarea</code> as the input:</p>
+
+<HtmlBlock CssClass="@BootstrapClasses.MarginBottom2">
+    <TextBox @bind-Value="@Text" Multiline>
+        <Header>
+            <div>Header</div>
+        </Header>
+        <Description>
+            <div>Description</div>
+        </Description>
+    </TextBox>
+</HtmlBlock>
+
+<HtmlBlock CssClass="@BootstrapClasses.MarginBottom2">
+    <Button ButtonStyle="ButtonStyle.Primary" Click="@Clear">Clear inputs</Button>
+</HtmlBlock>
+
+@code {
+
+    private string Text { get; set; } = "Hello!";
+
+
+    private void Clear()
+
+    {
+        Text = string.Empty;
+    }
+
+}

@@ -1,0 +1,16 @@
+﻿@typeparam TValue
+@using DSE.Open.RazorToolkit.UI.Abstractions
+@inherits ColumnSeriesBase<TValue>
+
+@if (ParentChartArea is null)
+{
+    throw new InvalidOperationException($"{nameof(SvgColumnSeries<TValue>)} must be contained within a {nameof(SvgChartArea<TValue>)}");
+}
+<g>
+    @* TODO: Draw *@
+
+    @for (var i = 0; i < Values.Count; i++)
+    {
+        <Rectangle X="@(i * 30 + 5)" Y="@(400 - i * 20)" Width="20" Height="@(i * 20)" Fill="@(Color.FromRgb(0,150,0))"></Rectangle>
+    }
+</g>

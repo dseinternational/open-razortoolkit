@@ -1,0 +1,11 @@
+﻿@typeparam TValue
+@inherits LineSeriesBase<TValue>
+
+@if (ParentChartArea is null)
+{
+    throw new InvalidOperationException($"{nameof(SvgLineSeries<TValue>)} must be contained within a {nameof(SvgChartArea<TValue>)}");
+}
+
+<g>
+    @* TODO: Draw *@
+</g>

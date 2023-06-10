@@ -1,0 +1,30 @@
+﻿@page "/bootstrap/controls/modal"
+<h1>Modal</h1>
+
+<ModalToggleButton TargetId="@ModalId" ButtonStyle="ButtonStyle.Primary">
+    Launch demo modal
+</ModalToggleButton>
+
+<Modal Fade Id="@ModalId" tab-index="-1" aria-hidden="true">
+    <ModalDialog>
+        <ModalContent>
+            <ModalHeader>
+                <ModalTitle Level="HeadingLevel.Level5">Modal title</ModalTitle>
+                <ModalDismissButton Close></ModalDismissButton>
+            </ModalHeader>
+            <ModalBody>
+                ...
+            </ModalBody>
+            <ModalFooter>
+                <ModalDismissButton ButtonStyle="ButtonStyle.OutlineSecondary">Close</ModalDismissButton>
+                <Button ButtonStyle="ButtonStyle.Primary">Save changes</Button>
+            </ModalFooter>
+        </ModalContent>
+    </ModalDialog>
+</Modal>
+
+@code {
+    public int ModalTabIndex { get; set; } = -1;
+
+    private static string ModalId => "exampleModal";
+}

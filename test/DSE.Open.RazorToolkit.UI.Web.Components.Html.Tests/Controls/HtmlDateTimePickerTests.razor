@@ -1,0 +1,69 @@
+﻿@inherits TestContext
+
+@code {
+
+    [Fact]
+    public void DateTimePicker_UsingAttributes_ShouldRender()
+    {
+        // Arrange
+        const string headerText = "Header Text";
+        const string description = "Description";
+        var value = DateTime.Now;
+
+        // Act
+        var output = Render(@<HtmlDateTimePicker HeaderText="@headerText" DescriptionText="@description" @bind-Value="@value"></HtmlDateTimePicker>);
+
+        // Assert
+        output.MarkupMatches(
+            @<div class="datepicker">
+                <label class="datepicker-header" for:ignore>@headerText</label>
+                <input type="date" id:ignore class="datepicker-input" value="@value.ToString("yyyy-MM-dd")">
+                <div class="datepicker-description">@description</div>
+            </div>
+            );
+    }
+
+    [Fact]
+    public void DateTimePicker_UsingChildContent_ShouldRender()
+    {
+        // Arrange
+        const string headerText = "Header Text";
+        const string description = "Description";
+        var value = DateTime.Now;
+
+        // Act
+        var output = Render(
+            @<HtmlDateTimePicker @bind-Value="@value">
+                <Header>
+                    <label>@headerText</label>
+                </Header>
+                <Description>
+                    <div>@description</div>
+                </Description>
+            </HtmlDateTimePicker>
+            );
+
+        // Assert
+        output.MarkupMatches(
+            @<div class="datepicker">
+                <label>@headerText</label>
+                <input type="date" id:ignore class="datepicker-input" value="@value.ToString("yyyy-MM-dd")">
+                <div>@description</div>
+            </div>
+            );
+    }
+
+    [Fact]
+    public void HtmlDateTimePicker_WithTimeType_ShouldRenderTime()
+    {
+        // Arrange
+        var value = TimeOnly.FromDateTime(DateTime.Now);
+
+        // Act
+        var input = Render(@<HtmlDateTimePicker @bind-Value="@value" DateType="HtmlInputDateType.Time"></HtmlDateTimePicker>).Find("input");
+
+        // Assert
+        Assert.Equal("time", input.Attributes.GetNamedItem("type")?.Value);
+    }
+
+}

@@ -1,0 +1,38 @@
+﻿@page "/bootstrap/forms/sample-1"
+
+@using Microsoft.AspNetCore.Components.Forms
+@using DSE.Open.RazorToolkit.UI.Core.Validation
+
+@inject ILogger<FormSample1> Logger
+
+<h1>Form (Bootstrap)</h1>
+
+<HtmlEditForm @ref="@EditForm" Model="@_model" OnSubmit="@HandleSubmit" novalidate>
+    <FluentValidator TValidator="@ContactValidator"/>
+
+    <TextBox HeaderText="First Name" @bind-Value="_model.FirstName" ValidationFor="@(() => _model.FirstName)" CssClass="mb3"/>
+
+    <TextBox HeaderText="Last Name" @bind-Value="_model.LastName" ValidationFor="@(() => _model.LastName)" CssClass="mb3"/>
+
+    <DateTimePicker HeaderText="Date of Birth" @bind-Value="_model.DateOfBirth" ValidationFor="@(() => _model.DateOfBirth)"/>
+
+    <CheckBox LabelText="I agree" @bind-Value="_model.HasAgreed" ValidationFor="@(() => _model.HasAgreed)"/>
+
+    <Button ButtonType="ButtonType.Submit" ButtonStyle="ButtonStyle.Success">Submit</Button>
+
+</HtmlEditForm>
+
+
+@code {
+
+    private ContactModel _model = new();
+
+    private HtmlEditForm EditForm { get; set; } = default!;
+
+    private void HandleSubmit()
+    {
+        EditForm!.EditContext!.Validate();
+        Logger.LogInformation("Submitted");
+    }
+
+}

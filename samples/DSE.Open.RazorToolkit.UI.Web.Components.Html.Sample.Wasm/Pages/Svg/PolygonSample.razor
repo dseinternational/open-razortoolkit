@@ -1,0 +1,23 @@
+﻿@page "/svg/polygon"
+
+<h1>Polygon</h1>
+
+<SvgContainer Width="@Width" Height="@Height" Stroke="@(Color.FromRgb(100, 100, 100))" style="margin-bottom:3rem;border: 1px solid #333">
+
+    @for (var i = 0; i < 10; i++)
+    {
+        var points = $"{RandX},{RandY} {RandX},{RandY} {RandX},{RandY} {RandX},{RandY}";
+
+        <Polygon Points="@points" Fill="@(Colors.GetRandom())" Stroke="@(Colors.Transparent)"></Polygon>
+    }
+
+</SvgContainer>
+
+
+@code {
+    private const int Width = 800;
+    private const int Height = 400;
+
+    private static string RandX => Random.Shared.Next(0, Width).ToString();
+    private static string RandY => Random.Shared.Next(0, Height).ToString();
+}

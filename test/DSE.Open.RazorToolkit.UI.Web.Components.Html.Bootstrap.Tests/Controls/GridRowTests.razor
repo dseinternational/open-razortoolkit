@@ -1,0 +1,71 @@
+﻿@inherits TestContext
+
+@code {
+
+    [Fact]
+    public void GridRow_WithNoRowColumnsSet_ShouldRenderDefaultRowClass()
+    {
+    // Act
+        var output = RenderComponent<GridRow>();
+
+    // Assert
+        output.MarkupMatches("<div class=\"row\"></div>");
+    }
+
+    [Fact]
+    public void GridRow_WithRowColumns2_ShouldRender2ColumnsClass()
+    {
+        // Act
+        var output = Render(@<GridRow RowColumns="RowColumns.Rows2"></GridRow>);
+        // Assert
+        output.MarkupMatches("<div class=\"row row-cols-2\"></div>");
+    }
+
+    [Fact]
+    public void GridRow_WithSmResponsiveRowColumns4_ShouldRenderResponsiveClass()
+    {
+        // Act
+        var output = Render(@<GridRow RowColumnsSm="RowColumns.Rows4"></GridRow>);
+
+        // Assert
+        output.MarkupMatches("<div class=\"row row-cols-sm-4\"></div>");
+    }
+
+    [Fact]
+    public void GridRow_WithMdResponsiveRowColumns4_ShouldRenderResponsiveClass()
+    {
+        // Act
+        var output = Render(@<GridRow RowColumnsMd="RowColumns.Rows4"></GridRow>);
+        // Assert
+        output.MarkupMatches("<div class=\"row row-cols-md-4\"></div>");
+    }
+
+    [Fact]
+    public void GridRow_WithLgResponsiveRowColumns4_ShouldRenderResponsiveClass()
+    {
+        // Act
+        var output = Render(@<GridRow RowColumnsLg="RowColumns.Rows4"></GridRow>);
+        // Assert
+        output.MarkupMatches("<div class=\"row row-cols-lg-4\"></div>");
+    }
+
+    [Fact]
+    public void GridRow_WithXlResponsiveRowColumns4_ShouldRenderResponsiveClass()
+    {
+        // Act
+        var output = Render(@<GridRow RowColumnsXl="RowColumns.Rows4"></GridRow>);
+        // Assert
+        output.MarkupMatches("<div class=\"row row-cols-xl-4\"></div>");
+    }
+
+    [Fact]
+    public void GridRow_WithXxlResponsiveRowColumns4_ShouldRenderResponsiveClass()
+    {
+        // Act
+        var output = Render(@<GridRow RowColumnsXxl="RowColumns.Rows4"></GridRow>);
+        // Assert
+        output.MarkupMatches("<div class=\"row row-cols-xxl-4\"></div>");
+    }
+
+
+}

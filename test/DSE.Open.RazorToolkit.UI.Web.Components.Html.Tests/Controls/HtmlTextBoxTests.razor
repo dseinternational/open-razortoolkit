@@ -1,0 +1,86 @@
+﻿@inherits TestContext
+
+@code {
+
+        private const string HeaderText = "Header Text";
+        private const string Description = "Description";
+    private string _value = "some text";
+
+    [Fact]
+    public void HtmlTextBox_UsingAttributes_ShouldRender()
+    {
+        // Act
+        var output = Render(@<HtmlTextBox HeaderText="@HeaderText" DescriptionText="@Description" @bind-Value="@_value"></HtmlTextBox>);
+
+        // Assert
+        output.MarkupMatches(
+            @<div class="textbox">
+                <label class="textbox-header" for:ignore>@HeaderText</label>
+                <input type="text" id:ignore class="textbox-input" value="@_value">
+                <div class="textbox-description">@Description</div>
+            </div>
+            );
+    }
+
+    [Fact]
+    public void HtmlTextBox_UsingChildContent_ShouldRender()
+    {
+        // Act
+        var output = Render(
+            @<HtmlTextBox @bind-Value="@_value">
+                <Header>
+                    <label>@HeaderText</label>
+                </Header>
+                <Description>
+                    <div>@Description</div>
+                </Description>
+            </HtmlTextBox>
+            );
+
+        // Assert
+        output.MarkupMatches(
+            @<div class="textbox">
+                <label>@HeaderText</label>
+                <input type="text" id:ignore class="textbox-input" value="@_value">
+                <div>@Description</div>
+            </div>
+            );
+    }
+
+    [Fact]
+    public void HtmlTextBox_WithMinAndMax_ShouldRenderAttributes()
+    {
+        // Arrange
+        const int minLength = 5;
+        const int maxLength = 20;
+
+        // Act
+        var input = Render(@<HtmlTextBox @bind-Value="@_value" MinLength="@minLength" MaxLength="@maxLength"></HtmlTextBox>).Find(HtmlElements.Input);
+
+        // Assert
+        Assert.Equal(minLength.ToString(), input.Attributes.GetNamedItem(HtmlAttributes.MinLength)?.Value);
+        Assert.Equal(maxLength.ToString(), input.Attributes.GetNamedItem(HtmlAttributes.MaxLength)?.Value);
+    }
+
+    [Fact]
+    public void HtmlTextBox_Multiline_ShouldRenderTextarea()
+    {
+        // Act
+        var textArea = Render(@<HtmlTextBox Multiline @bind-Value="@_value"></HtmlTextBox>).Find(HtmlElements.TextArea);
+
+        // Assert
+        Assert.NotNull(textArea);
+        Assert.Equal(_value, textArea.Attributes.GetNamedItem(HtmlAttributes.Value)?.Value);
+    }
+
+    [Fact]
+    public void HtmlTextBox_WithSpellcheck_ShouldRenderAttribute()
+    {
+        // Act
+        var input = Render(@<HtmlTextBox @bind-Value="@_value" Spellcheck></HtmlTextBox>).Find(HtmlElements.Input);
+
+        // Assert
+        Assert.NotNull(input.Attributes.GetNamedItem(HtmlAttributes.SpellCheck));
+    }
+
+}

@@ -1,0 +1,22 @@
+﻿@page "/svg/ellipse"
+
+<h1>Ellipse</h1>
+
+<SvgContainer Width="800" Height="400" Stroke="@(Color.FromRgb(100, 100, 100))" style="margin-bottom:3rem;border: 1px solid #333">
+
+    @for (var i = 0; i < 40; i++)
+    {
+        var width = Random.Shared.Next(10, 50);
+        var height = Random.Shared.Next(10, 50);
+
+        var x = Random.Shared.Next(800 - width / 2);
+        var y = Random.Shared.Next(400 - height / 2);
+        <Ellipse CenterX="@x" CenterY="@y" RadiusX="@width" RadiusY="@height" Fill="@(Colors.GetRandom())" Stroke="@(Colors.Transparent)"/>
+    }
+
+</SvgContainer>
+
+
+@code {
+
+}

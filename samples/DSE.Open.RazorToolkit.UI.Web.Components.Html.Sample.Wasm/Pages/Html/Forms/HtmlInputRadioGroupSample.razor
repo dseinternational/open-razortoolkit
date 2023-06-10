@@ -1,0 +1,33 @@
+﻿@page "/html/forms/html-input-radio-group"
+
+<h1>HtmlInputRadioGroup</h1>
+
+<p>
+    <HtmlEditForm Model="@Model">
+        <InputRadioGroup @bind-Value="Model.Color">
+            Colour:
+            <br>
+            @foreach (var c in (Colors[])Enum.GetValues(typeof(Colors)))
+            {
+                <InputRadio Value="@c" /><text>&nbsp;</text>@c<br>
+            }
+        </InputRadioGroup>
+    </HtmlEditForm>
+</p>
+
+@code {
+    public Car Model { get; set; } = new();
+
+    public enum Colors
+    {
+        Black,
+        White,
+        Red,
+        Green
+    }
+
+    public class Car
+    {
+        public Colors Color { get; set; }
+    }
+}

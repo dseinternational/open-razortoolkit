@@ -1,0 +1,9 @@
+﻿@typeparam TValue
+@using DSE.Open.RazorToolkit.UI.Abstractions
+@inherits ViewComponent
+
+<CascadingValue Value="this">
+    <SvgContainer Width="600" Height="400" Stroke="@(Color.FromRgb(230,230,230))">
+        @ChildContent
+    </SvgContainer>
+</CascadingValue>

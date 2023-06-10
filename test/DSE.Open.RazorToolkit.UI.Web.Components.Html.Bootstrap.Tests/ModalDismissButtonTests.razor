@@ -1,0 +1,26 @@
+﻿@using HtmlElement = AngleSharp.Html.Dom.HtmlElement
+@inherits TestContext
+
+@code {
+
+    [Fact]
+    public void ModalDismissButton_WithClose_ShouldRenderCloseClass()
+    {
+        // Act
+        var dismissButton = Render(@<ModalDismissButton Close></ModalDismissButton>).Nodes.First() as HtmlElement;
+
+        // Assert
+        Assert.True(dismissButton?.ClassList.Contains(BootstrapClasses.ButtonClose));
+    }
+
+    [Fact]
+    public void ModalDismissButton_ShouldRenderToggleAttribute()
+    {
+        // Act
+        var output = Render(@<ModalDismissButton></ModalDismissButton>).Nodes.First() as HtmlElement;
+
+        // Assert
+        Assert.Equal(BootstrapToggle.Modal.ToAttributeString(), output?.GetAttribute(BootstrapDataAttributes.Toggle));
+    }
+
+}

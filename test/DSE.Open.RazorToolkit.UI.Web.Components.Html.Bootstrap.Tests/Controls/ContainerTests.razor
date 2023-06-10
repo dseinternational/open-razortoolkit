@@ -1,0 +1,26 @@
+﻿@inherits TestContext
+
+@code {
+
+    [Fact]
+    public void Container_WithNoType_ShouldRenderDefaultContainerClass()
+    {
+        // Act
+        var output = Render(@<Container></Container>);
+
+        // Assert
+        output.MarkupMatches("<div class=\"container\"></div>");
+    }
+
+    [Fact]
+    public void Container_WithFluidType_ShouldRenderContainerFluidClass()
+    {
+        // Act
+        var output = Render(@<Container ContainerType="ContainerType.Fluid"></Container>);
+
+        // Assert
+        output.MarkupMatches("<div class=\"container-fluid\"></div>");
+    }
+
+
+}

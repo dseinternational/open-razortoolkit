@@ -1,0 +1,45 @@
+﻿@using DSE.Open.RazorToolkit.UI.Web.Components.Html.Forms
+@inherits TestContext
+
+@code {
+
+    [Fact]
+    public void InputDate_ShouldRenderFormControlClass()
+    {
+        // Arrange
+        var value = DateTime.Now;
+
+        // Act
+        var output = Render(@<InputDate DateType="HtmlInputDateType.Date" @bind-Value="@value"/>);
+
+        // Assert
+        output.MarkupMatches(@<input type="date" class="@BootstrapClasses.FormControl" value="@value.ToString("yyyy-MM-dd")"/>);
+    }
+
+    [Fact]
+    public void InputDate_WithPlaintext_ShouldRenderPlaintextClass()
+    {
+        // Arrange
+        var value = DateTime.Now;
+
+        // Act
+        var output = Render(@<InputDate DateType="HtmlInputDateType.Date" @bind-Value="@value" PlainText/>);
+
+        // Assert
+        output.MarkupMatches(@<input type="date" class="@BootstrapClasses.FormControlPlaintext" value="@value.ToString("yyyy-MM-dd")"/>);
+    }
+
+    [Fact]
+    public void InputEmail_WithLargeSize_ShouldRenderFormControlLg()
+    {
+        // Arrange
+        var value = DateTime.Now;
+
+        // Act
+        var output = Render(@<InputDate DateType="HtmlInputDateType.Date" @bind-Value="@value" ControlSize="BootstrapSize.Large"/>);
+
+        // Assert
+        output.MarkupMatches(@<input type="date" class="@BootstrapClasses.FormControl @BootstrapClasses.FormControlLg" value="@value.ToString("yyyy-MM-dd")"/>);
+    }
+
+}

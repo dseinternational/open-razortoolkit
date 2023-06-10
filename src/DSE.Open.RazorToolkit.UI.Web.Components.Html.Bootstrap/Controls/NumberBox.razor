@@ -1,0 +1,43 @@
+﻿@typeparam TValue
+@inherits HtmlNumberBox<TValue>
+
+<HtmlBlock CssClass="@ComponentClass" CssStyle="@ComponentStyle" Language="@Language">
+    @if (Header is not null)
+    {
+        @Header
+    }
+    else if (!string.IsNullOrWhiteSpace(HeaderText))
+    {
+        <Label ForId="@InputId" Text="@HeaderText" CssClass="number-box-header"></Label>
+    }
+
+    <InputNumber Value="@CurrentValue"
+                 ValueExpression="@ValueExpression"
+                 ValueChanged="@ValueChanged"
+                 Id="@InputId"
+                 Name="@Name"
+                 ParsingErrorMessage="@ParsingErrorMessage"
+                 CssClass="number-box-input"
+                 ReadOnly="@ReadOnly"
+                 Disabled="@Disabled"
+                 Required="@Required"
+                 ControlSize="@ControlSize"
+                 PlainText="@PlainText"/>
+
+    @if (Description is not null)
+    {
+        @Description
+    }
+    else if (!string.IsNullOrWhiteSpace(DescriptionText))
+    {
+        <HtmlBlock CssClass="form-description number-box-description">@DescriptionText</HtmlBlock>
+    }
+
+    @if (ValidationFor is not null)
+    {
+        const string feedbackClass = $"{BootstrapClasses.InvalidFeedback} {BootstrapClasses.DisplayBlock}";
+        <HtmlBlock CssClass="@feedbackClass">
+            <Microsoft.AspNetCore.Components.Forms.ValidationMessage For="@ValidationFor"/>
+        </HtmlBlock>
+    }
+</HtmlBlock>

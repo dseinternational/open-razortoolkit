@@ -1,0 +1,54 @@
+﻿@using AngleSharp.Html.Dom
+
+@code {
+
+    [Fact]
+    public void HtmlDataGrid_WithItems_ShouldRenderItems()
+    {
+        // Arrange
+        using var ctx = new TestContext();
+        SetupJsForContext(ctx);
+
+        var people = People;
+
+        // Act
+        var output = ctx.Render(
+            @<HtmlDataGrid Items="@people">
+                <PropertyColumn Property="@(p => p.Name)" Sortable="true"/>
+                <PropertyColumn Property="@(p => p.Age)" Sortable="true"/>
+            </HtmlDataGrid>);
+
+        var allNodes = new List<INode>();
+        CollectNonTextNodes(output.Nodes, allNodes);
+
+        // Assert
+        Assert.True(allNodes.Any(n => n is IHtmlTableHeaderCellElement && n.TextContent.Contains(nameof(Person.Name))));
+        Assert.True(allNodes.Any(n => n is IHtmlTableHeaderCellElement && n.TextContent.Contains(nameof(Person.Age))));
+        Assert.Equal(3, allNodes.Count(n => people.Any(p => string.Equals(p.Name, n.TextContent, StringComparison.Ordinal))));
+        Assert.Equal(3, allNodes.Count(n => people.Any(p => string.Equals(p.Age.ToString(), n.TextContent, StringComparison.Ordinal))));
+    }
+
+    record Person(string Name, int Age);
+
+    private static void SetupJsForContext(TestContext ctx)
+    {
+        ctx.JSInterop.SetupModule("./_content/DSE.Open.RazorToolkit.UI.Web.Components.Html/Controls/HtmlDataGrid.razor.js");
+        ctx.JSInterop.Mode = JSRuntimeMode.Loose;
+    }
+
+    private static IQueryable<Person> People => new[] { new Person("John", 30), new Person("Jane", 25), new Person("Joe", 20) }.AsQueryable();
+
+    private static void CollectNonTextNodes(INodeList nodes, ICollection<INode> collectedNodes)
+    {
+        foreach (var node in nodes)
+        {
+            if (node.NodeType != NodeType.Text)
+            {
+                collectedNodes.Add(node);
+            }
+
+            CollectNonTextNodes(node.ChildNodes, collectedNodes);
+        }
+    }
+
+}

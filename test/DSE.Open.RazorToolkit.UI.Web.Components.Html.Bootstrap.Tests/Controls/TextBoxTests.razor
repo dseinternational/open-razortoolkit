@@ -1,0 +1,85 @@
+﻿@inherits TestContext
+
+@code {
+
+    [Fact]
+    public void TextBox_UsingAttributes_ShouldRender()
+    {
+        // Arrange
+        const string headerText = "Header Text";
+        const string description = "Description";
+        var value = "initial";
+
+        // Act
+        var output = Render(@<TextBox HeaderText="@headerText" DescriptionText="@description" @bind-Value="@value"></TextBox>);
+
+        // Assert
+        output.MarkupMatches(
+            @<div class="textbox">
+                <label class="form-label textbox-header" for:ignore>@headerText</label>
+                <input type="text" id:ignore class="form-control textbox-input" value="@value">
+                <div class="form-description textbox-description">@description</div>
+            </div>
+            );
+    }
+
+    [Fact]
+    public void TextBox_UsingChildContent_ShouldRender()
+    {
+        // Arrange
+        const string headerText = "Header Text";
+        const string description = "Description";
+        var value = "initial";
+
+        // Act
+        var output = Render(
+            @<TextBox @bind-Value="@value">
+                <Header>
+                    <label>@headerText</label>
+                </Header>
+                <Description>
+                    <div>@description</div>
+                </Description>
+            </TextBox>
+            );
+
+        // Assert
+        output.MarkupMatches(
+            @<div class="textbox">
+                <label>@headerText</label>
+                <input type="text" id:ignore class="form-control textbox-input" value="@value">
+                <div>@description</div>
+            </div>
+            );
+    }
+
+    [Fact]
+    public void TextBox_Multiline_ShouldRenderTextarea()
+    {
+        // Arrange
+        var value = "initial";
+
+        // Act
+        var textArea = Render(@<TextBox Multiline @bind-Value="@value"></TextBox>).Find(HtmlElements.TextArea);
+
+        // Assert
+        Assert.NotNull(textArea);
+        Assert.Equal(value, textArea.Attributes.GetNamedItem(HtmlAttributes.Value)?.Value);
+    }
+
+    [Fact]
+    public void TextBox_WithPlainTextAndLarge_ShouldRenderClasses()
+    {
+        // Arrange
+        var value = "some text";
+
+        // Act
+        var input = Render(@<TextBox @bind-Value="@value" PlainText ControlSize="BootstrapSize.Large"></TextBox>).Find(HtmlElements.Input);
+
+        // Assert
+        Assert.Contains(BootstrapClasses.FormControlPlaintext, input.ClassList);
+        Assert.Contains(BootstrapClasses.FormControlLg, input.ClassList);
+        Assert.DoesNotContain(BootstrapClasses.FormControl, input.ClassList);
+    }
+
+}

@@ -1,0 +1,17 @@
+﻿@inherits TestContext
+
+@code
+{
+    [Fact]
+    public void HtmlInputText_RendersInitialValue()
+    {
+        // Arrange
+        var value = "Hello";
+
+        // Act
+        var output = Render(@<HtmlInputText @bind-Value="@value"></HtmlInputText>);
+
+        // Assert
+        Assert.Contains("value=\"Hello\"", output.Markup);
+    }
+}

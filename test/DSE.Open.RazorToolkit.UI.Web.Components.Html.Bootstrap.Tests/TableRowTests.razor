@@ -1,0 +1,33 @@
+﻿@inherits TestContext
+
+@code {
+
+    [Fact]
+    public void TableRow_WithTopAlignment_ShouldRenderAlignTopClass()
+    {
+        // Act
+        var output = Render(
+            @<Table>
+                <TableRow VerticalAlignment="VerticalAlignmentOption.Top"></TableRow>
+            </Table>);
+
+        // Assert
+        var tableRow = output.Nodes.First().FirstChild?.FirstChild;
+        tableRow?.MarkupMatches($"<tr class=\"{BootstrapClasses.AlignTop}\"></tr>");
+    }
+
+    [Fact]
+    public void TableRow_WithTheme_ShouldRenderThemeClass()
+    {
+        // Act
+        var output = Render(
+            @<Table>
+                <TableRow Theme="BootstrapTheme.Primary"></TableRow>
+            </Table>);
+
+        // Assert
+        var tableRow = output.Nodes.First().FirstChild?.FirstChild;
+        tableRow?.MarkupMatches($"<tr class=\"{BootstrapClasses.TablePrimary}\"></tr>");
+    }
+
+}

@@ -1,0 +1,43 @@
+﻿@typeparam TValue
+@inherits HtmlLabelledInputNumericControl<TValue>
+
+<HtmlBlock class="@ComponentClass" style="@ComponentStyle" lang="@Language">
+    @if (Header is not null)
+    {
+        @Header
+    }
+    else if (!string.IsNullOrWhiteSpace(HeaderText))
+    {
+        <HtmlLabel ForId="@InputId" Text="@HeaderText" CssClass="number-box-header"></HtmlLabel>
+    }
+
+    <HtmlInputNumber Value="@CurrentValue"
+                     ValueExpression="@ValueExpression"
+                     ValueChanged="@ValueChanged"
+                     Id="@InputId"
+                     Name="@Name"
+                     ParsingErrorMessage="@ParsingErrorMessage"
+                     CssClass="number-box-input"
+                     Minimum="@Minimum"
+                     Maximum="@Maximum"
+                     Step="@Step"
+                     ReadOnly="@ReadOnly"
+                     Disabled="@Disabled"
+                     Required="@Required"/>
+
+    @if (Description is not null)
+    {
+        @Description
+    }
+    else if (!string.IsNullOrWhiteSpace(DescriptionText))
+    {
+        <HtmlBlock CssClass="number-box-description">@DescriptionText</HtmlBlock>
+    }
+
+    @if (ValidationFor is not null)
+    {
+        <HtmlBlock CssClass="number-box-validation">
+            <ValidationMessage For="@ValidationFor"/>
+        </HtmlBlock>
+    }
+</HtmlBlock>

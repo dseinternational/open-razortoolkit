@@ -1,0 +1,18 @@
+﻿@inherits TestContext
+
+@code {
+
+    [Fact]
+    public void InputRange_ShouldRenderDefaults()
+    {
+        // Arrange
+        var value = 0;
+
+        // Act
+        var output = Render(@<InputRange @bind-Value="@value"/>);
+
+        // Assert
+        Assert.Contains("class=\"form-range\"", output.Markup);
+    }
+
+}

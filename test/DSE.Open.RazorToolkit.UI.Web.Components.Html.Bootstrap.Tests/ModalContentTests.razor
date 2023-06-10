@@ -1,0 +1,16 @@
+﻿@using HtmlElement = AngleSharp.Html.Dom.HtmlElement
+@inherits TestContext
+
+@code {
+
+    [Fact]
+    public void ModalContent_ShouldRenderModalContentClass()
+    {
+        // Act
+        var modalBody = Render(@<ModalContent></ModalContent>).Nodes.First() as HtmlElement;
+
+        // Assert
+        Assert.True(modalBody?.ClassList.Contains(BootstrapClasses.ModalContent));
+    }
+
+}
