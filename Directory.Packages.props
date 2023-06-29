@@ -16,8 +16,8 @@
     <PackageVersion Include="Microsoft.AspNetCore.Components.Web" Version="7.0.8" />
     <PackageVersion Include="Microsoft.AspNetCore.Components.WebAssembly" Version="7.0.8" />
     <PackageVersion Include="Microsoft.AspNetCore.Components.WebAssembly.DevServer" Version="7.0.8" />
-    <PackageVersion Include="Microsoft.CodeCoverage" Version="17.6.2" />
-    <PackageVersion Include="Microsoft.NET.Test.Sdk" Version="17.6.2" />
+    <PackageVersion Include="Microsoft.CodeCoverage" Version="17.6.3" />
+    <PackageVersion Include="Microsoft.NET.Test.Sdk" Version="17.6.3" />
     <PackageVersion Include="Microsoft.SourceLink.GitHub" Version="1.1.1" />
     <PackageVersion Include="Moq" Version="4.18.4" />
     <PackageVersion Include="Nerdbank.GitVersioning" Version="3.6.133" />
