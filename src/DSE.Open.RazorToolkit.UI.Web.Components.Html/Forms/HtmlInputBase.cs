@@ -6,6 +6,7 @@ using System.Linq.Expressions;
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Forms;
 using DSE.Open.RazorToolkit.UI.Abstractions;
+using DSE.Open.Drawing;
 
 namespace DSE.Open.RazorToolkit.UI.Web.Components.Html.Forms;
 

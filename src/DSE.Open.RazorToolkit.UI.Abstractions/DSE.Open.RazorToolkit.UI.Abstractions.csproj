@@ -8,4 +8,8 @@
     <ProjectReference Include="..\DSE.Open.RazorToolkit.Core\DSE.Open.RazorToolkit.Core.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <PackageReference Include="DSE.Open.Drawing" />
+  </ItemGroup>
+
 </Project>

@@ -26,7 +26,7 @@
 
 @code {
     public bool Wrap { get; set; } = true;
-    public Orientation Orientation { get; set; } = Orientation.Horizontal;
+    public LayoutOrientation Orientation { get; set; } = LayoutOrientation.Horizontal;
     public bool Reverse { get; set; }
 
     public static string GetColor()
@@ -39,7 +39,7 @@
 
     public void ToggleOrientation()
     {
-        Orientation = Orientation == Orientation.Vertical ? Orientation.Horizontal : Orientation.Vertical;
+        Orientation = Orientation == LayoutOrientation.Vertical ? LayoutOrientation.Horizontal : LayoutOrientation.Vertical;
     }
 
 }

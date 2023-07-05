@@ -3,6 +3,7 @@
 
 using Microsoft.AspNetCore.Components.Rendering;
 using DSE.Open.RazorToolkit.UI.Abstractions;
+using DSE.Open.Drawing;
 using DSE.Open.RazorToolkit.UI.Abstractions.Html;
 
 namespace DSE.Open.RazorToolkit.UI.Web.Components.Html.Bootstrap;

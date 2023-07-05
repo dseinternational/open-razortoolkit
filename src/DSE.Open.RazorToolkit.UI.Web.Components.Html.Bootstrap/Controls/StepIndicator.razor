@@ -9,7 +9,7 @@
     public RenderFragment? ChildContent { get; set; }
 
     [Parameter]
-    public Orientation Orientation { get; set; }
+    public LayoutOrientation Orientation { get; set; }
 
     private string OrientationCss
     {
@@ -17,8 +17,8 @@
         {
             return Orientation switch
             {
-                Orientation.Horizontal => "stepper-horizontal",
-                Orientation.Vertical => "stepper-vertical",
+                LayoutOrientation.Horizontal => "stepper-horizontal",
+                LayoutOrientation.Vertical => "stepper-vertical",
                 _ => throw new InvalidOperationException($"Invalid {nameof(Orientation)} value.")
             };
         }

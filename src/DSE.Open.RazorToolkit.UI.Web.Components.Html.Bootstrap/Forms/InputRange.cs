@@ -3,6 +3,7 @@
 
 using System.Numerics;
 using DSE.Open.RazorToolkit.UI.Abstractions;
+using DSE.Open.Drawing;
 using DSE.Open.RazorToolkit.UI.Web.Components.Html.Forms;
 
 namespace DSE.Open.RazorToolkit.UI.Web.Components.Html.Bootstrap.Forms;

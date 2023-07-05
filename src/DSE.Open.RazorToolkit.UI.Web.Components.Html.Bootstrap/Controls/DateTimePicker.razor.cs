@@ -4,6 +4,7 @@
 using System.Collections.Immutable;
 using Microsoft.AspNetCore.Components;
 using DSE.Open.RazorToolkit.UI.Abstractions;
+using DSE.Open.Drawing;
 using DSE.Open.RazorToolkit.UI.Web.Components.Html.Bootstrap.Forms;
 
 namespace DSE.Open.RazorToolkit.UI.Web.Components.Html.Bootstrap.Controls;

@@ -3,6 +3,7 @@
 
 using Microsoft.AspNetCore.Components;
 using DSE.Open.RazorToolkit.UI.Abstractions;
+using DSE.Open.Drawing;
 using DSE.Open.RazorToolkit.UI.Abstractions.Html;
 
 namespace DSE.Open.RazorToolkit.UI.Web.Components.Html.Bootstrap.Controls;
@@ -17,14 +18,14 @@ public class FlexPanel : FlexElementBase
     public bool Wrap { get; set; }
 
     [Parameter]
-    public Orientation Orientation { get; set; }
+    public LayoutOrientation Orientation { get; set; }
 
     protected override void BuildFlexClasses(ClassBuilder classBuilder)
     {
         var reversedSuffix = FlexReversedSuffix;
         var breakpointSuffix = FlexBreakpointSuffix();
 
-        if (Orientation is Orientation.Vertical)
+        if (Orientation is LayoutOrientation.Vertical)
         {
             classBuilder.Add(BootstrapClasses.FlexColumn);
             classBuilder.AddIfValueTrue(Reversed, BootstrapClasses.FlexColumnReverse);

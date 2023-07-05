@@ -4,6 +4,7 @@
 using Microsoft.AspNetCore.Components;
 using DSE.Open.RazorToolkit.Core;
 using DSE.Open.RazorToolkit.UI.Abstractions;
+using DSE.Open.Drawing;
 
 namespace DSE.Open.RazorToolkit.UI.Web.Components.Html.Controls;
 

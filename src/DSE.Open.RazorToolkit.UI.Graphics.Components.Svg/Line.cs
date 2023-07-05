@@ -4,6 +4,7 @@
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Rendering;
 using DSE.Open.RazorToolkit.UI.Abstractions;
+using DSE.Open.Drawing;
 
 namespace DSE.Open.RazorToolkit.UI.Graphics.Components.Svg;
 
