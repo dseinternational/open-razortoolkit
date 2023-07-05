@@ -1,8 +1,9 @@
-﻿// Copyright (c) Down Syndrome Education International and Contributors. All Rights Reserved.
+// Copyright (c) Down Syndrome Education International and Contributors. All Rights Reserved.
 // Down Syndrome Education International and Contributors licence this file to you under the MIT license.
 
 using System.ComponentModel;
 using System.Globalization;
+using DSE.Open.Drawing;
 using DSE.Open.RazorToolkit.Core;
 
 namespace DSE.Open.RazorToolkit.UI.Abstractions;
