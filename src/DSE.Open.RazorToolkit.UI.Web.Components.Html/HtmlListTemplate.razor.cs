@@ -9,7 +9,7 @@ namespace DSE.Open.RazorToolkit.UI.Web.Components.Html;
 /// <summary>
 /// Renders a list of items using a template.
 /// </summary>
-public partial class HtmlListTemplate<TItem>
+public partial class HtmlListTemplate<TItem> : HtmlList
 {
     [Parameter]
     public RenderFragment<TItem>? ItemTemplate { get; set; }

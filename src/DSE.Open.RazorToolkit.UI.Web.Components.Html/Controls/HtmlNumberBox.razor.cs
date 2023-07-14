@@ -10,7 +10,8 @@ using DSE.Open.RazorToolkit.UI.Web.Components.Html.Forms;
 
 namespace DSE.Open.RazorToolkit.UI.Web.Components.Html.Controls;
 
-public partial class HtmlNumberBox<TValue> where TValue : INumber<TValue>, IMinMaxValue<TValue>
+public partial class HtmlNumberBox<TValue>: HtmlLabelledInputNumericControl<TValue>
+    where TValue : INumber<TValue>, IMinMaxValue<TValue>
 {
     private static int s_id;
 

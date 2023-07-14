@@ -5,13 +5,14 @@ using Microsoft.AspNetCore.Components;
 using DSE.Open.RazorToolkit.Core;
 using DSE.Open.RazorToolkit.UI.Abstractions;
 using DSE.Open.Drawing;
+using DSE.Open.RazorToolkit.UI.Web.Components.Html.Forms;
 
 namespace DSE.Open.RazorToolkit.UI.Web.Components.Html.Controls;
 
 /// <summary>
 /// Presents a checkbox with a label.
 /// </summary>
-public partial class HtmlCheckBox
+public partial class HtmlCheckBox : HtmlInputControl<bool>
 {
     private static int s_id;
 
@@ -25,7 +26,7 @@ public partial class HtmlCheckBox
 
     [Parameter]
     public bool IsReadOnly { get; set; }
-
+       
     protected override void BuildClasses(ClassBuilder classBuilder)
     {
         classBuilder.Add("checkbox");

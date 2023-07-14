@@ -1,4 +1,4 @@
-﻿// Copyright (c) Down Syndrome Education International and Contributors. All Rights Reserved.
+// Copyright (c) Down Syndrome Education International and Contributors. All Rights Reserved.
 // Down Syndrome Education International and Contributors licence this file to you under the MIT license.
 
 using Microsoft.AspNetCore.Components;
@@ -9,7 +9,7 @@ using DSE.Open.RazorToolkit.UI.Web.Components.Html.Forms;
 
 namespace DSE.Open.RazorToolkit.UI.Web.Components.Html.Controls;
 
-public partial class HtmlDateTimePicker<TValue>
+public partial class HtmlDateTimePicker<TValue> : HtmlLabelledInputControl<TValue>
 {
     private static int s_id;
 
