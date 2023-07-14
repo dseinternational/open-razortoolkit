@@ -10,7 +10,7 @@ namespace DSE.Open.RazorToolkit.UI.Web.Components.Html.Controls;
 /// </summary>
 /// <typeparam name="TGridItem">The type of data represented by each row in the grid.</typeparam>
 [CascadingTypeParameter(nameof(TGridItem))]
-public partial class HtmlDataGrid<TGridItem> : IAsyncDisposable
+public partial class HtmlDataGrid<TGridItem> : ComponentBase, IAsyncDisposable
 {
     /// <summary>
     /// A queryable source of data for the grid.
@@ -288,7 +288,7 @@ public partial class HtmlDataGrid<TGridItem> : IAsyncDisposable
     private async Task RefreshDataCoreAsync()
     {
         // Move into a "loading" state, cancelling any earlier-but-still-pending load
-        _pendingDataLoadCancellationTokenSource?.Cancel();
+        await _pendingDataLoadCancellationTokenSource?.CancelAsync();
         var thisLoadCts = _pendingDataLoadCancellationTokenSource = new CancellationTokenSource();
 
         if (_virtualizeComponent is not null)

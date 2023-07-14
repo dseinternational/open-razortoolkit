@@ -15,10 +15,10 @@ public class HtmlInputTextArea : HtmlTextInputElement
     public override HtmlInputType? InputType => null;
 
     protected override string OuterElementName => HtmlElements.TextArea;
-
+    
     /// <inheritdoc />
-    protected override bool TryParseValueFromString(string? value, out string? result, [NotNullWhen(false)] out string? validationErrorMessage)
-    {
+    protected override bool TryParseValueFromString(string? value, out string result, [NotNullWhen(false)] out string? validationErrorMessage)
+    {        
         result = value;
         validationErrorMessage = null;
         return true;

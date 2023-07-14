@@ -9,7 +9,7 @@ namespace DSE.Open.RazorToolkit.UI.Web.Components.Html.Controls;
 /// <summary>
 /// A component that provides a user interface for <see cref="PaginationState"/>.
 /// </summary>
-public partial class Paginator : IDisposable
+public partial class Paginator : ComponentBase, IDisposable
 {
     private readonly EventCallbackSubscriber<PaginationState> _totalItemCountChanged;
     private bool _disposed;
@@ -57,7 +57,7 @@ public partial class Paginator : IDisposable
         if (!_disposed)
         {
             if (disposing)
-            {
+            { 
                 _totalItemCountChanged.Dispose();
             }
             _disposed = true;
