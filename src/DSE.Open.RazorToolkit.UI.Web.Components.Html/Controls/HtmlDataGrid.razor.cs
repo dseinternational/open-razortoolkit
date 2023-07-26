@@ -288,7 +288,13 @@ public partial class HtmlDataGrid<TGridItem> : ComponentBase, IAsyncDisposable
     private async Task RefreshDataCoreAsync()
     {
         // Move into a "loading" state, cancelling any earlier-but-still-pending load
-        await _pendingDataLoadCancellationTokenSource?.CancelAsync();
+        var task  = _pendingDataLoadCancellationTokenSource?.CancelAsync();
+        
+        if (task is not null)
+        {
+            await task;
+        }
+        
         var thisLoadCts = _pendingDataLoadCancellationTokenSource = new CancellationTokenSource();
 
         if (_virtualizeComponent is not null)
