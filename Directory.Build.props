@@ -29,7 +29,7 @@
 
   <PropertyGroup>
     <Copyright>Copyright (c) 2023 The DSE.Open.RazorToolkit Authors.</Copyright>
-    <RepositoryUrl>https://github.com/dsegroup/DSE.Open.RazorToolkit</RepositoryUrl>
+    <RepositoryUrl>https://github.com/dseinternational/open-razortoolkit</RepositoryUrl>
   </PropertyGroup>
 
   <ItemGroup>
