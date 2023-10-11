@@ -44,6 +44,7 @@
     <Using Include="DSE.Open.Globalization" />
     <Using Include="DSE.Open.Values" />
     <Using Include="CommunityToolkit.Diagnostics" />
+    <Using Include="System.Globalization" />
   </ItemGroup>
 
 </Project>
