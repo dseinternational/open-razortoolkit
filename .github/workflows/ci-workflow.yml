@@ -56,7 +56,7 @@ jobs:
             --verbosity normal
         shell: pwsh
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.PACKAGES_TOKEN }}
           DSE_TEST_ENVIRONMENT: test
 
       - name: Pack DSE.Open.RazorToolkit.Core
