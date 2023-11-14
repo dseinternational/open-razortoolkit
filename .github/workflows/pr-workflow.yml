@@ -27,7 +27,7 @@ jobs:
       - name: Set .NET SDK version
         uses: actions/setup-dotnet@v3
         with:
-          dotnet-version: "8.0.100-rc.2.23502.2"
+          dotnet-version: "8.0.100"
 
       - name: Add GitHub Packages 'dseinternational' Feed
         run: dotnet nuget update source dseinternational --username "dsegroup" --password ${{ secrets.PACKAGES_TOKEN }} --store-password-in-clear-text --source "https://nuget.pkg.github.com/dseinternational/index.json" --configfile "./NuGet.config"
@@ -43,6 +43,9 @@ jobs:
       - name: Diagnostics
         run: 'Get-ChildItem Env:'
         shell: pwsh
+
+      - name: Restore
+        run: dotnet restore ./DSE.Open.RazorToolkit.sln --configuration ${{ matrix.configuration }}
 
       - name: Build
         run: dotnet build ./DSE.Open.RazorToolkit.sln --configuration ${{ matrix.configuration }}
