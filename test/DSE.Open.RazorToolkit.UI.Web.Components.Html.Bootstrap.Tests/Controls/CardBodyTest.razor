@@ -3,30 +3,30 @@
 @code {
 
     [Fact]
-    public void CardBody_ShouldRenderCardBodyClass()
+    public void CardFooter_ShouldRenderCardFooterClass()
     {
         // Act
-        var output = RenderComponent<CardBody>();
+        var output = RenderComponent<CardFooter>();
 
         // Assert
-        output.MarkupMatches($"<div class=\"{BootstrapClasses.CardBody}\"></div>");
+        output.MarkupMatches($"<div class=\"{BootstrapClasses.CardFooter}\"></div>");
     }
 
     [Fact]
-    public void CardBody_WithParentCard_ShouldHaveNonNullCard()
+    public void CardFooter_WithParentCard_ShouldHaveNonNullCard()
     {
         // Arrange
-        CardBody cardBody = default!;
+        CardFooter cardFooter = default!;
 
         // Act
         Render(
             @<Card>
-                <CardBody @ref="@cardBody"></CardBody>
+                <CardFooter @ref="@cardFooter"></CardFooter>
             </Card>
         );
 
         // Assert
-        Assert.NotNull(cardBody.ParentCard);
+        Assert.NotNull(cardFooter.ParentCard);
     }
 
 }
