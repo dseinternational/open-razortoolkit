@@ -23,6 +23,7 @@ public class Button : HtmlButton
     protected override void BuildClasses(ClassBuilder classBuilder)
     {
         Guard.IsNotNull(classBuilder);
+
         classBuilder.Add(BootstrapClasses.Button);
         classBuilder.Add(ButtonHelper.GetButtonThemeCss(ButtonStyle));
         classBuilder.Add(ButtonHelper.GetButtonSizeCss(Size));

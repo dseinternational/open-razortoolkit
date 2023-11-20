@@ -40,6 +40,8 @@ public class HtmlButton : HtmlContentElement
 
     protected override int AddAttributes(int sequence, RenderTreeBuilder builder)
     {
+        Guard.IsNotNull(builder);
+
         builder.AddAttribute(++sequence, "type", ButtonTypeString);
         builder.AddAttribute(++sequence, "form", FormId);
         builder.AddAttribute(++sequence, "formaction", FormAction);
@@ -51,7 +53,13 @@ public class HtmlButton : HtmlContentElement
 
     protected override int AddBindings(int sequence, RenderTreeBuilder builder)
     {
-        builder.AddAttribute(++sequence, "onclick", EventCallback.Factory.Create(this, Click));
+        Guard.IsNotNull(builder);
+
+        if (Click.HasDelegate)
+        {
+            builder.AddAttribute(++sequence, "onclick", EventCallback.Factory.Create(this, Click));
+        }
+
         return base.AddBindings(++sequence, builder);
     }
 }

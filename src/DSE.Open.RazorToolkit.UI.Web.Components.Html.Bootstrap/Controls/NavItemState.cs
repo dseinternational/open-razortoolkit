@@ -3,7 +3,7 @@
 
 namespace DSE.Open.RazorToolkit.UI.Web.Components.Html.Bootstrap.Controls;
 
-public enum NavItemLinkState
+public enum NavItemState
 {
     Default,
     Active,
