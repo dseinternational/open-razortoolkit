@@ -1,9 +1,8 @@
-﻿// Copyright (c) Down Syndrome Education International and Contributors. All Rights Reserved.
+// Copyright (c) Down Syndrome Education International and Contributors. All Rights Reserved.
 // Down Syndrome Education International and Contributors licence this file to you under the MIT license.
 
-using System.Diagnostics.CodeAnalysis;
-using Microsoft.AspNetCore.Components;
 using DSE.Open.RazorToolkit.UI.Abstractions;
+using Microsoft.AspNetCore.Components;
 
 namespace DSE.Open.RazorToolkit.UI.Web.Components.Html.Bootstrap.Controls;
 
@@ -15,7 +14,7 @@ public partial class Modal
     [Parameter]
     public bool Fade { get; set; }
 
-    [Parameter, DisallowNull]
+    [Parameter, EditorRequired]
     public required string Id { get; set; }
 
     [Parameter]
@@ -30,6 +29,7 @@ public partial class Modal
     protected override void BuildClasses(ClassBuilder classBuilder)
     {
         Guard.IsNotNull(classBuilder);
+
         classBuilder.Add(BootstrapClasses.Modal);
 
         if (Fade)
