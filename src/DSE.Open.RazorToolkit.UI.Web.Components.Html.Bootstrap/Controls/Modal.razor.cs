@@ -29,6 +29,7 @@ public partial class Modal
 
     protected override void BuildClasses(ClassBuilder classBuilder)
     {
+        Guard.IsNotNull(classBuilder);
         classBuilder.Add(BootstrapClasses.Modal);
 
         if (Fade)

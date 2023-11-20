@@ -16,6 +16,7 @@ public class CardImage : HtmlImage
 
     protected override void BuildClasses(ClassBuilder classBuilder)
     {
+        Guard.IsNotNull(classBuilder);
         switch (Location)
         {
             case CardImageLocation.Top:

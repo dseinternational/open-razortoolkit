@@ -22,6 +22,7 @@ public class ModalDialog : HtmlBlock
 
     protected override void BuildClasses(ClassBuilder classBuilder)
     {
+        Guard.IsNotNull(classBuilder);
         classBuilder.Add(BootstrapClasses.ModalDialog);
 
         if (Scrollable)

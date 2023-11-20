@@ -15,6 +15,7 @@ public class PaginationLink : HtmlHyperlink
 
     protected override void BuildClasses(ClassBuilder classBuilder)
     {
+        Guard.IsNotNull(classBuilder);
         classBuilder.Add(BootstrapClasses.PageLink);
         base.BuildClasses(classBuilder);
     }

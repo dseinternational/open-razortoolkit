@@ -17,6 +17,7 @@ public class InputTelephone : HtmlInputTelephone, IFormControl
 
     protected override void BuildClasses(ClassBuilder classBuilder)
     {
+        Guard.IsNotNull(classBuilder);
         classBuilder.AddFormControlClasses(this);
         base.BuildClasses(classBuilder);
     }

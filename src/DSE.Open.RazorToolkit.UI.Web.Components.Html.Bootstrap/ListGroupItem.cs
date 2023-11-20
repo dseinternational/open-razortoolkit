@@ -22,6 +22,7 @@ public class ListGroupItem : HtmlListItem
 
     protected override void BuildClasses(ClassBuilder classBuilder)
     {
+        Guard.IsNotNull(classBuilder);
         classBuilder.Add(BootstrapClasses.ListGroupItem);
         classBuilder.AddIfValueTrue(IsActive, BootstrapClasses.Active);
 

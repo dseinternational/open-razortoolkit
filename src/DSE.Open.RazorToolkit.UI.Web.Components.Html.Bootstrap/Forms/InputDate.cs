@@ -17,6 +17,7 @@ public class InputDate<TValue> : HtmlInputDate<TValue>, IFormControl
 
     protected override void BuildClasses(ClassBuilder classBuilder)
     {
+        Guard.IsNotNull(classBuilder);
         classBuilder.AddFormControlClasses(this);
         base.BuildClasses(classBuilder);
     }
@@ -26,6 +27,7 @@ public class InputCheckbox : HtmlInputCheckbox
 {
     protected override void BuildClasses(ClassBuilder classBuilder)
     {
+        Guard.IsNotNull(classBuilder);
         classBuilder.Add(BootstrapClasses.FormCheckInput);
         base.BuildClasses(classBuilder);
     }

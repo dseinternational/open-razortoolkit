@@ -22,6 +22,7 @@ public partial class ListGroupTemplate<TItem>
 
     protected override void BuildClasses(ClassBuilder classBuilder)
     {
+        Guard.IsNotNull(classBuilder);
         classBuilder.Add(BootstrapClasses.ListGroup);
         classBuilder.AddIfValueTrue(Flush, BootstrapClasses.ListGroupFlush);
         classBuilder.AddIfValueTrue(Numbered, BootstrapClasses.ListGroupNumbered);

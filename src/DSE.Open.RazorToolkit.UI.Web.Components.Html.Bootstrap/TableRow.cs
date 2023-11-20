@@ -16,6 +16,7 @@ public class TableRow : HtmlTableRow
 
     protected override void BuildClasses(ClassBuilder classBuilder)
     {
+        Guard.IsNotNull(classBuilder);
         classBuilder.Add(BootstrapTableHelper.GetTableThemeClass(Theme));
         classBuilder.Add(VerticalAlignment.GetBootstrapClass());
         base.BuildClasses(classBuilder);

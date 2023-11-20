@@ -18,6 +18,7 @@ public class InputNumber<TValue> : HtmlInputNumber<TValue>, IFormControl where T
 
     protected override void BuildClasses(ClassBuilder classBuilder)
     {
+        Guard.IsNotNull(classBuilder);
         classBuilder.AddFormControlClasses(this);
         base.BuildClasses(classBuilder);
     }

@@ -13,6 +13,7 @@ public partial class Card
 
     protected override void BuildClasses(ClassBuilder classBuilder)
     {
+        Guard.IsNotNull(classBuilder);
         classBuilder.Add(BootstrapClasses.Card);
         base.BuildClasses(classBuilder);
     }

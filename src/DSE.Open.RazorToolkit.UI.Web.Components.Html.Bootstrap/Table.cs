@@ -22,6 +22,7 @@ public class Table : HtmlTable
 
     protected override void BuildClasses(ClassBuilder classBuilder)
     {
+        Guard.IsNotNull(classBuilder);
         classBuilder.Add(BootstrapClasses.Table);
         classBuilder.Add(BootstrapTableHelper.GetTableThemeClass(Theme));
         classBuilder.Add(BootstrapTableHelper.GetTableBorderClass(Borders));

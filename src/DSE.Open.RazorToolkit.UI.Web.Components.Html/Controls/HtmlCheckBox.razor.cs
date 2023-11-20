@@ -24,9 +24,10 @@ public partial class HtmlCheckBox : HtmlInputControl<bool>
 
     [Parameter]
     public bool IsReadOnly { get; set; }
-       
+
     protected override void BuildClasses(ClassBuilder classBuilder)
     {
+        Guard.IsNotNull(classBuilder);
         classBuilder.Add("checkbox");
         base.BuildClasses(classBuilder);
     }
