@@ -1,0 +1,23 @@
+﻿@page "/bootstrap/controls/nav"
+
+<h1>Nav (Bootstrap)</h1>
+
+<Nav NavStyle="NavStyle.Tabs" NavLayout="NavLayout.Justify">
+    <NavItemLink State="GetState(0)" NavigateUri="#1" @onclick="@(e => Selected(0))">Item 1</NavItemLink>
+    <NavItemLink State="GetState(1)" NavigateUri="#2" @onclick="@(e => Selected(1))">Item 2</NavItemLink>
+    <NavItemLink State="GetState(2)" NavigateUri="#3" @onclick="@(e => Selected(2))">Item 3</NavItemLink>
+</Nav>
+
+@code {
+    private int SelectedIndex { get; set; }
+
+    private NavItemLinkState GetState(int index)
+    {
+        return SelectedIndex == index ? NavItemLinkState.Active : NavItemLinkState.Default;
+    }
+
+    private void Selected(int index)
+    {
+        SelectedIndex = index;
+    }
+}

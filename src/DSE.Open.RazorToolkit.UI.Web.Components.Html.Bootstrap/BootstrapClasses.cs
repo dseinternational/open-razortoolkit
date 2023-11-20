@@ -1,4 +1,4 @@
-﻿// Copyright (c) Down Syndrome Education International and Contributors. All Rights Reserved.
+// Copyright (c) Down Syndrome Education International and Contributors. All Rights Reserved.
 // Down Syndrome Education International and Contributors licence this file to you under the MIT license.
 
 namespace DSE.Open.RazorToolkit.UI.Web.Components.Html.Bootstrap;
@@ -1173,6 +1173,7 @@ public static class BootstrapClasses
     public const string NavLink = "nav-link";
     public const string NavPills = "nav-pills";
     public const string NavTabs = "nav-tabs";
+    public const string NavUnderline = "nav-underline";
     public const string Offcanvas = "offcanvas";
     public const string OffcanvasBackdrop = "offcanvas-backdrop";
     public const string OffcanvasBody = "offcanvas-body";
