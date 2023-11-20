@@ -34,7 +34,7 @@ public partial class Nav
             case NavStyle.Underline:
                 classBuilder.Add(BootstrapClasses.NavUnderline);
                 break;
-            case NavStyle.None:
+            case NavStyle.Default:
             default:
                 break;
         }
@@ -47,7 +47,7 @@ public partial class Nav
             case NavLayout.Justify:
                 classBuilder.Add(BootstrapClasses.NavJustified);
                 break;
-            case NavLayout.None:
+            case NavLayout.Default:
             default:
                 break;
         }
