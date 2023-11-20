@@ -3,7 +3,6 @@
 
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Rendering;
-using DSE.Open.RazorToolkit.Core;
 
 namespace DSE.Open.RazorToolkit.UI.Graphics.Components.Svg;
 

@@ -4,7 +4,6 @@
 using System.Diagnostics.CodeAnalysis;
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Rendering;
-using DSE.Open.RazorToolkit.Core;
 using DSE.Open.RazorToolkit.UI.Abstractions.Html;
 
 namespace DSE.Open.RazorToolkit.UI.Web.Components.Html.Forms;

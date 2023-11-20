@@ -1,9 +1,6 @@
 // Copyright (c) Down Syndrome Education International and Contributors. All Rights Reserved.
 // Down Syndrome Education International and Contributors licence this file to you under the MIT license.
 
-using System.Globalization;
-using DSE.Open.RazorToolkit.Core;
-
 namespace DSE.Open.RazorToolkit.UI.Graphics.Components.Svg;
 
 // length ::= number ("em" | "ex" | "px" | "in" | "cm" | "mm" | "pt" | "pc" | "%")?
