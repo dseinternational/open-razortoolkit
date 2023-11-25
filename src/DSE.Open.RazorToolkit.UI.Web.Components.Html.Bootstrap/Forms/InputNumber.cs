@@ -5,10 +5,14 @@ using System.Numerics;
 using Microsoft.AspNetCore.Components;
 using DSE.Open.RazorToolkit.UI.Abstractions;
 using DSE.Open.RazorToolkit.UI.Web.Components.Html.Forms;
+using System.Diagnostics.CodeAnalysis;
 
 namespace DSE.Open.RazorToolkit.UI.Web.Components.Html.Bootstrap.Forms;
 
-public class InputNumber<TValue> : HtmlInputNumber<TValue>, IFormControl where TValue : IMinMaxValue<TValue>, INumber<TValue>
+public class InputNumber<[DynamicallyAccessedMembers(DynamicallyAccessedMemberTypes.All)] TValue>
+    : HtmlInputNumber<TValue>,
+      IFormControl
+    where TValue : IMinMaxValue<TValue>, INumber<TValue>
 {
     [Parameter]
     public BootstrapSize ControlSize { get; set; }

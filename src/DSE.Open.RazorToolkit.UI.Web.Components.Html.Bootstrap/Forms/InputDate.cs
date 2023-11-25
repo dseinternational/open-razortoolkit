@@ -4,10 +4,13 @@
 using Microsoft.AspNetCore.Components;
 using DSE.Open.RazorToolkit.UI.Abstractions;
 using DSE.Open.RazorToolkit.UI.Web.Components.Html.Forms;
+using System.Diagnostics.CodeAnalysis;
 
 namespace DSE.Open.RazorToolkit.UI.Web.Components.Html.Bootstrap.Forms;
 
-public class InputDate<TValue> : HtmlInputDate<TValue>, IFormControl
+public class InputDate<[DynamicallyAccessedMembers(DynamicallyAccessedMemberTypes.All)] TValue>
+    : HtmlInputDate<TValue>,
+      IFormControl
 {
     [Parameter]
     public BootstrapSize ControlSize { get; set; }

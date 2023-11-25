@@ -4,10 +4,12 @@
 using Microsoft.AspNetCore.Components;
 using DSE.Open.RazorToolkit.UI.Abstractions;
 using DSE.Open.RazorToolkit.UI.Web.Components.Html.Forms;
+using System.Diagnostics.CodeAnalysis;
 
 namespace DSE.Open.RazorToolkit.UI.Web.Components.Html.Bootstrap.Forms;
 
-public class InputSelect<TValue> : HtmlInputSelect<TValue>
+public class InputSelect<[DynamicallyAccessedMembers(DynamicallyAccessedMemberTypes.All)] TValue>
+    : HtmlInputSelect<TValue>
 {
     [Parameter]
     public BootstrapSize SelectSize { get; set; }
@@ -15,6 +17,7 @@ public class InputSelect<TValue> : HtmlInputSelect<TValue>
     protected override void BuildClasses(ClassBuilder classBuilder)
     {
         Guard.IsNotNull(classBuilder);
+
         classBuilder.Add(BootstrapClasses.FormSelect);
 
         switch (SelectSize)

@@ -2,17 +2,18 @@
 // Down Syndrome Education International and Contributors licence this file to you under the MIT license.
 
 using System.Diagnostics.CodeAnalysis;
+using DSE.Open.RazorToolkit.UI.Abstractions.Html;
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Forms;
 using Microsoft.AspNetCore.Components.Rendering;
-using DSE.Open.RazorToolkit.UI.Abstractions.Html;
 
 namespace DSE.Open.RazorToolkit.UI.Web.Components.Html.Forms;
 
 /// <summary>
 /// A dropdown selection component.
 /// </summary>
-public class HtmlInputSelect<[DynamicallyAccessedMembers(DynamicallyAccessedMemberTypes.All)] TValue> : HtmlInputElement<TValue>
+public class HtmlInputSelect<[DynamicallyAccessedMembers(DynamicallyAccessedMemberTypes.All)] TValue>
+    : HtmlInputElement<TValue>
 {
     private readonly bool _isMultipleSelect;
 
@@ -64,7 +65,10 @@ public class HtmlInputSelect<[DynamicallyAccessedMembers(DynamicallyAccessedMemb
     }
 
     /// <inheritdoc />
-    protected override bool TryParseValueFromString(string? value, [MaybeNullWhen(false)] out TValue result, [NotNullWhen(false)] out string? validationErrorMessage)
+    protected override bool TryParseValueFromString(
+        string? value,
+        [MaybeNullWhen(false)] out TValue result,
+        [NotNullWhen(false)] out string? validationErrorMessage)
     {
         return this.TryParseSelectableValueFromString(value, out result, out validationErrorMessage);
     }

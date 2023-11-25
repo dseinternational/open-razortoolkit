@@ -9,7 +9,7 @@ using DSE.Open.RazorToolkit.UI.Abstractions.Html;
 
 namespace DSE.Open.RazorToolkit.UI.Web.Components.Html.Forms;
 
-public abstract class HtmlInputNumeric<TValue> : HtmlInputElement<TValue> where TValue : INumber<TValue>, IMinMaxValue<TValue>
+public abstract class HtmlInputNumeric<[DynamicallyAccessedMembers(DynamicallyAccessedMemberTypes.All)] TValue> : HtmlInputElement<TValue> where TValue : INumber<TValue>, IMinMaxValue<TValue>
 {
     private static readonly TValue? s_defaultStep = (TValue?)NumericInputHelper.GetDefaultStep<TValue>();
 

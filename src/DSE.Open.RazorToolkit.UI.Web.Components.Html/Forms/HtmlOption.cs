@@ -4,10 +4,11 @@
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Rendering;
 using DSE.Open.RazorToolkit.UI.Abstractions.Html;
+using System.Diagnostics.CodeAnalysis;
 
 namespace DSE.Open.RazorToolkit.UI.Web.Components.Html.Forms;
 
-public class HtmlOption<TValue> : HtmlContentElement
+public class HtmlOption<[DynamicallyAccessedMembers(DynamicallyAccessedMemberTypes.All)] TValue> : HtmlContentElement
 {
     [Parameter]
     public bool Disabled { get; set; }

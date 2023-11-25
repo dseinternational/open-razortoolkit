@@ -4,10 +4,11 @@
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Rendering;
 using DSE.Open.RazorToolkit.UI.Abstractions.Html;
+using System.Diagnostics.CodeAnalysis;
 
 namespace DSE.Open.RazorToolkit.UI.Web.Components.Html.Forms;
 
-public abstract class HtmlInputElement<TValue> : HtmlInputBase<TValue>
+public abstract class HtmlInputElement<[DynamicallyAccessedMembers(DynamicallyAccessedMemberTypes.All)] TValue> : HtmlInputBase<TValue>
 {
     /// <summary>
     /// If <see langword="true"/>, then the value is updated on the <c>input</c>
