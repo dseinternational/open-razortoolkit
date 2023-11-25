@@ -1,0 +1,90 @@
+﻿<div class="modal @ModalClass fade" id="@Id" tabindex="-1" role="dialog" style="display:@ModalDisplay; overflow-y: auto;" aria-labelledby="@LabelId" aria-hidden="@AriaHidden">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="me-3 text-warning mn-2">@((MarkupString)WarningIcon)</div>
+                <h1 class="modal-title fs-6" id="@LabelId">@Title</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" @onclick="Close"></button>
+            </div>
+            <div class="modal-body">
+                @Message
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" data-bs-dismiss="modal" @onclick="Close">@ButtonLabel</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+@code {
+    public bool IsVisible { get; private set; }
+
+    private string Title { get; set; } = string.Empty;
+
+    private string Message { get; set; } = string.Empty;
+
+    private string ButtonLabel { get; set; } = "OK";
+
+    private static int s_id = 420;
+
+    private string Id { get; set; } = $"mb-{s_id++:X}";
+    private string LabelId { get; set; } = $"mbl-{s_id++:X}";
+    private string ModalClass { get; set; } = "";
+    private string ModalDisplay { get; set; } = "none";
+    private string AriaHidden { get; set; } = "true";
+
+    private MessageBoxType MessageBoxType { get; set; }
+
+    private MessageBoxIcon MessageBoxIcon { get; set; }
+
+    public Task<MessageBoxResult> ShowAsync(
+        string title,
+        string message,
+        MessageBoxType type = MessageBoxType.Ok,
+        MessageBoxIcon icon = MessageBoxIcon.None)
+    {
+        Guard.IsNotNull(title);
+        Guard.IsNotNull(message);
+
+        Title = title;
+        Message = message;
+        MessageBoxType = type;
+        MessageBoxIcon = icon;
+
+        return ShowAsync();
+    }
+
+    private async Task<MessageBoxResult> ShowAsync()
+    {
+        ModalDisplay = "block";
+        ModalClass = "show";
+        AriaHidden = "false";
+        IsVisible = true;
+
+        StateHasChanged();
+
+        while (IsVisible)
+        {
+            await Task.Delay(100);
+        };
+
+        return MessageBoxResult.Ok;
+    }
+
+    private void Close()
+    {
+        ModalDisplay = "none";
+        ModalClass = "";
+        AriaHidden = "true";
+        IsVisible = false;
+
+        StateHasChanged();
+
+        Title = string.Empty;
+        Message = string.Empty;
+        MessageBoxType = default;
+        MessageBoxIcon = default;
+    }
+
+    private static readonly string WarningIcon = BootstrapIconsSvg.ExclamationTriangle.Replace("\"16\"", "\"1.5rem\"");
+}
