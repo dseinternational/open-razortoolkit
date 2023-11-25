@@ -5,7 +5,7 @@
 <HtmlBlock style="margin:2rem 0">
     <Label>Input</Label>
     <InputSelect @bind-Value="@Value">
-        @foreach (var (label, val) in OPtions)
+        @foreach (var (label, val) in Options)
         {
             <HtmlOption Value="val" Label="@label"></HtmlOption>
         }
@@ -17,9 +17,9 @@
 @code {
     public string Value { get; set; }
 
-    public Dictionary<string, string> OPtions { get; set; } = new Dictionary<string, string>()
+    public Dictionary<string, string> Options { get; set; } = new Dictionary<string, string>()
     {
         { "Option 1", "hello"},
-        {  "Option 2", "hi!"}
+        { "Option 2", "hi!"}
     };
 }
