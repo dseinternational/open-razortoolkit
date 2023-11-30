@@ -9,9 +9,9 @@
     <PackageVersion Include="CommunityToolkit.Diagnostics" Version="8.2.0" />
     <PackageVersion Include="coverlet.collector" Version="6.0.0" />
     <PackageVersion Include="DSE.Open" Version="0.3.0-alpha-0012" />
-    <PackageVersion Include="DSE.Open.Drawing" Version="0.14.0-alpha-0010" />
-    <PackageVersion Include="DSE.Open.Globalization" Version="0.14.0-alpha-0010" />
-    <PackageVersion Include="DSE.Open.Values" Version="0.14.0-alpha-0010" />
+    <PackageVersion Include="DSE.Open.Drawing" Version="0.14.0-alpha-0012" />
+    <PackageVersion Include="DSE.Open.Globalization" Version="0.14.0-alpha-0012" />
+    <PackageVersion Include="DSE.Open.Values" Version="0.14.0-alpha-0012" />
     <PackageVersion Include="FluentAssertions" Version="6.12.0" />
     <PackageVersion Include="FluentValidation" Version="11.8.1" />
     <PackageVersion Include="Markdig" Version="0.33.0" />
