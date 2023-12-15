@@ -19,13 +19,13 @@ public class HtmlImage : HtmlElement
 
     protected override void OnParametersSet()
     {
-        Guard.IsNotNullOrEmpty(Source);
+        ArgumentException.ThrowIfNullOrEmpty(Source);
         base.OnParametersSet();
     }
 
     protected override int AddAttributes(int sequence, RenderTreeBuilder builder)
     {
-        Guard.IsNotNull(builder);
+        ArgumentNullException.ThrowIfNull(builder);
         builder.AddAttribute(++sequence, HtmlAttributes.Src, Source);
         builder.AddAttribute(++sequence, HtmlAttributes.Alt, Alt);
         return base.AddAttributes(++sequence, builder);

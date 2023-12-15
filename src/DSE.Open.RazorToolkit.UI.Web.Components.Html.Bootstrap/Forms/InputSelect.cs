@@ -16,7 +16,7 @@ public class InputSelect<[DynamicallyAccessedMembers(DynamicallyAccessedMemberTy
 
     protected override void BuildClasses(ClassBuilder classBuilder)
     {
-        Guard.IsNotNull(classBuilder);
+        ArgumentNullException.ThrowIfNull(classBuilder);
 
         classBuilder.Add(BootstrapClasses.FormSelect);
 

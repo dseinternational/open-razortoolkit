@@ -13,14 +13,14 @@ public class ModalToggleButton : Button
 
     protected override void OnParametersSet()
     {
-        Guard.IsNotNullOrEmpty(TargetId);
+        ArgumentException.ThrowIfNullOrEmpty(TargetId);
         base.OnParametersSet();
     }
 
     protected override int AddAttributes(int sequence, RenderTreeBuilder builder)
     {
-        Guard.IsNotNull(builder);
-        Guard.IsNotNullOrWhiteSpace(TargetId);
+        ArgumentNullException.ThrowIfNull(builder);
+        ArgumentException.ThrowIfNullOrWhiteSpace(TargetId);
 
         builder.AddAttribute(sequence++, BootstrapDataAttributes.Toggle, "modal");
 

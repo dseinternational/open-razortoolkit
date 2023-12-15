@@ -9,7 +9,7 @@ public partial class CheckBox
 {
     protected override void BuildClasses(ClassBuilder classBuilder)
     {
-        Guard.IsNotNull(classBuilder);
+        ArgumentNullException.ThrowIfNull(classBuilder);
         classBuilder.Add(BootstrapClasses.FormCheck);
         base.BuildClasses(classBuilder);
     }

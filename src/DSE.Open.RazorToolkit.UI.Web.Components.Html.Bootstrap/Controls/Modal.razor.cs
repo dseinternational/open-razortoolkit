@@ -22,13 +22,13 @@ public partial class Modal
 
     protected override void OnParametersSet()
     {
-        Guard.IsNotNullOrEmpty(Id);
+        ArgumentException.ThrowIfNullOrEmpty(Id);
         base.OnParametersSet();
     }
 
     protected override void BuildClasses(ClassBuilder classBuilder)
     {
-        Guard.IsNotNull(classBuilder);
+        ArgumentNullException.ThrowIfNull(classBuilder);
 
         classBuilder.Add(BootstrapClasses.Modal);
 

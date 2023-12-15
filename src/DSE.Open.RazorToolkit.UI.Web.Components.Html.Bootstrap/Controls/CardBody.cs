@@ -13,7 +13,7 @@ public class CardBody : HtmlBlock
 
     protected override void BuildClasses(ClassBuilder classBuilder)
     {
-        Guard.IsNotNull(classBuilder);
+        ArgumentNullException.ThrowIfNull(classBuilder);
         classBuilder.Add(BootstrapClasses.CardBody);
         base.BuildClasses(classBuilder);
     }

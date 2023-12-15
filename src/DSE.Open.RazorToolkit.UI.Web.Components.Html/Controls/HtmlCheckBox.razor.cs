@@ -27,7 +27,7 @@ public partial class HtmlCheckBox : HtmlInputControl<bool>
 
     protected override void BuildClasses(ClassBuilder classBuilder)
     {
-        Guard.IsNotNull(classBuilder);
+        ArgumentNullException.ThrowIfNull(classBuilder);
         classBuilder.Add("checkbox");
         base.BuildClasses(classBuilder);
     }

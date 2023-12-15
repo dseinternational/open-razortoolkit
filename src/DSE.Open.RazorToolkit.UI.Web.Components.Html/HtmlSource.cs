@@ -27,7 +27,7 @@ public class HtmlSource : HtmlElement
 
     protected override void OnParametersSet()
     {
-        Guard.IsNotNullOrEmpty(Source);
+        ArgumentException.ThrowIfNullOrEmpty(Source);
         base.OnParametersSet();
     }
 

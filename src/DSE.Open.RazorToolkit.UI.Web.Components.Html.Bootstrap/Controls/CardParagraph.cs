@@ -13,7 +13,7 @@ public class CardParagraph : Paragraph
 
     protected override void BuildClasses(ClassBuilder classBuilder)
     {
-        Guard.IsNotNull(classBuilder);
+        ArgumentNullException.ThrowIfNull(classBuilder);
         classBuilder.Add("card-text");
         base.BuildClasses(classBuilder);
     }
