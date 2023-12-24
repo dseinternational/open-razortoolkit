@@ -15,6 +15,8 @@ public class Path : SvgPaintedContentElement
 
     protected override int AddAttributes(int sequence, RenderTreeBuilder builder)
     {
+        ArgumentNullException.ThrowIfNull(builder);
+
         builder.AddAttribute(++sequence, "d", DrawCommands);
 
         return base.AddAttributes(++sequence, builder);

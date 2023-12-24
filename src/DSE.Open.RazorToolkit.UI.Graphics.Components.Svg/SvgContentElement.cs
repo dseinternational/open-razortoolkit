@@ -1,4 +1,4 @@
-﻿// Copyright (c) Down Syndrome Education International and Contributors. All Rights Reserved.
+// Copyright (c) Down Syndrome Education International and Contributors. All Rights Reserved.
 // Down Syndrome Education International and Contributors licence this file to you under the MIT license.
 
 using Microsoft.AspNetCore.Components;
@@ -17,6 +17,8 @@ public abstract class SvgContentElement : SvgElement
 
     protected override int AddContent(int sequence, RenderTreeBuilder builder)
     {
+        ArgumentNullException.ThrowIfNull(builder);
+
         builder.AddContent(++sequence, ChildContent);
         return ++sequence;
     }

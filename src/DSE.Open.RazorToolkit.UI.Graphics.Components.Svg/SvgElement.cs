@@ -1,4 +1,4 @@
-﻿// Copyright (c) Down Syndrome Education International and Contributors. All Rights Reserved.
+// Copyright (c) Down Syndrome Education International and Contributors. All Rights Reserved.
 // Down Syndrome Education International and Contributors licence this file to you under the MIT license.
 
 using System.Diagnostics.CodeAnalysis;
@@ -22,6 +22,8 @@ public abstract class SvgElement : SvgComponent
 
     protected override void BuildRenderTree(RenderTreeBuilder builder)
     {
+        ArgumentNullException.ThrowIfNull(builder);
+
         builder.OpenElement(0, OuterElementName);
         builder.AddMultipleAttributes(1, AdditionalAttributes);
         var sequence = AddAttributes(2, builder);
@@ -38,6 +40,8 @@ public abstract class SvgElement : SvgComponent
     /// <param name="builder"></param>
     protected virtual int AddAttributes(int sequence, RenderTreeBuilder builder)
     {
+        ArgumentNullException.ThrowIfNull(builder);
+
         builder.AddAttribute(++sequence, "id", Id);
         builder.AddAttribute(++sequence, "lang", Language);
         builder.AddAttribute(++sequence, "tabindex", TabIndex);

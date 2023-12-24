@@ -49,7 +49,7 @@ public readonly record struct Length(double Value, LengthUnits UnitType = Length
             goto Fail;
         }
 
-        if (numbers == string.Empty)
+        if (string.IsNullOrEmpty(numbers))
         {
             length = default;
             return true;
@@ -60,7 +60,7 @@ public readonly record struct Length(double Value, LengthUnits UnitType = Length
             goto Fail;
         }
 
-        if (label == string.Empty)
+        if (string.IsNullOrEmpty(label))
         {
             length = new Length(numeric);
             return true;

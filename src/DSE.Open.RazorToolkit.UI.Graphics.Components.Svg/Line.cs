@@ -31,6 +31,8 @@ public class Line : SvgContentElement
 
     protected override int AddAttributes(int sequence, RenderTreeBuilder builder)
     {
+        ArgumentNullException.ThrowIfNull(builder);
+
         builder.AddAttribute(++sequence, "x1", X1);
         builder.AddAttribute(++sequence, name: "y1", Y1);
 

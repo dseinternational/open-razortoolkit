@@ -6,18 +6,18 @@ using Microsoft.AspNetCore.Components.Rendering;
 
 namespace DSE.Open.RazorToolkit.UI.Graphics.Components.Svg;
 
-public class Rectangle: SvgPaintedContentElement
+public class Text : SvgPaintedContentElement
 {
-    protected override string OuterElementName => "rect";
+    protected override string OuterElementName => "text";
 
     /// <summary>
-    /// The x coordinate of the rectangle.
+    /// The x coordinate of the text.
     /// </summary>
     [Parameter]
     public Length? X { get; set; }
 
     /// <summary>
-    /// The y coordinate of the rectangle.
+    /// The y coordinate of the text.
     /// </summary>
     [Parameter]
     public Length? Y { get; set; }

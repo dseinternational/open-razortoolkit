@@ -22,6 +22,8 @@ public class PolyLine: SvgContentElement
 
     protected override int AddAttributes(int sequence, RenderTreeBuilder builder)
     {
+        ArgumentNullException.ThrowIfNull(builder);
+
         builder.AddAttribute(++sequence, "points", Points);
 
         builder.AddAttribute(++sequence, "stroke", Stroke?.ToString());
