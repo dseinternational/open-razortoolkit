@@ -28,7 +28,7 @@ public partial class Modal
 
     protected override void BuildClasses(ClassBuilder classBuilder)
     {
-        ArgumentNullException.ThrowIfNull(classBuilder);
+        Guard.IsNotNull(classBuilder);
 
         classBuilder.Add(BootstrapClasses.Modal);
 

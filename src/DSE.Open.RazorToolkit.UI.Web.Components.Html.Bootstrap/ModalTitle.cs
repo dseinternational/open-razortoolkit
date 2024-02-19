@@ -9,7 +9,7 @@ public class ModalTitle : Heading
 {
     protected override void BuildClasses(ClassBuilder classBuilder)
     {
-        ArgumentNullException.ThrowIfNull(classBuilder);
+        Guard.IsNotNull(classBuilder);
         classBuilder.Add(BootstrapClasses.ModalTitle);
         base.BuildClasses(classBuilder);
     }

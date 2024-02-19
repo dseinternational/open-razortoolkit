@@ -57,7 +57,7 @@ public partial class Spinner
 
     protected override void BuildClasses(ClassBuilder classBuilder)
     {
-        ArgumentNullException.ThrowIfNull(classBuilder);
+        Guard.IsNotNull(classBuilder);
         classBuilder.Add(SpinnerTypeClass);
         classBuilder.Add(SpinnerThemeClass);
         classBuilder.AddIfValueTrue(Small, SpinnerSmallClass);

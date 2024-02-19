@@ -19,8 +19,8 @@ public partial class Nav
 
     protected override void BuildClasses(ClassBuilder classBuilder)
     {
-        ArgumentNullException.ThrowIfNull(classBuilder);
-        ArgumentNullException.ThrowIfNull(classBuilder);
+        Guard.IsNotNull(classBuilder);
+        Guard.IsNotNull(classBuilder);
 
         classBuilder.Add(BootstrapClasses.Nav);
 

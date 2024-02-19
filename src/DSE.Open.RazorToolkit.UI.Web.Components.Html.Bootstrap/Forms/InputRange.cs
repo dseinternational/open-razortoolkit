@@ -11,7 +11,7 @@ public class InputRange<TValue> : HtmlInputRange<TValue> where TValue : IMinMaxV
 {
     protected override void BuildClasses(ClassBuilder classBuilder)
     {
-        ArgumentNullException.ThrowIfNull(classBuilder);
+        Guard.IsNotNull(classBuilder);
         classBuilder.Add(BootstrapClasses.FormRange);
         base.BuildClasses(classBuilder);
     }

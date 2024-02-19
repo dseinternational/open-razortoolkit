@@ -19,7 +19,7 @@ public abstract class FlexElementBase : HtmlContentElement
 
     protected override void BuildClasses(ClassBuilder classBuilder)
     {
-        ArgumentNullException.ThrowIfNull(classBuilder);
+        Guard.IsNotNull(classBuilder);
         var flexClass = BreakpointHelper.AppendBreakpoint("d", FlexBreakpoint) + "-flex";
         classBuilder.Add(flexClass);
 

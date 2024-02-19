@@ -27,7 +27,7 @@ public class HtmlOptionGroup : HtmlContentElement
 
     protected override void OnParametersSet()
     {
-        ArgumentNullException.ThrowIfNull(Label);
+        Guard.IsNotNull(Label);
         base.OnParametersSet();
     }
 }

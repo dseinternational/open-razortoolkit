@@ -19,7 +19,7 @@ public partial class TableTemplate<TItem>
 
     protected override void BuildClasses(ClassBuilder classBuilder)
     {
-        ArgumentNullException.ThrowIfNull(classBuilder);
+        Guard.IsNotNull(classBuilder);
         // Add these first
         classBuilder.AddIfValueTrue(EnableRowHoverIndication, "table-hover");
         classBuilder.AddIfValueTrue(ShowBorders, "table-bordered");

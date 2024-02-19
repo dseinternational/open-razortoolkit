@@ -10,7 +10,7 @@ public static class ClassBuilderExtensions
 {
     public static void ApplyBackgroundColor(this ClassBuilder classBuilder, BackgroundColor backgroundColor)
     {
-        ArgumentNullException.ThrowIfNull(classBuilder);
+        Guard.IsNotNull(classBuilder);
 
         switch (backgroundColor)
         {
@@ -52,7 +52,7 @@ public static class ClassBuilderExtensions
 
     public static void ApplyContainerStyle(this ClassBuilder classBuilder, ContainerType container)
     {
-        ArgumentNullException.ThrowIfNull(classBuilder);
+        Guard.IsNotNull(classBuilder);
 
         switch (container)
         {
@@ -84,7 +84,7 @@ public static class ClassBuilderExtensions
 
     public static void ApplyTextColor(this ClassBuilder classBuilder, TextColor textColor)
     {
-        ArgumentNullException.ThrowIfNull(classBuilder);
+        Guard.IsNotNull(classBuilder);
 
         switch (textColor)
         {

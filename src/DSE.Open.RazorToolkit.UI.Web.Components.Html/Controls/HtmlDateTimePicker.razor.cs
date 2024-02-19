@@ -27,7 +27,7 @@ public partial class HtmlDateTimePicker<TValue> : HtmlLabelledInputControl<TValu
 
     protected override void BuildClasses(ClassBuilder classBuilder)
     {
-        ArgumentNullException.ThrowIfNull(classBuilder);
+        Guard.IsNotNull(classBuilder);
         classBuilder.Add("datepicker");
         base.BuildClasses(classBuilder);
     }

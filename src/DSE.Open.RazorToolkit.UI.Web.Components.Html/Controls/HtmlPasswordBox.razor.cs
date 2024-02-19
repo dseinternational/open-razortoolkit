@@ -27,7 +27,7 @@ public partial class HtmlPasswordBox : HtmlLabelledInputControl<string>
 
     protected override void BuildClasses(ClassBuilder classBuilder)
     {
-        ArgumentNullException.ThrowIfNull(classBuilder);
+        Guard.IsNotNull(classBuilder);
         classBuilder.Add("password-box");
         base.BuildClasses(classBuilder);
     }

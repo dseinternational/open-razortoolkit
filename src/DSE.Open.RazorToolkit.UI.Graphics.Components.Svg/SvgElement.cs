@@ -22,7 +22,7 @@ public abstract class SvgElement : SvgComponent
 
     protected override void BuildRenderTree(RenderTreeBuilder builder)
     {
-        ArgumentNullException.ThrowIfNull(builder);
+        Guard.IsNotNull(builder);
 
         builder.OpenElement(0, OuterElementName);
         builder.AddMultipleAttributes(1, AdditionalAttributes);
@@ -40,7 +40,7 @@ public abstract class SvgElement : SvgComponent
     /// <param name="builder"></param>
     protected virtual int AddAttributes(int sequence, RenderTreeBuilder builder)
     {
-        ArgumentNullException.ThrowIfNull(builder);
+        Guard.IsNotNull(builder);
 
         builder.AddAttribute(++sequence, "id", Id);
         builder.AddAttribute(++sequence, "lang", Language);

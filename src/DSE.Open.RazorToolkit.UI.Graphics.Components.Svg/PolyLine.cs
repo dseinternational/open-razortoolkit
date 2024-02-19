@@ -22,7 +22,7 @@ public class PolyLine: SvgContentElement
 
     protected override int AddAttributes(int sequence, RenderTreeBuilder builder)
     {
-        ArgumentNullException.ThrowIfNull(builder);
+        Guard.IsNotNull(builder);
 
         builder.AddAttribute(++sequence, "points", Points);
 

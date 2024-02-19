@@ -22,7 +22,7 @@ public class Button : HtmlButton
 
     protected override void BuildClasses(ClassBuilder classBuilder)
     {
-        ArgumentNullException.ThrowIfNull(classBuilder);
+        Guard.IsNotNull(classBuilder);
 
         classBuilder.Add(BootstrapClasses.Button);
         classBuilder.Add(ButtonHelper.GetButtonThemeCss(ButtonStyle));

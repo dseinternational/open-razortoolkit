@@ -28,7 +28,7 @@ public class Container : HtmlBlock
 
     protected override void BuildClasses(ClassBuilder classBuilder)
     {
-        ArgumentNullException.ThrowIfNull(classBuilder);
+        Guard.IsNotNull(classBuilder);
         classBuilder.Add(ContainerClass);
         base.BuildClasses(classBuilder);
     }

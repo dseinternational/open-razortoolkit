@@ -25,7 +25,7 @@ public class HtmlImage : HtmlElement
 
     protected override int AddAttributes(int sequence, RenderTreeBuilder builder)
     {
-        ArgumentNullException.ThrowIfNull(builder);
+        Guard.IsNotNull(builder);
         builder.AddAttribute(++sequence, HtmlAttributes.Src, Source);
         builder.AddAttribute(++sequence, HtmlAttributes.Alt, Alt);
         return base.AddAttributes(++sequence, builder);

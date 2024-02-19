@@ -13,7 +13,7 @@ public class CardSubtitle : Heading
 
     protected override void BuildClasses(ClassBuilder classBuilder)
     {
-        ArgumentNullException.ThrowIfNull(classBuilder);
+        Guard.IsNotNull(classBuilder);
         classBuilder.Add(BootstrapClasses.CardSubtitle);
         base.BuildClasses(classBuilder);
     }

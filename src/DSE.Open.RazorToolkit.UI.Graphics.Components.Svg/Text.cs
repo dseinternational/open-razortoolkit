@@ -24,7 +24,7 @@ public class Text : SvgPaintedContentElement
 
     protected override int AddAttributes(int sequence, RenderTreeBuilder builder)
     {
-        ArgumentNullException.ThrowIfNull(builder);
+        Guard.IsNotNull(builder);
 
         builder.AddAttribute(++sequence, "x", X);
         builder.AddAttribute(++sequence, name: "y", Y);

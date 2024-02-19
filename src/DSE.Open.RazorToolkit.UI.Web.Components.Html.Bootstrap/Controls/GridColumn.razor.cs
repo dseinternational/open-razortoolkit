@@ -32,7 +32,7 @@ public partial class GridColumn
 
     protected override void BuildClasses(ClassBuilder classBuilder)
     {
-        ArgumentNullException.ThrowIfNull(classBuilder);
+        Guard.IsNotNull(classBuilder);
         var classes = new List<string>
         {
             ColumnClass(Breakpoint.ExtraSmall, ColumnSpan),

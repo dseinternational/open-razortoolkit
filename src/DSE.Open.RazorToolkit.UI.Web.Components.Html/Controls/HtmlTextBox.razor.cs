@@ -33,7 +33,7 @@ public partial class HtmlTextBox : HtmlLabelledInputControl<string>
 
     protected override void BuildClasses(ClassBuilder classBuilder)
     {
-        ArgumentNullException.ThrowIfNull(classBuilder);
+        Guard.IsNotNull(classBuilder);
         classBuilder.Add("textbox");
         base.BuildClasses(classBuilder);
     }

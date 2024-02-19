@@ -40,7 +40,7 @@ public class HtmlButton : HtmlContentElement
 
     protected override int AddAttributes(int sequence, RenderTreeBuilder builder)
     {
-        ArgumentNullException.ThrowIfNull(builder);
+        Guard.IsNotNull(builder);
 
         builder.AddAttribute(++sequence, "type", ButtonTypeString);
         builder.AddAttribute(++sequence, "form", FormId);
@@ -53,7 +53,7 @@ public class HtmlButton : HtmlContentElement
 
     protected override int AddBindings(int sequence, RenderTreeBuilder builder)
     {
-        ArgumentNullException.ThrowIfNull(builder);
+        Guard.IsNotNull(builder);
 
         if (Click.HasDelegate)
         {

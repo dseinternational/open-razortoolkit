@@ -28,7 +28,7 @@ public partial class ListGroup
 
     protected override void BuildClasses(ClassBuilder classBuilder)
     {
-        ArgumentNullException.ThrowIfNull(classBuilder);
+        Guard.IsNotNull(classBuilder);
         classBuilder.Add(BootstrapClasses.ListGroup);
         classBuilder.AddIfValueTrue(Flush, BootstrapClasses.ListGroupFlush);
         classBuilder.AddIfValueTrue(Numbered, BootstrapClasses.ListGroupNumbered);

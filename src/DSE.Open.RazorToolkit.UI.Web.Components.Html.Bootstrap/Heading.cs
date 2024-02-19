@@ -16,7 +16,7 @@ public class Heading : HtmlHeading
 
     protected override void BuildClasses(ClassBuilder classBuilder)
     {
-        ArgumentNullException.ThrowIfNull(classBuilder);
+        Guard.IsNotNull(classBuilder);
         classBuilder.ApplyBackgroundColor(BackgroundColor);
         base.BuildClasses(classBuilder);
     }
