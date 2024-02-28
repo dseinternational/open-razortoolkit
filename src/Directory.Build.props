@@ -33,7 +33,6 @@
 
   <ItemGroup>
     <PackageReference Include="Nerdbank.GitVersioning" />
-    <PackageReference Include="Microsoft.SourceLink.GitHub" PrivateAssets="All"/>
   </ItemGroup>
 
 </Project>
