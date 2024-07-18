@@ -9,7 +9,7 @@ public class ModalHeader : HtmlBlock
 {
     protected override void BuildClasses(ClassBuilder classBuilder)
     {
-        Guard.IsNotNull(classBuilder);
+        ArgumentNullException.ThrowIfNull(classBuilder);
         classBuilder.Add(BootstrapClasses.ModalHeader);
         base.BuildClasses(classBuilder);
     }

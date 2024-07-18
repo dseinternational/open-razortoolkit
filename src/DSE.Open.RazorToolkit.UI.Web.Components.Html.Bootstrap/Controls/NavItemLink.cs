@@ -18,7 +18,7 @@ public class NavItemLink : HtmlHyperlink
 
     protected override void BuildClasses(ClassBuilder classBuilder)
     {
-        Guard.IsNotNull(classBuilder);
+        ArgumentNullException.ThrowIfNull(classBuilder);
         classBuilder.Add(BootstrapClasses.NavLink);
 
         switch (State)

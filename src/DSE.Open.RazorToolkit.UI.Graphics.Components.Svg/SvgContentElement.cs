@@ -17,7 +17,7 @@ public abstract class SvgContentElement : SvgElement
 
     protected override int AddContent(int sequence, RenderTreeBuilder builder)
     {
-        Guard.IsNotNull(builder);
+        ArgumentNullException.ThrowIfNull(builder);
 
         builder.AddContent(++sequence, ChildContent);
         return ++sequence;

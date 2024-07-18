@@ -18,7 +18,7 @@ public class ModalDismissButton : Button
 
     protected override void BuildClasses(ClassBuilder classBuilder)
     {
-        Guard.IsNotNull(classBuilder);
+        ArgumentNullException.ThrowIfNull(classBuilder);
         if (Close)
         {
             classBuilder.Add(BootstrapClasses.ButtonClose);

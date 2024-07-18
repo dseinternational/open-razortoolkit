@@ -22,7 +22,7 @@ public partial class HtmlNumberBox<TValue>: HtmlLabelledInputNumericControl<TVal
 
     protected override void BuildClasses(ClassBuilder classBuilder)
     {
-        Guard.IsNotNull(classBuilder);
+        ArgumentNullException.ThrowIfNull(classBuilder);
         classBuilder.Add("number-box");
         base.BuildClasses(classBuilder);
     }

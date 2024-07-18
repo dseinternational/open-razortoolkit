@@ -26,7 +26,7 @@ public abstract class SvgPaintedContentElement : SvgContentElement
 
     protected override int AddAttributes(int sequence, RenderTreeBuilder builder)
     {
-        Guard.IsNotNull(builder);
+        ArgumentNullException.ThrowIfNull(builder);
 
         builder.AddAttribute(++sequence, "width", Width);
         builder.AddAttribute(++sequence, "height", Height);

@@ -13,7 +13,7 @@ public class CardTitle : Heading
 
     protected override void BuildClasses(ClassBuilder classBuilder)
     {
-        Guard.IsNotNull(classBuilder);
+        ArgumentNullException.ThrowIfNull(classBuilder);
         classBuilder.Add(BootstrapClasses.CardTitle);
         base.BuildClasses(classBuilder);
     }

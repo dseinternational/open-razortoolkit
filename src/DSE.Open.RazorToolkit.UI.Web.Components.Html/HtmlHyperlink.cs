@@ -20,14 +20,14 @@ public class HtmlHyperlink : HtmlTextInline
 
     protected override int AddAttributes(int sequence, RenderTreeBuilder builder)
     {
-        Guard.IsNotNull(builder);
+        ArgumentNullException.ThrowIfNull(builder);
         builder.AddAttribute(sequence, "href", NavigateUri);
         return base.AddAttributes(sequence + 1, builder);
     }
 
     protected override void OnParametersSet()
     {
-        Guard.IsNotNull(NavigateUri);
+        ArgumentNullException.ThrowIfNull(NavigateUri);
         base.OnParametersSet();
     }
 }

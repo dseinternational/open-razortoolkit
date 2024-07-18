@@ -16,7 +16,7 @@ public class TableFooter : HtmlTableFooter
 
     protected override void BuildClasses(ClassBuilder classBuilder)
     {
-        Guard.IsNotNull(classBuilder);
+        ArgumentNullException.ThrowIfNull(classBuilder);
         classBuilder.Add(BootstrapTableHelper.GetTableThemeClass(Theme));
         classBuilder.AddIfValueTrue(Dividers, BootstrapClasses.TableGroupDivider);
         base.BuildClasses(classBuilder);

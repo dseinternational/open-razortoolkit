@@ -32,7 +32,7 @@ public partial class GridRow
 
     protected override void BuildClasses(ClassBuilder classBuilder)
     {
-        Guard.IsNotNull(classBuilder);
+        ArgumentNullException.ThrowIfNull(classBuilder);
         var classes = new List<string>
         {
             BootstrapClasses.Row,

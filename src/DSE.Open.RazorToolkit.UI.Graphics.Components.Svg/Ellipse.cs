@@ -36,7 +36,7 @@ public class Ellipse: SvgPaintedContentElement
 
     protected override int AddAttributes(int sequence, RenderTreeBuilder builder)
     {
-        Guard.IsNotNull(builder);
+        ArgumentNullException.ThrowIfNull(builder);
 
         builder.AddAttribute(++sequence, "cx", CenterX);
         builder.AddAttribute(++sequence, name: "cy", CenterY);

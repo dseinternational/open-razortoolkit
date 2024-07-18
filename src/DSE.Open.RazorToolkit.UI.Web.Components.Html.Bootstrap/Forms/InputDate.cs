@@ -20,7 +20,7 @@ public class InputDate<[DynamicallyAccessedMembers(DynamicallyAccessedMemberType
 
     protected override void BuildClasses(ClassBuilder classBuilder)
     {
-        Guard.IsNotNull(classBuilder);
+        ArgumentNullException.ThrowIfNull(classBuilder);
         classBuilder.AddFormControlClasses(this);
         base.BuildClasses(classBuilder);
     }
@@ -30,7 +30,7 @@ public class InputCheckbox : HtmlInputCheckbox
 {
     protected override void BuildClasses(ClassBuilder classBuilder)
     {
-        Guard.IsNotNull(classBuilder);
+        ArgumentNullException.ThrowIfNull(classBuilder);
         classBuilder.Add(BootstrapClasses.FormCheckInput);
         base.BuildClasses(classBuilder);
     }

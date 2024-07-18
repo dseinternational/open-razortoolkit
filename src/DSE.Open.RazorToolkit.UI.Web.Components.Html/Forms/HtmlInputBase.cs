@@ -322,7 +322,7 @@ public abstract class HtmlInputBase<TValue> : HtmlElement, IDisposable
 
     protected override void BuildClasses(ClassBuilder classBuilder)
     {
-        Guard.IsNotNull(classBuilder);
+        ArgumentNullException.ThrowIfNull(classBuilder);
         if (_validationHasBeenCalled)
         {
             classBuilder.Add(CssValidationClass);

@@ -16,7 +16,7 @@ public class SvgContainer : SvgPaintedContentElement
 
     protected override int AddAttributes(int sequence, RenderTreeBuilder builder)
     {
-        Guard.IsNotNull(builder);
+        ArgumentNullException.ThrowIfNull(builder);
 
         builder.AddAttribute(++sequence, "version", "1.1");
         builder.AddAttribute(++sequence, "xmlns", "http://www.w3.org/2000/svg");

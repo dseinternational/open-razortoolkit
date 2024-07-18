@@ -13,7 +13,7 @@ public class CardLink : HtmlHyperlink
 
     protected override void BuildClasses(ClassBuilder classBuilder)
     {
-        Guard.IsNotNull(classBuilder);
+        ArgumentNullException.ThrowIfNull(classBuilder);
         classBuilder.Add(BootstrapClasses.CardLink);
         base.BuildClasses(classBuilder);
     }

@@ -17,7 +17,7 @@ public class InputTextArea : HtmlInputTextArea, IFormControl
 
     protected override void BuildClasses(ClassBuilder classBuilder)
     {
-        Guard.IsNotNull(classBuilder);
+        ArgumentNullException.ThrowIfNull(classBuilder);
         classBuilder.AddFormControlClasses(this);
         base.BuildClasses(classBuilder);
     }
