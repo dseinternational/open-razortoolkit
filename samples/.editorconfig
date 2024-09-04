@@ -1,0 +1,3 @@
+[*.{cs,vb}]
+
+dotnet_diagnostic.CA5394.severity = none            # CA5394: Random is an insecure random number generator
