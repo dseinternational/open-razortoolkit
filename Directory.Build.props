@@ -10,7 +10,7 @@
     <AccelerateBuildsInVisualStudio>true</AccelerateBuildsInVisualStudio>
     <DisableImplicitNuGetFallbackFolder>true</DisableImplicitNuGetFallbackFolder>
   </PropertyGroup>
-  
+
   <PropertyGroup>
     <LangVersion>preview</LangVersion>
     <EnableNETAnalyzers>true</EnableNETAnalyzers>
@@ -30,7 +30,7 @@
   </PropertyGroup>
 
   <PropertyGroup>
-    <Copyright>Copyright (c) 2023 The DSE.Open.RazorToolkit Authors.</Copyright>
+    <Copyright>Copyright (c) 2024 The DSE.Open.RazorToolkit Authors.</Copyright>
     <RepositoryUrl>https://github.com/dseinternational/open-razortoolkit</RepositoryUrl>
   </PropertyGroup>
 
