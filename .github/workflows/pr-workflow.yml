@@ -55,7 +55,6 @@ jobs:
           dotnet test ./DSE.Open.RazorToolkit.sln `
             --configuration ${{ matrix.configuration }} `
             --no-build `
-            --collect:"XPlat Code Coverage" `
             --verbosity normal
         shell: pwsh
         env:
