@@ -1,8 +1,12 @@
 <Project Sdk="Microsoft.NET.Sdk.Razor">
 
   <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <OutputType>Exe</OutputType>
     <TargetFramework>net9.0</TargetFramework>
     <IsPackable>false</IsPackable>
+    <IsTestProject>true</IsTestProject>
+    <IsTestProject>true</IsTestProject>
     <RootNamespace>DSE.Open.RazorToolkit.UI.Web.Components.Html</RootNamespace>
   </PropertyGroup>
 
