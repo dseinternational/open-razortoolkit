@@ -5,9 +5,9 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageVersion Include="bunit" Version="1.38.5" />
+    <PackageVersion Include="bunit" Version="1.39.5" />
     <PackageVersion Include="coverlet.collector" Version="6.0.2" />
-    <PackageVersion Include="DSE.Open.Drawing" Version="0.57.13" />
+    <PackageVersion Include="DSE.Open.Drawing" Version="0.57.14" />
     <PackageVersion Include="DSE.Open.Globalization" Version="0.57.13" />
     <PackageVersion Include="DSE.Open.Values" Version="0.57.13" />
     <PackageVersion Include="FluentAssertions" Version="[7.2.0,8.0.0)" />
@@ -25,9 +25,9 @@
     <PackageVersion Include="Nerdbank.GitVersioning" Version="3.7.115" />
     <PackageVersion Include="Newtonsoft.Json" Version="13.0.3" />
     <PackageVersion Include="System.Reflection.Metadata" Version="9.0.3" />
-    <PackageVersion Include="xunit.analyzers" Version="1.20.0" />
+    <PackageVersion Include="xunit.analyzers" Version="1.21.0" />
     <PackageVersion Include="xunit.runner.visualstudio" Version="3.0.2" />
-    <PackageVersion Include="xunit.v3" Version="2.0.0" />
+    <PackageVersion Include="xunit.v3" Version="2.0.1" />
   </ItemGroup>
 
 </Project>
