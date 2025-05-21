@@ -7,9 +7,9 @@
   <ItemGroup>
     <PackageVersion Include="bunit" Version="1.39.5" />
     <PackageVersion Include="coverlet.collector" Version="6.0.2" />
-    <PackageVersion Include="DSE.Open.Drawing" Version="0.61.1" />
-    <PackageVersion Include="DSE.Open.Globalization" Version="0.61.1" />
-    <PackageVersion Include="DSE.Open.Values" Version="0.61.1" />
+    <PackageVersion Include="DSE.Open.Drawing" Version="0.61.16" />
+    <PackageVersion Include="DSE.Open.Globalization" Version="0.61.16" />
+    <PackageVersion Include="DSE.Open.Values" Version="0.61.16" />
     <PackageVersion Include="FluentAssertions" Version="[7.2.0,8.0.0)" />
     <PackageVersion Include="FluentValidation" Version="12.0.0" />
     <PackageVersion Include="Markdig" Version="0.41.1" />
@@ -18,9 +18,9 @@
     <PackageVersion Include="Microsoft.AspNetCore.Components.Web" Version="9.0.5" />
     <PackageVersion Include="Microsoft.AspNetCore.Components.WebAssembly" Version="9.0.5" />
     <PackageVersion Include="Microsoft.AspNetCore.Components.WebAssembly.DevServer" Version="9.0.5" />
-    <PackageVersion Include="Microsoft.NET.Test.Sdk" Version="17.13.0" />
+    <PackageVersion Include="Microsoft.NET.Test.Sdk" Version="17.14.0" />
     <PackageVersion Include="Microsoft.Testing.Extensions.CodeCoverage" Version="17.14.2" />
-    <PackageVersion Include="Microsoft.Testing.Platform" Version="1.6.3" />
+    <PackageVersion Include="Microsoft.Testing.Platform" Version="1.7.0" />
     <PackageVersion Include="Moq" Version="4.20.72" />
     <PackageVersion Include="Nerdbank.GitVersioning" Version="3.7.115" />
     <PackageVersion Include="Newtonsoft.Json" Version="13.0.3" />
