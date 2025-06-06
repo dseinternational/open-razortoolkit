@@ -7,9 +7,9 @@
   <ItemGroup>
     <PackageVersion Include="bunit" Version="1.39.5" />
     <PackageVersion Include="coverlet.collector" Version="6.0.2" />
-    <PackageVersion Include="DSE.Open.Drawing" Version="0.62.20" />
-    <PackageVersion Include="DSE.Open.Globalization" Version="0.62.20" />
-    <PackageVersion Include="DSE.Open.Values" Version="0.62.20" />
+    <PackageVersion Include="DSE.Open.Drawing" Version="0.62.26" />
+    <PackageVersion Include="DSE.Open.Globalization" Version="0.62.26" />
+    <PackageVersion Include="DSE.Open.Values" Version="0.62.26" />
     <PackageVersion Include="AwesomeAssertions" Version="9.0.0" />
     <PackageVersion Include="FluentValidation" Version="12.0.0" />
     <PackageVersion Include="Markdig" Version="0.41.2" />
