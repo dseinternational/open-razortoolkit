@@ -7,9 +7,9 @@
   <ItemGroup>
     <PackageVersion Include="bunit" Version="1.39.5" />
     <PackageVersion Include="coverlet.collector" Version="6.0.2" />
-    <PackageVersion Include="DSE.Open.Drawing" Version="0.62.26" />
-    <PackageVersion Include="DSE.Open.Globalization" Version="0.62.26" />
-    <PackageVersion Include="DSE.Open.Values" Version="0.62.26" />
+    <PackageVersion Include="DSE.Open.Drawing" Version="0.62.27" />
+    <PackageVersion Include="DSE.Open.Globalization" Version="0.62.27" />
+    <PackageVersion Include="DSE.Open.Values" Version="0.62.27" />
     <PackageVersion Include="AwesomeAssertions" Version="9.0.0" />
     <PackageVersion Include="FluentValidation" Version="12.0.0" />
     <PackageVersion Include="Markdig" Version="0.41.2" />
@@ -25,9 +25,9 @@
     <PackageVersion Include="Nerdbank.GitVersioning" Version="3.7.115" />
     <PackageVersion Include="Newtonsoft.Json" Version="13.0.3" />
     <PackageVersion Include="System.Reflection.Metadata" Version="9.0.5" />
-    <PackageVersion Include="xunit.analyzers" Version="1.21.0" />
-    <PackageVersion Include="xunit.runner.visualstudio" Version="3.1.0" />
-    <PackageVersion Include="xunit.v3" Version="2.0.2" />
+    <PackageVersion Include="xunit.analyzers" Version="1.22.0" />
+    <PackageVersion Include="xunit.runner.visualstudio" Version="3.1.1" />
+    <PackageVersion Include="xunit.v3" Version="2.0.3" />
   </ItemGroup>
 
 </Project>
