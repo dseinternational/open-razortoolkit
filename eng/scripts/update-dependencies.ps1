@@ -19,7 +19,7 @@ function Update-Dependencies() {
     Write-Host "--------------------------------------------------------------------------------" -ForegroundColor Cyan
     Write-Host
 
-    &dotnet-outdated -pre auto --upgrade --no-restore ./DSE.Open.RazorToolkit.sln
+    &dotnet-outdated -pre auto --upgrade --no-restore ./DSE.Open.RazorToolkit.slnx
 }
 
 try {
