@@ -51,12 +51,10 @@ jobs:
         run: dotnet build ./DSE.Open.RazorToolkit.slnx --configuration ${{ matrix.configuration }}
 
       - name: Run Tests
-        run: |
-          dotnet test ./DSE.Open.RazorToolkit.slnx `
-            --configuration ${{ matrix.configuration }} `
-            --no-build `
-            --verbosity normal
-        shell: pwsh
+        uses: dseinternational/open-dotnet/.github/actions/dotnet-test@actions-0.8
+        with:
+          target: ./test
+          configuration: ${{ matrix.configuration }}
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           DSE_TEST_ENVIRONMENT: test

@@ -21,6 +21,7 @@
     <PackageVersion Include="Microsoft.NET.Test.Sdk" Version="17.14.1" />
     <PackageVersion Include="Microsoft.Testing.Extensions.CodeCoverage" Version="17.14.2" />
     <PackageVersion Include="Microsoft.Testing.Platform" Version="1.7.3" />
+    <PackageVersion Include="Microsoft.Testing.Platform.MSBuild" Version="1.7.3" />
     <PackageVersion Include="Moq" Version="4.20.72" />
     <PackageVersion Include="Nerdbank.GitVersioning" Version="3.7.115" />
     <PackageVersion Include="Newtonsoft.Json" Version="13.0.3" />
