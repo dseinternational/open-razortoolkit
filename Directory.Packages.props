@@ -7,17 +7,17 @@
   <ItemGroup>
     <PackageVersion Include="bunit" Version="1.40.0" />
     <PackageVersion Include="coverlet.collector" Version="6.0.2" />
-    <PackageVersion Include="DSE.Open.Drawing" Version="0.65.28" />
-    <PackageVersion Include="DSE.Open.Globalization" Version="0.65.28" />
-    <PackageVersion Include="DSE.Open.Values" Version="0.65.28" />
+    <PackageVersion Include="DSE.Open.Drawing" Version="0.65.34" />
+    <PackageVersion Include="DSE.Open.Globalization" Version="0.65.34" />
+    <PackageVersion Include="DSE.Open.Values" Version="0.65.34" />
     <PackageVersion Include="AwesomeAssertions" Version="9.1.0" />
     <PackageVersion Include="FluentValidation" Version="12.0.0" />
     <PackageVersion Include="Markdig" Version="0.41.3" />
-    <PackageVersion Include="Microsoft.AspNetCore.Components" Version="9.0.7" />
-    <PackageVersion Include="Microsoft.AspNetCore.Components.Forms" Version="9.0.7" />
-    <PackageVersion Include="Microsoft.AspNetCore.Components.Web" Version="9.0.7" />
-    <PackageVersion Include="Microsoft.AspNetCore.Components.WebAssembly" Version="9.0.7" />
-    <PackageVersion Include="Microsoft.AspNetCore.Components.WebAssembly.DevServer" Version="9.0.7" />
+    <PackageVersion Include="Microsoft.AspNetCore.Components" Version="9.0.8" />
+    <PackageVersion Include="Microsoft.AspNetCore.Components.Forms" Version="9.0.8" />
+    <PackageVersion Include="Microsoft.AspNetCore.Components.Web" Version="9.0.8" />
+    <PackageVersion Include="Microsoft.AspNetCore.Components.WebAssembly" Version="9.0.8" />
+    <PackageVersion Include="Microsoft.AspNetCore.Components.WebAssembly.DevServer" Version="9.0.8" />
     <PackageVersion Include="Microsoft.NET.Test.Sdk" Version="17.14.1" />
     <PackageVersion Include="Microsoft.Testing.Extensions.CodeCoverage" Version="17.14.2" />
     <PackageVersion Include="Microsoft.Testing.Platform" Version="1.8.0" />
