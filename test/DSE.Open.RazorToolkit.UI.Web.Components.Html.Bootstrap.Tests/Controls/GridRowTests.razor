@@ -6,7 +6,7 @@
     public void GridRow_WithNoRowColumnsSet_ShouldRenderDefaultRowClass()
     {
     // Act
-        var output = RenderComponent<GridRow>();
+        var output = Render<GridRow>();
 
     // Assert
         output.MarkupMatches("<div class=\"row\"></div>");

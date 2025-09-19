@@ -6,7 +6,7 @@
     [Fact]
     public void ModalToggleButton_WithNoTargetId_ShouldThrowError()
     {
-        Assert.ThrowsAny<ArgumentException>(() => { RenderComponent<ModalToggleButton>(); });
+        Assert.ThrowsAny<ArgumentException>(() => { Render<ModalToggleButton>(); });
     }
 
     [Fact]

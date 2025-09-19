@@ -18,6 +18,6 @@
     [Fact]
     public void HtmlHyperlink_WithNullUri_ShouldThrowArgumentNullException()
     {
-        Assert.Throws<ArgumentNullException>(() => RenderComponent<HtmlHyperlink>());
+        Assert.Throws<ArgumentNullException>(() => Render<HtmlHyperlink>());
     }
 }
