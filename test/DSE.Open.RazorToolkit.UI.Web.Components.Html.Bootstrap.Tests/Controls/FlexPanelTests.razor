@@ -6,7 +6,7 @@
     public void FlexPanel_WithNoAttributes_ShouldRenderDivWithFlexClass()
     {
     // Act
-        var output = Render<FlexPanel>();
+        var output = RenderComponent<FlexPanel>();
 
     // Assert
         output.MarkupMatches($"<div class=\"{BootstrapClasses.DisplayFlex}\"></div>");

@@ -6,7 +6,7 @@
     public void Circle_ShouldRenderCircleTag()
     {
         // Act
-        var circle = Render<Circle>();
+        var circle = RenderComponent<Circle>();
 
         // Assert
         circle.MarkupMatches(@<circle></circle>);

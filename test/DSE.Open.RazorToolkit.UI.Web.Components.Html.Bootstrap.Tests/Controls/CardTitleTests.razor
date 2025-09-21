@@ -6,7 +6,7 @@
     public void CardTitle_ShouldRenderCardTitleClass()
     {
         // Act
-        var output = Render<CardTitle>();
+        var output = RenderComponent<CardTitle>();
 
         // Assert
         output.MarkupMatches($"<h1 class=\"{BootstrapClasses.CardTitle}\"></h1>");

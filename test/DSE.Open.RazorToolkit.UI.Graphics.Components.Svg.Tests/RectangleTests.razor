@@ -5,7 +5,7 @@
     [Fact]
     public void RenderEmptyElement()
     {
-        var output = Render<Rectangle>();
+        var output = RenderComponent<Rectangle>();
 
         output.MarkupMatches("<rect></rect>");
     }

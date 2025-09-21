@@ -6,7 +6,7 @@
     public void GridColumn_WithNothingSet_ShouldRenderDiv()
     {
         // Act
-        var output = Render<GridColumn>();
+        var output = RenderComponent<GridColumn>();
 
         // Assert
         output.MarkupMatches("<div></div>");

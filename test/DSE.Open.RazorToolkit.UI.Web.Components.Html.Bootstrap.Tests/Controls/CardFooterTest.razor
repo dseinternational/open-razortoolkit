@@ -6,7 +6,7 @@
     public void CardBody_ShouldRenderCardBodyClass()
     {
         // Act
-        var output = Render<CardBody>();
+        var output = RenderComponent<CardBody>();
 
         // Assert
         output.MarkupMatches($"<div class=\"{BootstrapClasses.CardBody}\"></div>");
