@@ -9,3 +9,5 @@ dotnet_diagnostic.CA2007.severity = none            # CA2007: Do not directly aw
 dotnet_diagnostic.CA1822.severity = none            # CA1822: Mark members as static
 
 dotnet_diagnostic.CA5394.severity = none            # CA5394: Random is an insecure random number generator
+
+dotnet_diagnostic.CA1515.severity = none            # CA1515: Consider making public types internal
