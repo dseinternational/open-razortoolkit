@@ -28,10 +28,6 @@ jobs:
         uses: actions/setup-dotnet@v5
         with:
           global-json-file: global.json
-          dotnet-version: | 
-            8.0.x
-            9.0.x
-            10.0.x
 
       - name: Add GitHub Packages 'dseinternational' Feed
         run: dotnet nuget update source dseinternational --username "dsegroup" --password ${{ secrets.PACKAGES_TOKEN }} --store-password-in-clear-text --source "https://nuget.pkg.github.com/dseinternational/index.json" --configfile "./NuGet.config"
@@ -55,7 +51,7 @@ jobs:
         run: dotnet build ./DSE.Open.RazorToolkit.slnx --configuration ${{ matrix.configuration }}
 
       - name: Run Tests
-        uses: dseinternational/open-dotnet/.github/actions/dotnet-test@actions-0.9
+        uses: dseinternational/open-dotnet/.github/actions/dotnet-test@actions-0.10
         with:
           target: ./test
           configuration: ${{ matrix.configuration }}
