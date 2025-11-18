@@ -5,7 +5,7 @@
     [Fact]
     public void HtmlSource_WithNoSource_ShouldThrowError()
     {
-        Assert.Throws<ArgumentNullException>(() => { RenderComponent<HtmlSource>(); });
+        Assert.Throws<ArgumentNullException>(() => { Render<HtmlSource>(); });
     }
 
     [Fact]

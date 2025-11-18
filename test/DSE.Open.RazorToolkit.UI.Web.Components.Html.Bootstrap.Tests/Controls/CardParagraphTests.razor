@@ -6,7 +6,7 @@
     public void CardParagraph_ShouldRenderCardTextClass()
     {
     // Act
-        var output = RenderComponent<CardParagraph>();
+        var output = Render<CardParagraph>();
 
     // Assert
         output.MarkupMatches($"<p class=\"{BootstrapClasses.CardText}\"></p>");
