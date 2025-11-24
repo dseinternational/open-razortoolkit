@@ -6,11 +6,11 @@
 
   <ItemGroup>
     <PackageVersion Include="AwesomeAssertions" Version="9.3.0" />
-    <PackageVersion Include="bunit" Version="2.0.66" />
+    <PackageVersion Include="bunit" Version="2.1.1" />
     <PackageVersion Include="coverlet.collector" Version="6.0.2" />
-    <PackageVersion Include="DSE.Open.Drawing" Version="0.72.6" />
-    <PackageVersion Include="DSE.Open.Globalization" Version="0.72.6" />
-    <PackageVersion Include="DSE.Open.Values" Version="0.72.6" />
+    <PackageVersion Include="DSE.Open.Drawing" Version="0.72.10" />
+    <PackageVersion Include="DSE.Open.Globalization" Version="0.72.10" />
+    <PackageVersion Include="DSE.Open.Values" Version="0.72.10" />
     <PackageVersion Include="FluentValidation" Version="12.1.0" />
     <PackageVersion Include="Markdig" Version="0.43.0" />
     <PackageVersion Include="Microsoft.AspNetCore.Components.Forms" Version="10.0.0" />
