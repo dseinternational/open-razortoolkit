@@ -8,9 +8,9 @@
     <PackageVersion Include="AwesomeAssertions" Version="9.3.0" />
     <PackageVersion Include="bunit" Version="2.2.2" />
     <PackageVersion Include="coverlet.collector" Version="6.0.2" />
-    <PackageVersion Include="DSE.Open.Drawing" Version="0.73.2" />
-    <PackageVersion Include="DSE.Open.Globalization" Version="0.73.2" />
-    <PackageVersion Include="DSE.Open.Values" Version="0.73.2" />
+    <PackageVersion Include="DSE.Open.Drawing" Version="0.73.3" />
+    <PackageVersion Include="DSE.Open.Globalization" Version="0.73.3" />
+    <PackageVersion Include="DSE.Open.Values" Version="0.73.3" />
     <PackageVersion Include="FluentValidation" Version="12.1.1" />
     <PackageVersion Include="Markdig" Version="0.44.0" />
     <PackageVersion Include="Microsoft.AspNetCore.Components.Forms" Version="10.0.1" />
