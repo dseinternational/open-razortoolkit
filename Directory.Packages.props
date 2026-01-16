@@ -8,9 +8,9 @@
     <PackageVersion Include="AwesomeAssertions" Version="9.3.0" />
     <PackageVersion Include="bunit" Version="2.5.3" />
     <PackageVersion Include="coverlet.collector" Version="6.0.2" />
-    <PackageVersion Include="DSE.Open.Drawing" Version="2026.1.4" />
-    <PackageVersion Include="DSE.Open.Globalization" Version="2026.1.4" />
-    <PackageVersion Include="DSE.Open.Values" Version="2026.1.4" />
+    <PackageVersion Include="DSE.Open.Drawing" Version="2026.1.5" />
+    <PackageVersion Include="DSE.Open.Globalization" Version="2026.1.5" />
+    <PackageVersion Include="DSE.Open.Values" Version="2026.1.5" />
     <PackageVersion Include="FluentValidation" Version="12.1.1" />
     <PackageVersion Include="Markdig" Version="0.44.0" />
     <PackageVersion Include="Microsoft.AspNetCore.Components.Forms" Version="10.0.2" />
@@ -25,9 +25,9 @@
     <PackageVersion Include="Nerdbank.GitVersioning" Version="3.9.50" />
     <PackageVersion Include="Newtonsoft.Json" Version="13.0.3" />
     <PackageVersion Include="System.Reflection.Metadata" Version="9.0.7" />
-    <PackageVersion Include="xunit.analyzers" Version="1.26.0" />
+    <PackageVersion Include="xunit.analyzers" Version="1.27.0" />
     <PackageVersion Include="xunit.runner.visualstudio" Version="3.1.3" />
-    <PackageVersion Include="xunit.v3.mtp-v2" Version="3.2.1" />
+    <PackageVersion Include="xunit.v3.mtp-v2" Version="3.2.2" />
   </ItemGroup>
 
 
