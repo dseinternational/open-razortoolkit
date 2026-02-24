@@ -5,14 +5,14 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageVersion Include="AwesomeAssertions" Version="9.3.0" />
+    <PackageVersion Include="AwesomeAssertions" Version="9.4.0" />
     <PackageVersion Include="bunit" Version="2.5.3" />
     <PackageVersion Include="coverlet.collector" Version="6.0.2" />
-    <PackageVersion Include="DSE.Open.Drawing" Version="2026.2.2" />
-    <PackageVersion Include="DSE.Open.Globalization" Version="2026.2.2" />
-    <PackageVersion Include="DSE.Open.Values" Version="2026.2.2" />
+    <PackageVersion Include="DSE.Open.Drawing" Version="2026.2.3" />
+    <PackageVersion Include="DSE.Open.Globalization" Version="2026.2.3" />
+    <PackageVersion Include="DSE.Open.Values" Version="2026.2.3" />
     <PackageVersion Include="FluentValidation" Version="12.1.1" />
-    <PackageVersion Include="Markdig" Version="0.45.0" />
+    <PackageVersion Include="Markdig" Version="1.0.0" />
     <PackageVersion Include="Microsoft.AspNetCore.Components.Forms" Version="10.0.3" />
     <PackageVersion Include="Microsoft.AspNetCore.Components.Web" Version="10.0.3" />
     <PackageVersion Include="Microsoft.AspNetCore.Components.WebAssembly.DevServer" Version="10.0.3" />
