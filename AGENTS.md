@@ -1,8 +1,8 @@
-# Copilot Instructions
+# AGENTS.md
 
-This file provides guidance to GitHub Copilot when working with code in this repository.
+This file provides guidance to OpenAI Codex and other AI agents when working with code in this repository.
 
-> **Keep in sync:** This file, `CLAUDE.md`, and `AGENTS.md` share the same content.
+> **Keep in sync:** This file, `CLAUDE.md`, and `.github/copilot-instructions.md` share the same content.
 > When updating any one of them, update the other two to match.
 
 ## Build & Test Commands
